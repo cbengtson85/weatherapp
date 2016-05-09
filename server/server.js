@@ -18,6 +18,11 @@ const config = require('config').config();
 //create mongodb connection
 require('server/db').connect();
 
+//initialize require for marko templates
+require('marko/node-require').install();
+//do not write compiled output to disk
+require('marko/compiler').defaultOptions.writeToDisk = false;
+
 //execute on all requests (ala java web filter)
 /*router.use(function(req, res, next) {
 

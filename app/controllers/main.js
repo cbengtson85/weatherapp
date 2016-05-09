@@ -1,5 +1,7 @@
 'use strict'
 
 exports.renderHomePage = (req, res) => {
-    res.sendFile(rootPath + '/app/views/home.html');
+    let template = require('app/views/home.marko');
+    let versionNum = process.env.npm_package_version;
+    template.render({ version : versionNum }, res);
 }
