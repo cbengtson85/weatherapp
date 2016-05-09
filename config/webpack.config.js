@@ -2,10 +2,10 @@
 const path = require('path');
 
 module.exports = {
-    entry : './app/components/index.jsx',
+    entry : './app/components/home.jsx',
     output : {
         path : './dist/js',
-        filename : 'bundle.js',
+        filename : 'home.js',
     },
     //watch : true,
     module : {
