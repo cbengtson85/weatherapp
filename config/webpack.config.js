@@ -2,7 +2,7 @@
 const path = require('path');
 
 module.exports = {
-    entry : './app/components/home.jsx',
+    entry : './app/components/Home.jsx',
     output : {
         path : './dist/js',
         filename : 'home.js',
@@ -16,7 +16,7 @@ module.exports = {
                 loader : 'babel-loader',
                 query : {
                     cacheDirectory : true,
-                    presets : ['react', 'es2015'],
+                    presets : ['react', 'es2015', 'stage-2'],
                     plugins: ['transform-es2015-function-name']
                 }
             }
