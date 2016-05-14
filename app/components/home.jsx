@@ -3,4 +3,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-ReactDOM.render(<div>Hello world from React</div>, document.getElementById('app'));
+import UserInfoForm from 'app/components/UserInfoForm';
+
+class Home extends React.Component {
+    render() {
+        return <UserInfoForm formId="userForm" />
+    }
+}
+
+export default Home;

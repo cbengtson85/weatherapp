@@ -48,7 +48,7 @@ app.use(express.static('dist'));
 app.use(express.static('static'));
 
 //initialize routing & apply routes
-app.use(require('app/routes'));
+app.use(require('server/routes'));
 
 //404 page not found
 app.use((req, res, next) => {

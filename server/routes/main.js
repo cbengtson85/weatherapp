@@ -1,6 +1,6 @@
 'use strict'
 
-const controllers = require('app/controllers');
+const controllers = require('server/controllers');
 let router = require('express').Router();
 
 router.get('/', controllers.main.renderHomePage);

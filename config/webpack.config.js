@@ -2,7 +2,7 @@
 const path = require('path');
 
 module.exports = {
-    entry : './app/components/Home.jsx',
+    entry : './app/entry/home-entry.js',
     output : {
         path : './dist/js',
         filename : 'home.js',
