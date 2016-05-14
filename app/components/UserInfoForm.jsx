@@ -6,7 +6,7 @@ const UserInfoForm = (props) => {
             <input type="text" placeholder="First Name" name="firstName" /><br />
             <input type="text" placeholder="Last Name" name="lastName" /><br />
             <input type="text" placeholder="Zip Code" name="zipCode" /><br />
-            <button type="submit">Save</button>
+            <button type="submit">Submit</button>
         </form>
     )
 }
