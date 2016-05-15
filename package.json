@@ -8,15 +8,16 @@
     "clean": "find dist -not -name 'dist' -not -name '.gitignore' | xargs rm -rf",
     "postclean": "echo '\\033[1;36m DONE cleaning /dist directory \\033[0m'",
     "preuglifycss": "mkdir -p dist/css && echo '\\033[0;36m BEGIN uglyfying css \\033[0m'",
-    "uglifycss": "uglifycss --max-line-len 500 static/css/normalize.css static/css/styles.css > dist/css/weatherapp.css",
+    "uglifycss": "uglifycss --max-line-len 500 static/css/styles.css > dist/css/weatherapp.css",
     "postuglifycss": "mkdir -p dist/css && echo '\\033[1;36m DONE uglyfying css \\033[0m'",
     "buildcss": "npm run uglifycss",
     "predevbuild": "echo '\\033[0;36m BEGIN building dev\\033[0m' && npm run clean",
     "devbuild": "npm run buildcss && webpack --config config/webpack.config.js",
-    "devbuildwatch": "nodemon --watch app -e js,marko,html,jsx -x \"npm run devbuild\"",
-    "postdevbuild": "echo '\\033[1;32m DONE building dev\\033[0m'",
+    "devwatch": "nodemon --watch app --watch static -e js,marko,html,jsx,css -x \"npm run devbuild && npm run devnodestart\"",
+    "postdevbuild": "echo '\\033[1;32m SUCCESS building dev\\033[0m' && tput bel",
     "devdebug": "node-inspector & nodemon --debug --watch app --watch config server/server.js --server dev",
-    "devstart": "nodemon --watch dist server/server.js --server dev"
+    "devstart": "nodemon --watch dist server/server.js --server dev",
+    "devnodestart": "node server/server.js --server dev"
   },
   "repository": {
     "type": "git",
