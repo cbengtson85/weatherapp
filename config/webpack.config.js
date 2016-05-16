@@ -1,13 +1,17 @@
 'use stric'
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
-    entry : './app/entry/home-entry.js',
+    entry : {
+        home : './app/entry/home-entry.js',
+        vendor : ['react', 'react-dom', 'jquery']//immutable react-redux react-router redux
+    },
     output : {
         path : './dist/js',
-        filename : 'home.js',
+        filename : '[name].js'
     },
-    //watch : true,
+    watch : true,
     module : {
         loaders : [
             {
@@ -20,11 +24,19 @@ module.exports = {
                     plugins: ['transform-es2015-function-name']
                 }
             }
-        ]
+        ]/*,
+        noParse: [/react/,/react-dom/]*/
     },
     resolve : {
         extensions : ['', '.js', '.jsx', '.es6'],
         root : path.resolve(__dirname + '..', ''),
         modulesDirectories : ['node_modules', '..']
-    }
+    },
+    plugins : [
+        new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.js', Infinity),
+        new webpack.ProvidePlugin({
+            $: 'jquery',
+            jQuery: 'jquery'
+        })
+    ]
 }

@@ -3,11 +3,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import UserInfoForm from 'app/components/UserInfoForm';
+import Header from 'app/components/Header';
 
 class Home extends React.Component {
     render() {
-        return <UserInfoForm formId="userForm" />
+        return (
+            <div>
+                <Header />
+            </div>
+        )
     }
 }
 

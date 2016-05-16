@@ -13,11 +13,12 @@
     "buildcss": "npm run uglifycss",
     "predevbuild": "echo '\\033[0;36m BEGIN building dev\\033[0m' && npm run clean",
     "devbuild": "npm run buildcss && webpack --config config/webpack.config.js",
-    "devwatch": "nodemon --watch app --watch static -e js,marko,html,jsx,css -x \"npm run devbuild && npm run devnodestart\"",
     "postdevbuild": "echo '\\033[1;32m SUCCESS building dev\\033[0m' && tput bel",
-    "devdebug": "node-inspector & nodemon --debug --watch app --watch config server/server.js --server dev",
-    "devstart": "nodemon --watch dist server/server.js --server dev",
-    "devnodestart": "node server/server.js --server dev"
+    "devdebug": "node-inspector & nodemon --debug --watch server --watch config server/server.js --server dev",
+    "devstart": "nodemon --watch server server/server.js --server dev",
+    "devbuildwatch": "webpack --watch --config config/webpack.config.js",
+    "devserverwatch": "nodemon --watch dist --watch static -e js,marko,html,jsx,css",
+    "devwatch": "npm run clean && npm run uglifycss; npm run devbuildwatch & npm run devserverwatch"
   },
   "repository": {
     "type": "git",
@@ -33,6 +34,7 @@
     "body-parser": "^1.15.0",
     "express": "^4.13.4",
     "immutable": "^3.8.1",
+    "jquery": "^2.2.3",
     "marko": "^3.2.0",
     "minimist": "^1.2.0",
     "mongodb": "^2.1.16",
