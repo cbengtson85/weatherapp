@@ -3,6 +3,9 @@
 import React from 'react';
 
 const Header = () => {
+    let slideToggle = () => {
+        $('.mobile-navigation').slideToggle();
+    }
     return (
         <header className="site-header">
             <div className="container">
@@ -14,7 +17,7 @@ const Header = () => {
                     </div>
                 </a>
                 <div className="main-navigation">
-                    <button type="button" className="menu-toggle"><i className="fa fa-bars"></i></button>
+                    <button type="button" className="menu-toggle" onClick={slideToggle}><i className="fa fa-bars"></i></button>
                     <ul className="menu">
                         <li className="menu-item current-menu-item"><a href="index.html">Home</a></li>
                         <li className="menu-item"><a href="news.html">News</a></li>
@@ -23,7 +26,15 @@ const Header = () => {
                         <li className="menu-item"><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>
-                <div className="mobile-navigation"></div>
+                <div className="mobile-navigation">
+                    <ul className="menu">
+                        <li className="menu-item current-menu-item"><a href="index.html">Home</a></li>
+                        <li className="menu-item"><a href="news.html">News</a></li>
+                        <li className="menu-item"><a href="live-cameras.html">Live cameras</a></li>
+                        <li className="menu-item"><a href="photos.html">Photos</a></li>
+                        <li className="menu-item"><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
             </div>
         </header>
     )

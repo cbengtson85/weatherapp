@@ -3,16 +3,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Header from 'app/components/Header';
+import AppWrapper from 'app/components/AppWrapper'
 
-class Home extends React.Component {
+class HomeContent extends React.Component {
     render() {
         return (
             <div>
-                <Header />
+                test
             </div>
         )
     }
 }
+
+let Home = AppWrapper(HomeContent);
 
 export default Home;
