@@ -1248,6 +1248,7 @@ form textarea {
     color: #009ad8;
 }
 .hero {
+    background-image: url(/img/banner.png);
     background-size: cover;
     padding: 70px 0;
     min-height: 350px;
@@ -1809,4 +1810,8 @@ form textarea {
 .site-footer .social-links a:hover {
     background: #009ad8;
     color: white;
+}
+
+.blue-gray-bkg {
+    background-color: rgb(38, 41, 54);
 }
