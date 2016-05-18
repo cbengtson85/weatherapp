@@ -2,6 +2,7 @@
 
 import React from 'react';
 import {SocialLinks} from 'app/components/Social'
+import {SubscribeForm} from 'app/components/Forms'
 
 const Footer = () => {
     return (
@@ -9,17 +10,14 @@ const Footer = () => {
             <div className="container">
                 <div className="row">
                     <div className="col-md-8">
-                        <form action="#" className="subscribe-form">
-                            <input type="text" placeholder="Enter your email to subscribe..." />
-                            <input type="submit" value="Subscribe" />
-                        </form>
+                        <SubscribeForm />
                     </div>
                     <div className="col-md-3 col-md-offset-1">
                         <SocialLinks />
                     </div>
                 </div>
 
-                <p className="colophon">Copyright 2014 Company name. Designed by Themezy. All rights reserved</p>
+                <p className="colophon">Powered by <a href="http://forecast.io">Forecast.io</a></p>
             </div>
         </footer>
     )
