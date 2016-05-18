@@ -60,3 +60,6 @@ BUILD APP & RUN NODE SERVER using nodemon for hot deploying
 
 	with debugging
 	npm run devdebug
+
+	CSS build, wepack build (with auto build on change), node server start
+	npm run devwatch
