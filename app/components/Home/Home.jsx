@@ -120,6 +120,6 @@ class HomeContent extends React.Component {
     }
 }
 
-let Home = AppWrapper(HomeContent);
+let Home = AppWrapper(HomeContent, 'Home');
 
 export default Home;

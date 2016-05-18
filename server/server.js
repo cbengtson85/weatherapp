@@ -32,6 +32,7 @@ require('marko/compiler').defaultOptions.writeToDisk = false;
     // continue doing what we were doing and go to the route
     next();
 });*/
+/**********************make routes ignore case***************************/
 
 //create http server
 let server = http.createServer(app).listen(config.webPort, () => {

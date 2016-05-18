@@ -4,13 +4,12 @@ import React from 'react';
 
 import Header from 'app/components/Header';
 import Footer from 'app/components/Footer';
-import Home from 'app/components/Home';
 
-let AppWrapper = Component => class extends React.Component {
+let AppWrapper = (Component, page) => class extends React.Component {
     render() {
         return (
             <div>
-                <Header />
+                <Header page={page} />
                 <Component />
                 <Footer />
             </div>

@@ -1,8 +1,9 @@
 'use strict'
 
 import React from 'react';
+import {MenuItems} from 'app/components/Header/Menu';
 
-const Header = () => {
+const Header = (props) => {
     let slideToggle = (selector) => {
         $(selector).slideToggle();
     }
@@ -19,22 +20,10 @@ const Header = () => {
                 </a>
                 <div className="main-navigation">
                     <button type="button" className="menu-toggle" onClick={() => slideToggle('.mobile-navigation')}><i className="fa fa-bars"></i></button>
-                    <ul className="menu">
-                        <li className="menu-item current-menu-item"><a href="index.html">Home</a></li>
-                        <li className="menu-item"><a href="news.html">News</a></li>
-                        <li className="menu-item"><a href="live-cameras.html">Live cameras</a></li>
-                        <li className="menu-item"><a href="photos.html">Photos</a></li>
-                        <li className="menu-item"><a href="contact.html">Contact</a></li>
-                    </ul>
+                    <MenuItems {...props} />
                 </div>
                 <div className="mobile-navigation">
-                    <ul className="menu">
-                        <li className="menu-item current-menu-item"><a href="index.html">Home</a></li>
-                        <li className="menu-item"><a href="news.html">News</a></li>
-                        <li className="menu-item"><a href="live-cameras.html">Live cameras</a></li>
-                        <li className="menu-item"><a href="photos.html">Photos</a></li>
-                        <li className="menu-item"><a href="contact.html">Contact</a></li>
-                    </ul>
+                    <MenuItems {...props} />
                 </div>
             </div>
         </header>
