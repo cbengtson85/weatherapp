@@ -18,7 +18,8 @@
     "devstart": "nodemon --watch server server/server.js --server dev",
     "devbuildwatch": "webpack --watch --config config/webpack.config.js",
     "devserverwatch": "nodemon --watch dist --watch static -e js,marko,html,jsx,css",
-    "devwatch": "npm run clean && npm run uglifycss; npm run devbuildwatch & npm run devserverwatch"
+    "devnodestart": "node server/server.js --server dev",
+    "devwatch": "npm run clean && npm run uglifycss; npm run devbuildwatch & npm run devnodestart"
   },
   "repository": {
     "type": "git",

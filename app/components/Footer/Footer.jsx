@@ -1,6 +1,7 @@
 'use strict'
 
 import React from 'react';
+import {SocialLinks} from 'app/components/Social'
 
 const Footer = () => {
     return (
@@ -14,12 +15,7 @@ const Footer = () => {
                         </form>
                     </div>
                     <div className="col-md-3 col-md-offset-1">
-                        <div className="social-links">
-                            <a href="#"><i className="fa fa-facebook"></i></a>
-                            <a href="#"><i className="fa fa-twitter"></i></a>
-                            <a href="#"><i className="fa fa-google-plus"></i></a>
-                            <a href="#"><i className="fa fa-pinterest"></i></a>
-                        </div>
+                        <SocialLinks />
                     </div>
                 </div>
 

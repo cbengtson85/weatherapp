@@ -3,9 +3,10 @@
 import React from 'react';
 
 const Header = () => {
-    let slideToggle = () => {
-        $('.mobile-navigation').slideToggle();
+    let slideToggle = (selector) => {
+        $(selector).slideToggle();
     }
+
     return (
         <header className="site-header">
             <div className="container">
@@ -17,7 +18,7 @@ const Header = () => {
                     </div>
                 </a>
                 <div className="main-navigation">
-                    <button type="button" className="menu-toggle" onClick={slideToggle}><i className="fa fa-bars"></i></button>
+                    <button type="button" className="menu-toggle" onClick={() => slideToggle('.mobile-navigation')}><i className="fa fa-bars"></i></button>
                     <ul className="menu">
                         <li className="menu-item current-menu-item"><a href="index.html">Home</a></li>
                         <li className="menu-item"><a href="news.html">News</a></li>
