@@ -21,11 +21,10 @@ module.exports = {
                 query : {
                     cacheDirectory : true,
                     presets : ['react', 'es2015', 'stage-2'],
-                    plugins: ['transform-es2015-function-name']
+                    plugins: ['transform-es2015-function-name', 'transform-object-rest-spread']
                 }
             }
-        ]/*,
-        noParse: [/react/,/react-dom/]*/
+        ]
     },
     resolve : {
         extensions : ['', '.js', '.jsx', '.es6'],
