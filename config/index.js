@@ -6,7 +6,7 @@
  *
 */
 
-const merge = require('tools/merge');
+const merge = require('server/tools/merge');
 
 const serverLayer = require('minimist')(process.argv.slice(2));
 let config = require('config/devconfig.js');
