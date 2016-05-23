@@ -15,11 +15,11 @@
     "devbuild": "npm run buildcss && webpack --config config/webpack.config.js",
     "postdevbuild": "echo '\\033[1;32m SUCCESS building dev\\033[0m' && tput bel",
     "devdebug": "node-inspector & nodemon --debug --watch server --watch config server/server.js --server dev",
-    "devstart": "nodemon --watch server server/server.js --server dev",
+    "devstart": "nodemon --watch server --watch config --watch app/views -e js,marko server/server.js --server dev",
     "devbuildwatch": "webpack --watch --config config/webpack.config.js",
-    "devserverwatch": "nodemon --watch dist --watch static -e js,marko,html,jsx,css",
+    "devcsswatch": "nodemon --watch static -e css -x \"npm run buildcss\"",
     "devnodestart": "node server/server.js --server dev",
-    "devwatch": "npm run clean && npm run uglifycss; npm run devbuildwatch & npm run devnodestart"
+    "devwatch": "npm run clean; npm run devbuildwatch & npm run devcsswatch & npm run devstart"
   },
   "repository": {
     "type": "git",

@@ -4,20 +4,13 @@ import React from 'react';
 
 import AppWrapper from 'app/components/AppWrapper'
 import HomeStatic from 'app/components/Home/HomeStatic'
+import {LocationSearch} from 'app/components/Home/LocationSearch'
 
 class HomeContent extends React.Component {
     render() {
         return (
             <main className="main-content">
-                <div className="hero">
-                    <div className="container">
-                        <form action="#" className="find-location">
-                            <input type="text" placeholder="Find your location..." />
-                            <input type="submit" value="Find" />
-                        </form>
-
-                    </div>
-                </div>
+                <LocationSearch />
                 <div className="forecast-table">
                     <div className="container">
                         <div className="forecast-container">

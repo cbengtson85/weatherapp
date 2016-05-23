@@ -2,12 +2,9 @@
 
 import React from 'react';
 import {MenuItems} from 'app/components/Header/Menu';
+import {slideToggle} from 'app/functions';
 
 const Header = (props) => {
-    let slideToggle = (selector) => {
-        $(selector).slideToggle();
-    }
-
     return (
         <header className="site-header">
             <div className="container">
