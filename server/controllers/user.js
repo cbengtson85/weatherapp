@@ -24,4 +24,4 @@ exports.saveUserInfo = (req, res) => {
     } else {
         res.redirect('/?success=false');
     }
-}
+};

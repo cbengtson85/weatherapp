@@ -122,6 +122,6 @@ const HomeStatic = () => {
             </div>
         </div>
     )
-}
+};
 
 export default HomeStatic

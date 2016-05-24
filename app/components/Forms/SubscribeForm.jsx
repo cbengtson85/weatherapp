@@ -10,6 +10,6 @@ const SubscribeForm = () => {
             <InputSubmit value="Subscribe" />
         </form>
     )
-}
+};
 
 export default SubscribeForm;

@@ -9,6 +9,6 @@ module.exports = (obj, src) => {
         if (src.hasOwnProperty(key)) obj[key] = src[key];
     }
     return obj;
-}
+};
 
 //rename this to tools if there are multiple functions and make index.js

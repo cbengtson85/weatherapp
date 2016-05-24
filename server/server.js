@@ -12,8 +12,7 @@ process.env.NODE_PATH = __dirname + '/..';
 require('module').Module._initPaths();
 
 //initialize config module
-require('config').init();
-const config = require('config').config();
+const config = require('config');
 
 //create mongodb connection
 require('server/db').connect();

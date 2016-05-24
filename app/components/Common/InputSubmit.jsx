@@ -6,6 +6,6 @@ const InputSubmit = (props) => {
     return (
         <input type="submit" value={props.value} />
     )
-}
+};
 
-export default InputSubmit
+export default InputSubmit;

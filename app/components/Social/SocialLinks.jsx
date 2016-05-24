@@ -17,10 +17,10 @@ class SocialLinks extends React.Component {
 
 SocialLinks.propTypes = {
     socialSites : React.PropTypes.array
-}
+};
 
 SocialLinks.defaultProps = {
     socialSites : ['facebook', 'twitter', 'google-plus', 'pinterest']
-}
+};
 
 export default SocialLinks;

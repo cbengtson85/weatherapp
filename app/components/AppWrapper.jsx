@@ -15,6 +15,6 @@ let AppWrapper = (Component, page) => class extends React.Component {
             </div>
         )
     }
-}
+};
 
 export default AppWrapper;

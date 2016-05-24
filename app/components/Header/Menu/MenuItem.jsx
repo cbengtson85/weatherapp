@@ -7,6 +7,6 @@ const MenuItem = (props) => {
     return (
         <li className={"menu-item" + selected} key={props.index}><a href={props.item.link}>{props.item.name}</a></li>
     )
-}
+};
 
 export default MenuItem;

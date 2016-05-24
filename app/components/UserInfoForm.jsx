@@ -11,14 +11,14 @@ const UserInfoForm = (props) => {
             <button type="submit">Save</button>
         </form>
     )
-}
+};
 
 UserInfoForm.propTypes = {
     formId : React.PropTypes.string
-}
+};
 
 UserInfoForm.defaultProps = {
-    formId : 'userFormDefault'
+    formI;d : 'userFormDefault'
 }
 
 export default UserInfoForm;

@@ -1,7 +1,7 @@
 'use strict'
 
 const mongodbClient = require('mongodb').MongoClient;
-const config = require('config').config();
+const config = require('config');
 
 let db;
 

@@ -1819,25 +1819,43 @@ form textarea {
 
 .location-suggestions {
     background-color: #1e202b;
+    border: 1px solid #009ad8;
     position: absolute;
     top: 0;
     z-index: 9999;
-    padding: 10px 30px;
     border-radius: 30px;
-    margin-right: 15px;
     color: #ffffff;
     font-size: 1.7em;
     width: 100%;
-    border: 1px solid #009ad8;
+    display: none;
+}
+
+.location-suggestions ul {
+    margin: 15px 30px;
 }
 
 .location-suggestions-container {
     position: relative;
     top: 3px;
 }
-/* MEDIA QUERY FOR SEARCH FONT */
+
 .search-container {
     position: relative;
+}
+
+.suggestion-highlight {
+    background-color: #323544;
+    padding: 5px 10px;
+    margin-left: -10px;
+    border-radius: 30px;
+    border: 1px solid #009ad8;
+}
+
+.search-loader {
+    position: absolute;
+    top: 10px;
+    right: 120px;
+    display: none;
 }
 
 @media (max-width: 767px) {

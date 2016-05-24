@@ -11,15 +11,13 @@ const merge = require('server/tools/merge');
 const serverLayer = require('minimist')(process.argv.slice(2));
 let config = require('config/devconfig.js');
 
-exports.init = () => {
-	switch(serverLayer.server) {
-	    case 'prod':
-			merge(config, require('config/prodconfig.js'));
-			break;
-	    default:
-			break;
-	}
+switch(serverLayer.server) {
+	case 'prod':
+		merge(config, require('config/prodconfig.js'));
+		break;
+	default:
+		break;
 }
 
 
-exports.config = () => config;
+module.exports = config;

@@ -17,12 +17,15 @@ config = {
 	sslPort : 4443,
 	serverName : 'localhost',
 	contextRoot : '/',
-
+	apiContextRoot : '/api',
 	sslConfig : {
 		key : sslKey,
 		cert : sslCert
 	},
-
+	locationServiceEndpoint : 'http://api.geonames.org/searchJSON',
+	locationServicePostalCodeEndpoint : 'http://api.geonames.org/postalCodeSearchJSON',
+	locationServiceKey : 'bengtc',
+	locationServiceMaxResults : 10,
 	dbUrl : 'mongodb://localhost:27017/weatherapp'
 };
 
