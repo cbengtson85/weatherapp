@@ -9,11 +9,11 @@ exports.MAX_ROWS = 'maxRows';
 exports.Q = 'q';
 exports.POSTAL_CODE_STARTSWITH = 'postalcode_startsWith';
 exports.POSTAL_CODE = 'postalcode';
-exports.COUNTRY_BIAS = 'countryBias',
+exports.COUNTRY_BIAS = 'countryBias';
 exports.LOCATION_RESPONSE_FORMAT = {
     success : false,
     results : []
-}
+};
 exports.LOCATION_RESULT_FORMAT = {
         city : '',
         state : '',
@@ -23,4 +23,5 @@ exports.LOCATION_RESULT_FORMAT = {
         formattedAddressForDisplay : '',
         longitude : '',
         latitude : ''
-}
+};
+exports.LOCATION_SEARCH_ENDPOINT = '/api/location-search/';

@@ -29,11 +29,11 @@ let getFormattedAddressForList = item => {
     formatted += ', ' + item.state + ', ' + item.country;
 
     return formatted;
-}
+};
 
 let getFormattedAddressForDisplay= item => {
     return '';
-}
+};
 
 let transformLocationSearch = data => {
     let transformedData = Object.assign({}, constants.LOCATION_RESPONSE_FORMAT);
@@ -106,4 +106,4 @@ module.exports = (data, type) => {
             return transformLocationSearch(data);
 
     }
-}
+};

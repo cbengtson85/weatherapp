@@ -5,7 +5,7 @@ const config = require('config');
 const constants = require('config/constants');
 const transformLocation = require('server/tools').transformLocation;
 
-let axiosInstance = axios.create({timeout : 4000});
+const axiosInstance = axios.create({timeout : 4000});
 
 let sendLocationsListSuccess = (response, res, type) => {
     res.json(transformLocation(response.data, type));
@@ -49,7 +49,7 @@ let isEmptyResponse = locationResponse => {
         return false;
 
     return true;
-}
+};
 
 let makeLocationPostalCodeRequest = (req, res, endpoint, q, stop) => {
     axiosInstance.get(endpoint)
@@ -62,7 +62,7 @@ let makeLocationPostalCodeRequest = (req, res, endpoint, q, stop) => {
         .catch(response => {
             sendLocationsListError(response, res);
         });
-}
+};
 
 let makeLocationSearchRequest = (req, res, endpoint, q, stop) => {
     axiosInstance.get(endpoint)
@@ -87,7 +87,8 @@ let makeLocationRequest = (req, res, q) => {
         makeLocationSearchRequest(req, res, buildSearchEndpoint(q), q);
     }
 
-}
+};
+
 exports.getLocationsList = (req, res) => {
     let q = req.params.q;
     if(typeof q == 'undefined')

@@ -1,8 +1,8 @@
 'use strict'
 
 import React from 'react';
-import {SocialLinks} from 'app/components/Social'
-import {SubscribeForm} from 'app/components/Forms'
+import {SocialLinks} from 'app/components/Social';
+import {SubscribeForm} from 'app/components/Footer';
 
 const Footer = () => {
     return (

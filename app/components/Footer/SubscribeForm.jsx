@@ -1,7 +1,7 @@
 'use strict'
 
 import React from 'react';
-import {InputSubmit} from 'app/components/Common'
+import {InputSubmit} from 'app/components/Common';
 
 const SubscribeForm = () => {
     return (

@@ -1,8 +1,8 @@
 'use strict'
 
 import React from 'react';
-import {LocationSearchForm} from 'app/components/Forms'
-import {LocationSuggestions} from 'app/components/Home/LocationSearch'
+import {LocationSearchForm} from 'app/components/Home/LocationSearch';
+import {LocationSuggestions} from 'app/components/Home/LocationSearch';
 
 class LocationSearch extends React.Component {
     render() {

@@ -2,9 +2,9 @@
 
 import React from 'react';
 
-import AppWrapper from 'app/components/AppWrapper'
-import HomeStatic from 'app/components/Home/HomeStatic'
-import {LocationSearch} from 'app/components/Home/LocationSearch'
+import AppWrapper from 'app/components/AppWrapper';
+import HomeStatic from 'app/components/Home/HomeStatic';
+import {LocationSearch} from 'app/components/Home/LocationSearch';
 
 class HomeContent extends React.Component {
     render() {

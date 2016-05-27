@@ -16,6 +16,6 @@ exports.connect = () => {
     		console.log('connected to mongo DB');
     	}
     });
-}
+};
 
 exports.db = () => db;

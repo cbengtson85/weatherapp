@@ -19,6 +19,6 @@ UserInfoForm.propTypes = {
 
 UserInfoForm.defaultProps = {
     formI;d : 'userFormDefault'
-}
+};
 
 export default UserInfoForm;

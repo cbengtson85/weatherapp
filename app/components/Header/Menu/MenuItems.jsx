@@ -1,7 +1,7 @@
 'use strict'
 
 import React from 'react';
-import {MenuItem} from 'app/components/Header/Menu'
+import {MenuItem} from 'app/components/Header/Menu';
 
 class MenuItems extends React.Component {
     render() {

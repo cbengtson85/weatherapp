@@ -1,7 +1,7 @@
 'use strict'
 
 import React from 'react';
-import {SocialLink} from 'app/components/Social'
+import {SocialLink} from 'app/components/Social';
 
 class SocialLinks extends React.Component {
     render() {
