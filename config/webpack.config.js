@@ -5,7 +5,8 @@ const webpack = require('webpack');
 module.exports = {
     entry : {
         home : './app/entry/home-entry.js',
-        vendor : ['react', 'react-dom', 'jquery']//immutable react-redux react-router redux
+        vendor : ['react', 'react-dom', 'jquery', 'redux',
+            'react-redux', 'redux-logger', 'redux-thunk']
     },
     output : {
         path : './dist/js',
@@ -20,8 +21,7 @@ module.exports = {
                 loader : 'babel-loader',
                 query : {
                     cacheDirectory : true,
-                    presets : ['react', 'es2015', 'stage-2'],
-                    plugins: ['transform-es2015-function-name', 'transform-object-rest-spread']
+                    presets : ['react', 'es2015', 'stage-2']
                 }
             }
         ]
