@@ -1,5 +1,7 @@
 # weatherapp
 
+-Node 6.2, Mongo 3.2.4, Express, React, Redux, Webpack
+
 1)	Uninstall Node(if installed)
 
 		1	go to /usr/local/lib and delete any node and node_modules
@@ -31,7 +33,7 @@
 		/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 3)	install node (from projects root directory)
-
+		brew update
 		sudo chmod 777 /usr/local/share/systemtap/tapset
 		brew install node
 		npm init

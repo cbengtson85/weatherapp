@@ -2,7 +2,7 @@
 
 import {REQUEST_LOCATIONS, UPDATE_XHR, RECEIVE_LOCATIONS} from 'app/actions';
 
-const updateJqXhr = (state = undefined, action) => {
+const jqXhr = (state = undefined, action) => {
     switch(action.type) {
         case UPDATE_XHR:
             return action.jqXrh;
@@ -11,4 +11,15 @@ const updateJqXhr = (state = undefined, action) => {
     }
 }
 
-export {updateJqXhr};
+const locations = (state = {loading: false, locations : {}}, action) => {
+    switch (actions.type) {
+        case REQUEST_LOCATIONS:
+            return {...state, {loading : true}};
+        case RECEIVE_LOCATIONS:
+            return {...state, {locations : {[action.searchVal] : action.response}}}
+        default:
+            return state;
+    }
+}
+
+export {jqXhr, locations};

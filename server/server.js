@@ -7,7 +7,7 @@ const http = require('http');
 const path = require('path');
 
 //set node_path to root directory
-GLOBAL.rootPath = path.resolve(__dirname + '/..');
+global.rootPath = path.resolve(__dirname + '/..');
 process.env.NODE_PATH = __dirname + '/..';
 require('module').Module._initPaths();
 
