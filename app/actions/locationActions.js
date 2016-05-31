@@ -45,7 +45,7 @@ const locationsRequest = (state, searchVal) => {
 const getLocations = searchVal => {
     //ABORT REQUEST
     return (dispatch, getState) => {
-        return dispatch(locationsRequest(getState(), searchVal);
+        return dispatch(locationsRequest(getState(), searchVal));
     }
 };
 

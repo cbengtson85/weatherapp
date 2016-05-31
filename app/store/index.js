@@ -1,3 +1,3 @@
 'use strict'
 
-export * from 'app/store/storeConfig';
+export * from 'app/store/configureStore';

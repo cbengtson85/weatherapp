@@ -1,5 +1,5 @@
 'use strict'
 
-import Home from 'app/components/Home/Home.jsx';
+import HomeRoot from 'app/components/Home/HomeRoot.jsx';
 
-export default Home;
+export default HomeRoot;

@@ -18,4 +18,4 @@ const configureStore = initialState => {
     )
 };
 
-export default configureStore;
+export {configureStore};
