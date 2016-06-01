@@ -5,7 +5,7 @@ const webpack = require('webpack');
 module.exports = {
     entry : {
         home : './app/entry/home-entry.js',
-        vendor : ['react', 'react-dom', 'jquery', 'redux',
+        vendor : ['babel-polyfill', 'react', 'react-dom', 'jquery', 'redux',
             'react-redux', 'redux-logger', 'redux-thunk']
     },
     output : {

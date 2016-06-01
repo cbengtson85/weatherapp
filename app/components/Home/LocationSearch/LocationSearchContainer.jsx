@@ -7,8 +7,10 @@ import {LocationSearchForm, LocationSuggestions} from 'app/components/Home/Locat
 class LocationSearchContainer extends React.Component {
     render() {
         let hasResults = false;
-        if(typeof this.props.locationsList != 'undefined' && this.props.locationsList.length > 0)
+        const {locationsList} = this.props;
+        if(typeof locationsList != 'undefined' && locationsList.length > 0)
             hasResults = true;
+
         return (
             <div className="hero">
                 <div className="container search-container">

@@ -28,6 +28,12 @@ const updateXhr = (jqXhr) => {
     }
 };
 
+const locationRequestNeeded = (state, searchVal) => {
+    if(!state.locations.locationsList[searchVal])
+        return true;
+    else
+        return false;
+}
 const locationsRequest = (state, searchVal) => {
     return dispatch => {
         dispatch(requestLocations(searchVal));
@@ -47,7 +53,8 @@ const locationsRequest = (state, searchVal) => {
 
 const getLocations = searchVal => {
     return (dispatch, getState) => {
-        return dispatch(locationsRequest(getState(), searchVal));
+        if(locationRequestNeeded(getState(), searchVal))
+            return dispatch(locationsRequest(getState(), searchVal));
     }
 };
 

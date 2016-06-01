@@ -19,7 +19,7 @@ class LocationSearchForm extends React.Component  {
         return (
             <form action="#" className="find-location">
                 <input type="text" placeholder="Find your location..." maxLength="100" value={this.state.searchVal} onChange={e => this.updateState(e)}/>
-                <span className="search-loader"><AjaxSpinner height="40" /></span>
+                <span className="search-loader">{this.props.loading ? <AjaxSpinner height="40" /> : ''}</span>
                 <InputSubmit value="Find" />
             </form>
         )
