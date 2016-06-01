@@ -3,8 +3,8 @@
 const constants = require('config/constants');
 
 export const REQUEST_LOCATIONS = 'REQUEST_LOCATIONS';
-export const UPDATE_XHR = 'UPDATE_XHR';
 export const RECEIVE_LOCATIONS = 'RECEIVE_LOCATIONS';
+export const UPDATE_XHR = 'UPDATE_XHR';
 
 const requestLocations = searchVal => {
     return {
@@ -30,6 +30,9 @@ const updateXhr = (jqXhr) => {
 
 const locationsRequest = (state, searchVal) => {
     return dispatch => {
+        dispatch(requestLocations(searchVal));
+        if(state.jqXhr != undefined && state.jqXhr != null)
+            state.jqXhr.abort();
         let jqXhr = $.ajax({
             type : 'get',
             url : constants.LOCATION_SEARCH_ENDPOINT + encodeURI(searchVal),
@@ -43,7 +46,6 @@ const locationsRequest = (state, searchVal) => {
 };
 
 const getLocations = searchVal => {
-    //ABORT REQUEST
     return (dispatch, getState) => {
         return dispatch(locationsRequest(getState(), searchVal));
     }

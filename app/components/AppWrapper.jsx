@@ -8,7 +8,7 @@ import {Footer} from 'app/components/Footer';
 const AppWrapper = (Component, page) => class extends React.Component {
     render() {
         return (
-            <div className="site-content">
+            <div>
                 <Header page={page} />
                 <Component />
                 <Footer />

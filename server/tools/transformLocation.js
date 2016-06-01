@@ -40,8 +40,6 @@ let transformLocationSearch = data => {
     let results = [];
     let resourceList = data.geonames;
     if(typeof resourceList && resourceList.length > 0) {
-        transformedData.success = true;
-
         resourceList.map((resource, index) => {
             let item = Object.assign({}, constants.LOCATION_RESULT_FORMAT);
 
@@ -69,7 +67,6 @@ let transformLocationPostal = data => {
     let results = [];
     let resourceList = data.postalCodes;
     if(typeof resourceList && resourceList.length > 0) {
-        transformedData.success = true;
 
         resourceList.map((resource, index) => {
             let item = Object.assign({}, constants.LOCATION_RESULT_FORMAT);

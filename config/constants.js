@@ -11,7 +11,6 @@ exports.POSTAL_CODE_STARTSWITH = 'postalcode_startsWith';
 exports.POSTAL_CODE = 'postalcode';
 exports.COUNTRY_BIAS = 'countryBias';
 exports.LOCATION_RESPONSE_FORMAT = {
-    success : false,
     results : []
 };
 exports.LOCATION_RESULT_FORMAT = {

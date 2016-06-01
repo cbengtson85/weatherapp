@@ -4,13 +4,13 @@ import React from 'react';
 
 import AppWrapper from 'app/components/AppWrapper';
 import HomeStatic from 'app/components/Home/HomeStatic';
-import {LocationSearch} from 'app/components/Home/LocationSearch';
+import {LocationSearchContainer} from 'app/components/Home/LocationSearch';
 
 class HomeContent extends React.Component {
     render() {
         return (
             <main className="main-content">
-                <LocationSearch />
+                <LocationSearchContainer />
                 <div className="forecast-table">
                     <div className="container">
                         <div className="forecast-container">

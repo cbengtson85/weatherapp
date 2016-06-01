@@ -1827,7 +1827,6 @@ form textarea {
     color: #ffffff;
     font-size: 1.7em;
     width: 100%;
-    display: none;
 }
 
 .location-suggestions ul {
@@ -1855,7 +1854,6 @@ form textarea {
     position: absolute;
     top: 10px;
     right: 120px;
-    display: none;
 }
 
 @media (max-width: 767px) {

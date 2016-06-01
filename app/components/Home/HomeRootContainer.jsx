@@ -8,7 +8,7 @@ import Home from 'app/components/Home/Home.jsx';
 
 const store = configureStore(/*initialState*/);
 
-class HomeRoot extends React.Component {
+class HomeRootContainer extends React.Component {
     render() {
         return (
             <Provider store={store}>
@@ -18,4 +18,4 @@ class HomeRoot extends React.Component {
     }
 };
 
-export default HomeRoot;
+export default HomeRootContainer;
