@@ -1856,6 +1856,10 @@ form textarea {
     right: 120px;
 }
 
+.location-suggestions-list a {
+    color: #ffffff;
+}
+
 @media (max-width: 767px) {
     .location-suggestions, .find-location input[type="text"] {
         font-size: 1.2em;

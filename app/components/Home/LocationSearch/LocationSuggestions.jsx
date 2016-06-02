@@ -2,21 +2,19 @@
 
 import React from 'react';
 
-const LocationSuggestions = () => {
+//className="suggestion-highlight
+const LocationSuggestions = (props) => {
     return (
         <div className="location-suggestions-container">
             <div className="location-suggestions">
-                <ul>
-                    <li><span className="suggestion-highlight">Chicago, IL</span></li>
-                    <li><span>Dallas, TX</span></li>
-                    <li><span>Manhattan, NY</span></li>
-                    <li><span>Manhattan, NY</span></li>
-                    <li><span>Manhattan, NY</span></li>
-                    <li><span>Manhattan, NY</span></li>
-                    <li><span>Manhattan, NY</span></li>
-                    <li><span>Manhattan, NY</span></li>
-                    <li><span>Manhattan, NY</span></li>
-                    <li><span>Manhattan, NY</span></li>
+                <ul className="location-suggestions-list">
+                    {props.locationsList.map((location, index) =>
+                        <li key={location.city + location.state + location.countryCode + location.longitude}>
+                            <a href="#" data-longitude={location.longitude} data-latitude={location.latitude}>
+                                {location.formattedAddressForList}
+                            </a>
+                        </li>
+                    )}
                 </ul>
             </div>
         </div>

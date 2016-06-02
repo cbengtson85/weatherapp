@@ -24,3 +24,4 @@ exports.LOCATION_RESULT_FORMAT = {
         latitude : ''
 };
 exports.LOCATION_SEARCH_ENDPOINT = '/api/location-search/';
+exports.MIN_SEARCH_LENGTH = 3;
