@@ -5,6 +5,7 @@ const constants = require('config/constants');
 export const REQUEST_LOCATIONS = 'REQUEST_LOCATIONS';
 export const RECEIVE_LOCATIONS = 'RECEIVE_LOCATIONS';
 export const GET_CACHED_LOCATIONS = 'GET_CACHED_LOCATIONS';
+export const RETURN_NO_RESULTS = 'RETURN_NO_RESULTS';
 
 const requestLocations = (searchVal, jqXhr) => {
     return {
@@ -24,6 +25,13 @@ const receiveLocations = (searchVal, response) => {
 
 const getCachedLocations = (searchVal) => {
     return {
+        type : RETURN_NO_RESULTS,
+        searchVal
+    }
+};
+
+const returnNoResults = (searchVal) => {
+    return {
         type : GET_CACHED_LOCATIONS,
         searchVal
     }
@@ -38,20 +46,24 @@ const locationRequestNeeded = (state, searchVal) => {
 
 const locationsRequest = (state, searchVal) => {
     return dispatch => {
-        let xhrObj = state.locations.jqXhr;
-        if(xhrObj != undefined && xhrObj != null)
-            xhrObj.abort();
-        $.ajax({
-            type : 'get',
-            url : constants.LOCATION_SEARCH_ENDPOINT + encodeURI(searchVal),
-            beforeSend : function(jqXhr) {
-                dispatch(requestLocations(searchVal, jqXhr));
-            }
-        }).done(function(responseObj) {
-            dispatch(receiveLocations(searchVal, responseObj));
-        }).fail(function(x,y,z) {
-            dispatch(receiveLocations(searchVal, constants.LOCATION_RESPONSE_FORMAT));
-        });
+        if(searchVal.length >= constants.MIN_SEARCH_LENGTH) {
+            let xhrObj = state.locations.jqXhr;
+            if(xhrObj != undefined && xhrObj != null)
+                xhrObj.abort();
+            $.ajax({
+                type : 'get',
+                url : constants.LOCATION_SEARCH_ENDPOINT + encodeURI(searchVal),
+                beforeSend : function(jqXhr) {
+                    dispatch(requestLocations(searchVal, jqXhr));
+                }
+            }).done(function(responseObj) {
+                dispatch(receiveLocations(searchVal, responseObj));
+            }).fail(function(x,y,z) {
+                dispatch(receiveLocations(searchVal, constants.LOCATION_RESPONSE_FORMAT));
+            });
+        } else {
+            dispatch(returnNoResults(searchVal));
+        }
 
     }
 };
