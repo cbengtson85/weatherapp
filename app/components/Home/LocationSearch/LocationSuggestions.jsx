@@ -10,7 +10,7 @@ const LocationSuggestions = (props) => {
                 <ul className="location-suggestions-list">
                     {props.locationsList.map((location, index) =>
                         <li key={location.city + location.state + location.countryCode + location.longitude}>
-                            <a href="#" data-longitude={location.longitude} data-latitude={location.latitude}>
+                            <a href="#" className={index==0 ? "suggestion-highlight" : ""} data-longitude={location.longitude} data-latitude={location.latitude}>
                                 {location.formattedAddressForList}
                             </a>
                         </li>

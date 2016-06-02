@@ -4,6 +4,7 @@ const constants = require('config/constants');
 
 export const REQUEST_LOCATIONS = 'REQUEST_LOCATIONS';
 export const RECEIVE_LOCATIONS = 'RECEIVE_LOCATIONS';
+export const GET_CACHED_LOCATIONS = 'GET_CACHED_LOCATIONS';
 
 const requestLocations = (searchVal, jqXhr) => {
     return {
@@ -18,6 +19,13 @@ const receiveLocations = (searchVal, response) => {
         type : RECEIVE_LOCATIONS,
         searchVal,
         response
+    }
+};
+
+const getCachedLocations = (searchVal) => {
+    return {
+        type : GET_CACHED_LOCATIONS,
+        searchVal
     }
 };
 
@@ -52,6 +60,8 @@ const getLocations = searchVal => {
     return (dispatch, getState) => {
         if(locationRequestNeeded(getState(), searchVal))
             return dispatch(locationsRequest(getState(), searchVal));
+        else
+            return dispatch(getCachedLocations(searchVal));
     }
 };
 
