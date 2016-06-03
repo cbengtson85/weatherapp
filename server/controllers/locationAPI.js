@@ -5,7 +5,7 @@ const config = require('config');
 const constants = require('config/constants');
 const transformLocation = require('server/tools').transformLocation;
 
-const axiosInstance = axios.create({timeout : 4000});
+const axiosInstance = axios.create({timeout : config.locationServiceTimeout});
 
 let sendLocationsListSuccess = (response, res, type) => {
     res.json(transformLocation(response.data, type));

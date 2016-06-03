@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-import {InputSubmit, AjaxSpinner} from 'app/components/Common';
+import {InputSubmit, AjaxSpinner, ClearIcon} from 'app/components/Common';
 import {getLocations} from 'app/actions';
 
 class LocationSearchForm extends React.Component  {
@@ -13,11 +13,36 @@ class LocationSearchForm extends React.Component  {
         dispatch(getLocations(searchVal));
     }
 
+    handleSearchKeyUp(e) {
+        const moveHighlighted = whichWay => {
+            alert(whichWay);
+        };
+        switch (e.keyCode) {
+            //up
+            case 38:
+                moveHighlighted('up');
+                break;
+            //down
+            case 40:
+                moveHighlighted('down');
+                break;
+            //return
+            case 13:
+                e.preventDefault();
+                alert('submit search');
+            //escape
+            case 27:
+                alert('blur and hide ');
+        }
+    }
+
     render() {
+        const {dispatch, searchTermLength} = this.props;
         return (
             <form action="#" className="find-location">
-                <input type="text" placeholder="Find your location..." maxLength="100" onChange={e => this.handleChange(e)}/>
-                <span className="search-loader">{this.props.isLoading ? <AjaxSpinner height="40" /> : ''}</span>
+                <input onKeyUp={e => this.handleSearchKeyUp(e)} type="text" placeholder="Find your location..." maxLength="100" onChange={e => this.handleChange(e)}/>
+                {this.props.isLoading ? <span className="search-loader"><AjaxSpinner height="40" /></span> : ''}
+                {this.props.searchTermLength > 0 && !this.props.isLoading ? <a href="#" className="clear-field"><ClearIcon height="30" /></a> : ''}
                 <InputSubmit value="Find" />
             </form>
 

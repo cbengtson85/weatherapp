@@ -25,6 +25,7 @@ class LocationSearchContainer extends React.Component {
 LocationSearchContainer.propTypes = {
     isLoading : React.PropTypes.bool.isRequired,
     locationsList : React.PropTypes.array,
+    searchTermLength : React.PropTypes.number,
     dispatch : React.PropTypes.func.isRequired
 };
 
@@ -35,7 +36,8 @@ const mapStateToProps = state => {
     const locationsList = locations.locationsList;
     return {
         isLoading : loading,
-        locationsList : locationsList[searchTerm]
+        locationsList : locationsList[searchTerm],
+        searchTermLength : searchTerm.length
     }
 };
 

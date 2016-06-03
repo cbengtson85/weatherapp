@@ -9,7 +9,7 @@ const locations = (state = {jqXhr : null, currentSearchTerm : '', loading: false
         case RECEIVE_LOCATIONS:
             const oldList = state.locationsList;
             let newList = oldList;
-            if(action.response.results.length > 0)
+            if(action.response.results != undefined && action.response.results.length > 0)
                 newList = {...oldList, [action.searchVal] : action.response.results};
             return {...state, loading : false, locationsList : newList};
         case RETURN_NO_RESULTS:

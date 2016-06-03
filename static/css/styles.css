@@ -1856,6 +1856,12 @@ form textarea {
     right: 120px;
 }
 
+.clear-field {
+    position: absolute;
+    top: 15px;
+    right: 120px;
+}
+
 .location-suggestions-list a {
     color: #ffffff;
 }

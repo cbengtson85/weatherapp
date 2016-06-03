@@ -9,7 +9,7 @@
     "postclean": "echo '\\033[1;36m DONE cleaning /dist directory \\033[0m'",
     "preuglifycss": "mkdir -p dist/css && echo '\\033[0;36m BEGIN uglyfying css \\033[0m'",
     "uglifycss": "uglifycss --max-line-len 500 static/css/styles.css > dist/css/weatherapp.css",
-    "postuglifycss": "mkdir -p dist/css && echo '\\033[1;36m DONE uglyfying css \\033[0m'",
+    "postuglifycss": "echo '\\033[1;36m DONE uglyfying css \\033[0m'",
     "buildcss": "npm run uglifycss",
     "predevbuild": "echo '\\033[0;36m BEGIN building dev\\033[0m' && npm run clean",
     "devbuild": "npm run buildcss && webpack --config config/webpack.config.js",
@@ -54,7 +54,7 @@
     "babel-preset-react": "^6.5.0",
     "babel-preset-stage-2": "^6.5.0",
     "node-inspector": "^0.12.8",
-    "nodemon": "^1.9.1",
+    "nodemon": "^1.9.2",
     "uglifycss": "0.0.20",
     "webpack": "^1.13.0"
   }
