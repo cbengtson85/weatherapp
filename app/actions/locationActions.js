@@ -78,3 +78,4 @@ const getLocations = searchVal => {
 };
 
 export {getLocations};
+export {returnNoResults};
