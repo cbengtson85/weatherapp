@@ -1850,16 +1850,16 @@ form textarea {
     border: 1px solid #009ad8;
 }
 
-.search-loader {
+.search-loader, .clear-field {
     position: absolute;
-    top: 10px;
     right: 120px;
+    height: 100%;
 }
 
-.clear-field {
-    position: absolute;
-    top: 15px;
-    right: 120px;
+.search-loader img, .clear-field img {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .location-suggestions-list a {
