@@ -1,5 +1,6 @@
 'use strict'
 
+import {actionCreator} from 'app/functions';
 const constants = require('config/constants');
 
 export const REQUEST_LOCATIONS = 'REQUEST_LOCATIONS';
@@ -7,35 +8,10 @@ export const RECEIVE_LOCATIONS = 'RECEIVE_LOCATIONS';
 export const GET_CACHED_LOCATIONS = 'GET_CACHED_LOCATIONS';
 export const RETURN_NO_RESULTS = 'RETURN_NO_RESULTS';
 
-const requestLocations = (searchVal, jqXhr) => {
-    return {
-        type : REQUEST_LOCATIONS,
-        searchVal,
-        jqXhr
-    }
-};
-
-const receiveLocations = (searchVal, response) => {
-    return {
-        type : RECEIVE_LOCATIONS,
-        searchVal,
-        response
-    }
-};
-
-const getCachedLocations = (searchVal) => {
-    return {
-        type : RETURN_NO_RESULTS,
-        searchVal
-    }
-};
-
-const returnNoResults = (searchVal) => {
-    return {
-        type : GET_CACHED_LOCATIONS,
-        searchVal
-    }
-};
+const requestLocations = actionCreator(REQUEST_LOCATIONS, 'searchVal', 'jqXhr');
+const receiveLocations = actionCreator(RECEIVE_LOCATIONS, 'searchVal', 'response');
+const getCachedLocations = actionCreator(GET_CACHED_LOCATIONS, 'searchVal');
+const returnNoResults = actionCreator(RETURN_NO_RESULTS, 'searchVal');
 
 const locationRequestNeeded = (state, searchVal) => {
     if(!state.locations.locationsList[searchVal])
@@ -64,7 +40,6 @@ const locationsRequest = (state, searchVal) => {
         } else {
             dispatch(returnNoResults(searchVal));
         }
-
     }
 };
 

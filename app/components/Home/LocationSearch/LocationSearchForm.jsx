@@ -8,6 +8,7 @@ import {getLocations, returnNoResults} from 'app/actions';
 class LocationSearchForm extends React.Component  {
 
     handleClear(e) {
+        e.preventDefault();
         const {dispatch} = this.props;
         $('#search-input').val('');
         dispatch(returnNoResults(''));
@@ -46,7 +47,7 @@ class LocationSearchForm extends React.Component  {
         const {dispatch, searchTermLength} = this.props;
         return (
             <form action="#" className="find-location">
-                <input id="search-input" onKeyUp={e => this.handleSearchKeyUp(e)} type="text" placeholder="Find your location..." maxLength="100" onChange={e => this.handleChange(e)}/>
+                <input id="search-input" autoComplete="off" onKeyUp={e => this.handleSearchKeyUp(e)} type="text" placeholder="Find your location..." maxLength="100" onChange={e => this.handleChange(e)}/>
                 {this.props.isLoading ? <span className="search-loader"><AjaxSpinner height="40" /></span> : ''}
                 {this.props.searchTermLength > 0 && !this.props.isLoading ? <a href="#" className="clear-field" onClick={e => this.handleClear(e)}><ClearIcon height="20" /></a> : ''}
                 <InputSubmit value="Find" />
