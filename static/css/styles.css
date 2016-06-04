@@ -1862,7 +1862,7 @@ form textarea {
     height: 100%;
 }
 
-.search-loader img, .clear-field img {
+.vertical-center {
     position: relative;
     top: 50%;
     transform: translateY(-50%);
