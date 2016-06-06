@@ -21,6 +21,7 @@ class LocationSearchForm extends React.Component  {
     }
 
     handleSearchKeyUp(e) {
+        const {dispatch, searchTermLength} = this.props;
         const moveHighlighted = whichWay => {
             alert(whichWay);
         };
@@ -39,7 +40,8 @@ class LocationSearchForm extends React.Component  {
                 alert('submit search');
             //escape
             case 27:
-                alert('blur and hide ');
+                if(searchTermLength > 0)
+                    dispatch(returnNoResults(''));
         }
     }
 
@@ -49,7 +51,7 @@ class LocationSearchForm extends React.Component  {
             <form action="#" className="find-location">
                 <input id="search-input" autoComplete="off" onKeyUp={e => this.handleSearchKeyUp(e)}
                     type="text" placeholder="Find your location..." maxLength="100"
-                    onChange={e => this.handleChange(e)}/>
+                     value={this.props.searchVal} onChange={e => this.handleChange(e)}/>
                 {this.props.isLoading ? <span className="search-loader"><AjaxSpinner height="40" /></span> : ''}
                 {this.props.searchTermLength > 0 && !this.props.isLoading ?
                     <a href="#" className="clear-field" onClick={e => this.handleClear(e)}><ClearIcon height="20" /></a> : ''}

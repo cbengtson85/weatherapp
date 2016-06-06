@@ -26,6 +26,7 @@ LocationSearchContainer.propTypes = {
     isLoading : React.PropTypes.bool.isRequired,
     locationsList : React.PropTypes.array,
     searchTermLength : React.PropTypes.number,
+    searchVal : React.PropTypes.string,
     dispatch : React.PropTypes.func.isRequired
 };
 
@@ -37,7 +38,8 @@ const mapStateToProps = state => {
     return {
         isLoading : loading,
         locationsList : locationsList[searchTerm],
-        searchTermLength : searchTerm.length
+        searchTermLength : searchTerm.length,
+        searchVal : searchTerm
     }
 };
 

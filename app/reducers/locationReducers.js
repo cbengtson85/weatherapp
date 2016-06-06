@@ -14,7 +14,7 @@ const locations = (state = locationsInitialState, action) => {
                 newList = {...oldList, [action.searchVal] : action.response.results};
             return {...state, loading : false, locationsList : newList};
         case RETURN_NO_RESULTS:
-            return {...state, currentSearchTerm : ''};
+            return {...state, currentSearchTerm : action.searchVal};
         case GET_CACHED_LOCATIONS:
             return {...state, currentSearchTerm : action.searchVal};
         default:
