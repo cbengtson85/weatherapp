@@ -14,6 +14,7 @@ exports.LOCATION_RESPONSE_FORMAT = {
     results : []
 };
 exports.LOCATION_RESULT_FORMAT = {
+        id : '',
         city : '',
         state : '',
         countryCode : '',

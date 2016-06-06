@@ -4,6 +4,4 @@ import LocationSearchContainer from 'app/components/Home/LocationSearch/Location
 import LocationSuggestions from 'app/components/Home/LocationSearch/LocationSuggestions.jsx';
 import LocationSearchForm from 'app/components/Home/LocationSearch/LocationSearchForm.jsx';
 
-export {LocationSearchContainer};
-export {LocationSuggestions};
-export {LocationSearchForm};
+export {LocationSearchContainer, LocationSuggestions, LocationSearchForm};

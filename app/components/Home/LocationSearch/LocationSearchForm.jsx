@@ -21,17 +21,15 @@ class LocationSearchForm extends React.Component  {
 
     handleSearchKeyUp(e) {
         const {dispatch, searchTermLength} = this.props;
-        const moveHighlighted = whichWay => {
-            alert(whichWay);
-        };
+
         switch (e.keyCode) {
             //up
             case 38:
-                moveHighlighted('up');
+
                 break;
             //down
             case 40:
-                moveHighlighted('down');
+
                 break;
             //return
             case 13:

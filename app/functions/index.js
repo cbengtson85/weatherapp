@@ -17,5 +17,4 @@ const actionCreator = (type, ...argNames) => {
 }
 
 
-export {slideToggle};
-export {actionCreator};
+export {slideToggle, actionCreator};

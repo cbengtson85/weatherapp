@@ -7,11 +7,15 @@ export const REQUEST_LOCATIONS = 'REQUEST_LOCATIONS';
 export const RECEIVE_LOCATIONS = 'RECEIVE_LOCATIONS';
 export const GET_CACHED_LOCATIONS = 'GET_CACHED_LOCATIONS';
 export const RETURN_NO_RESULTS = 'RETURN_NO_RESULTS';
+export const MOVE_HIGHLIGHTED_DOWN = 'MOVE_HIGHLIGHTED_DOWN';
+export const MOVE_HIGHLIGHTED_UP = 'MOVE_HIGHLIGHTED_UP';
 
 const requestLocations = actionCreator(REQUEST_LOCATIONS, 'searchVal', 'jqXhr');
 const receiveLocations = actionCreator(RECEIVE_LOCATIONS, 'searchVal', 'response');
 const getCachedLocations = actionCreator(GET_CACHED_LOCATIONS, 'searchVal');
 const returnNoResults = actionCreator(RETURN_NO_RESULTS, 'searchVal');
+const moveHighlightedDown = actionCreator(MOVE_HIGHLIGHTED_DOWN);
+const moveHighlightedUp = actionCreator(MOVE_HIGHLIGHTED_UP);
 
 const locationRequestNeeded = (state, searchVal) => {
     if(!state.locations.locationsList[searchVal])
@@ -52,5 +56,4 @@ const getLocations = searchVal => {
     }
 };
 
-export {getLocations};
-export {returnNoResults};
+export {getLocations, returnNoResults, moveHighlightedUp, moveHighlightedDown};

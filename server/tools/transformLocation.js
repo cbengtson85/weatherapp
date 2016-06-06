@@ -8,7 +8,9 @@
 const constants = require('config/constants');
 const countryCodes = require('config/countryCodes');
 
-let getFormattedAddressForList = item => {
+const generateId = item => item.longitude + '_' + item.latitude;
+
+const getFormattedAddressForList = item => {
     let formatted = item.city;
     if(item.countryCode == 'US') {
         if(item.city == item.state)
@@ -31,11 +33,11 @@ let getFormattedAddressForList = item => {
     return formatted;
 };
 
-let getFormattedAddressForDisplay= item => {
+const getFormattedAddressForDisplay= item => {
     return '';
 };
 
-let transformLocationSearch = data => {
+const transformLocationSearch = data => {
     let transformedData = Object.assign({}, constants.LOCATION_RESPONSE_FORMAT);
     let results = [];
     let resourceList = data.geonames;
@@ -53,6 +55,7 @@ let transformLocationSearch = data => {
             item.formattedAddressForDisplay = getFormattedAddressForDisplay(item);
             item.longitude = resource.lng;
             item.latitude = resource.lat;
+            item.id = generateId(item);
 
             results.push(item);
         });
@@ -62,7 +65,7 @@ let transformLocationSearch = data => {
     return transformedData;
 };
 
-let transformLocationPostal = data => {
+const transformLocationPostal = data => {
     let transformedData = Object.assign({}, constants.LOCATION_RESPONSE_FORMAT);
     let results = [];
     let resourceList = data.postalCodes;
@@ -85,6 +88,7 @@ let transformLocationPostal = data => {
             item.formattedAddressForDisplay = getFormattedAddressForDisplay(item);
             item.longitude = resource.lng;
             item.latitude = resource.lat;
+            item.id = generateId(item);
 
             results.push(item);
         });

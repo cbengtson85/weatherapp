@@ -7,4 +7,6 @@ const locationsInitialState = {
     locationsList : {}
 }
 
+currentSuggestion : ''
+
 export {locationsInitialState};
