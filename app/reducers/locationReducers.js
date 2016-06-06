@@ -1,8 +1,9 @@
 'use strict'
 
 import {REQUEST_LOCATIONS, RECEIVE_LOCATIONS, GET_CACHED_LOCATIONS, RETURN_NO_RESULTS} from 'app/actions';
+import {locationsInitialState} from 'app/store';
 
-const locations = (state = {jqXhr : null, currentSearchTerm : '', loading: false, locationsList : {}}, action) => {
+const locations = (state = locationsInitialState, action) => {
     switch (action.type) {
         case REQUEST_LOCATIONS:
             return {...state, jqXhr : action.jqXhr, loading : true, currentSearchTerm : action.searchVal};
@@ -13,6 +14,7 @@ const locations = (state = {jqXhr : null, currentSearchTerm : '', loading: false
                 newList = {...oldList, [action.searchVal] : action.response.results};
             return {...state, loading : false, locationsList : newList};
         case RETURN_NO_RESULTS:
+            return {...state, currentSearchTerm : ''};
         case GET_CACHED_LOCATIONS:
             return {...state, currentSearchTerm : action.searchVal};
         default:

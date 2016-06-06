@@ -55,7 +55,7 @@
     "babel-preset-stage-2": "^6.5.0",
     "node-inspector": "^0.12.8",
     "nodemon": "^1.9.2",
-    "uglifycss": "0.0.20",
+    "uglifycss": "^0.0.20",
     "webpack": "^1.13.0"
   }
 }
