@@ -3,20 +3,20 @@
 import React from 'react';
 
 import {InputSubmit, AjaxSpinner, ClearIcon} from 'app/components/Common';
-import {getLocations, returnNoResults} from 'app/actions';
+import * as ACTIONS from 'app/actions';
 
 class LocationSearchForm extends React.Component  {
 
     handleClear(e) {
         e.preventDefault();
         const {dispatch} = this.props;
-        dispatch(returnNoResults(''));
+        dispatch(ACTIONS.returnNoResults(''));
     }
 
     handleChange(e) {
         const {dispatch} = this.props;
         let searchVal = e.target.value;
-        dispatch(getLocations(searchVal));
+        dispatch(ACTIONS.getLocations(searchVal));
     }
 
     handleSearchKeyUp(e) {
@@ -25,28 +25,32 @@ class LocationSearchForm extends React.Component  {
         switch (e.keyCode) {
             //up
             case 38:
-
+                e.preventDefault();
+                dispatch(ACTIONS.moveHighlighted('up'));
                 break;
             //down
             case 40:
-
+                e.preventDefault();
+                dispatch(ACTIONS.moveHighlighted('down'));
                 break;
             //return
             case 13:
                 e.preventDefault();
                 alert('submit search');
+                break;
             //escape
             case 27:
                 if(searchTermLength > 0)
-                    dispatch(returnNoResults(''));
+                    dispatch(ACTIONS.returnNoResults(''));
+                break;
         }
     }
 
     render() {
-        const {dispatch, searchTermLength} = this.props;
+        const {searchTermLength} = this.props;
         return (
             <form action="#" className="find-location">
-                <input autoComplete="off" onKeyUp={e => this.handleSearchKeyUp(e)}
+                <input autoComplete="off" onKeyDown={e => this.handleSearchKeyUp(e)}
                     type="text" placeholder="Find your location..." maxLength="100"
                     value={this.props.searchVal} onChange={e => this.handleChange(e)}/>
                 {this.props.isLoading ? <span className="search-loader"><AjaxSpinner height="40" /></span> : ''}

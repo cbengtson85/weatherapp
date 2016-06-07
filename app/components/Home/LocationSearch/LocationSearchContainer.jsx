@@ -15,7 +15,7 @@ class LocationSearchContainer extends React.Component {
             <div className="hero">
                 <div className="container search-container">
                     <LocationSearchForm {...this.props} />
-                    {hasResults ? <LocationSuggestions locationsList={this.props.locationsList} /> : ''}
+                    {hasResults ? <LocationSuggestions {...this.props} /> : ''}
                 </div>
             </div>
         )
@@ -27,6 +27,7 @@ LocationSearchContainer.propTypes = {
     locationsList : React.PropTypes.array,
     searchTermLength : React.PropTypes.number,
     searchVal : React.PropTypes.string,
+    currentSuggestionIndex : React.PropTypes.number,
     dispatch : React.PropTypes.func.isRequired
 };
 
@@ -39,7 +40,8 @@ const mapStateToProps = state => {
         isLoading : loading,
         locationsList : locationsList[searchTerm],
         searchTermLength : searchTerm.length,
-        searchVal : searchTerm
+        searchVal : searchTerm,
+        currentSuggestionIndex : locations.currentSuggestionIndex
     }
 };
 

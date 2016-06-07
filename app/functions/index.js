@@ -14,7 +14,7 @@ const actionCreator = (type, ...argNames) => {
         })
         return action
     }
-}
+};
 
 
 export {slideToggle, actionCreator};
