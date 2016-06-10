@@ -4,6 +4,7 @@ const axios = require('axios');
 const config = require('config');
 const constants = require('config/constants');
 const transformLocation = require('server/tools').transformLocation;
+const logLocationApiRequest = require('server/tools').logApiRequests.logLocationApiRequest;
 
 const axiosInstance = axios.create({timeout : config.locationServiceTimeout});
 
@@ -52,6 +53,7 @@ let isEmptyResponse = locationResponse => {
 };
 
 let makeLocationPostalCodeRequest = (req, res, endpoint, q, stop) => {
+    logLocationApiRequest();
     axiosInstance.get(endpoint)
         .then(response => {
             if(isEmptyResponse(response.data) && !stop)
@@ -65,6 +67,7 @@ let makeLocationPostalCodeRequest = (req, res, endpoint, q, stop) => {
 };
 
 let makeLocationSearchRequest = (req, res, endpoint, q, stop) => {
+    logLocationApiRequest();
     axiosInstance.get(endpoint)
         .then(response => {
             if(isEmptyResponse(response.data) && !stop)

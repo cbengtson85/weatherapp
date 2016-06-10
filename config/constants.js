@@ -26,3 +26,4 @@ exports.LOCATION_RESULT_FORMAT = {
 };
 exports.LOCATION_SEARCH_ENDPOINT = '/api/location-search/';
 exports.MIN_SEARCH_LENGTH = 3;
+exports.LOCATION_API_COLLECTION = 'locationApiRequests'
