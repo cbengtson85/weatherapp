@@ -1,6 +1,6 @@
 <!doctype html>
 <html>
-    <include("./partials/page-start.marko", {css : ['weatherapp']}) version="${data.version}" />
+    <include("./partials/page-start.marko", {css : ['weatherapp']}) version="${data.version}" title="${data.title}" />
     <body>
         <div id="app" class="site-content"></div>
         <include("./partials/page-end.marko", {scripts : ['vendor', 'home']}) version="${data.version}" />

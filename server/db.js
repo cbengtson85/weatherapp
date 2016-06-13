@@ -2,6 +2,7 @@
 
 const mongodbClient = require('mongodb').MongoClient;
 const config = require('config');
+const constants = require('config/constants');
 
 let db;
 
@@ -19,3 +20,10 @@ exports.connect = () => {
 };
 
 exports.db = () => db;
+
+exports.getApiRequestCountCollection = () => {
+    if(db != null && db != undefined) {
+        return db.collection(constants.API_REQUESTS_COLLECTION);
+    }
+    return null;
+}
