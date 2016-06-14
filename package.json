@@ -7,19 +7,14 @@
     "preclean": "echo '\\033[0;36m BEGIN cleaning /dist directory \\033[0m'",
     "clean": "find dist -not -name 'dist' -not -name '.gitignore' | xargs rm -rf",
     "postclean": "echo '\\033[1;36m DONE cleaning /dist directory \\033[0m'",
-    "preuglifycss": "mkdir -p dist/css && echo '\\033[0;36m BEGIN uglyfying css \\033[0m'",
-    "uglifycss": "uglifycss --max-line-len 500 static/css/styles.css > dist/css/weatherapp.css",
-    "postuglifycss": "echo '\\033[1;36m DONE uglyfying css \\033[0m'",
-    "buildcss": "npm run uglifycss",
     "predevbuild": "echo '\\033[0;36m BEGIN building dev\\033[0m' && npm run clean",
-    "devbuild": "npm run buildcss && webpack --config config/webpack.config.js",
+    "devbuild": "webpack --config config/webpack.config.js",
     "postdevbuild": "echo '\\033[1;32m SUCCESS building dev\\033[0m' && tput bel",
     "devdebug": "node-inspector & nodemon --debug --watch server --watch config server/server.js --server dev",
     "devstart": "nodemon --watch server --watch config --watch app/views -e js,marko server/server.js --server dev",
     "devbuildwatch": "webpack --watch --config config/webpack.config.js",
-    "devcsswatch": "nodemon --watch static -e css -x \"npm run buildcss\"",
     "devnodestart": "node server/server.js --server dev",
-    "devwatch": "npm run clean; npm run devbuildwatch & npm run devcsswatch & npm run devstart"
+    "devwatch": "npm run clean; npm run devbuildwatch & npm run devstart"
   },
   "repository": {
     "type": "git",
@@ -54,9 +49,11 @@
     "babel-preset-es2015": "^6.9.0",
     "babel-preset-react": "^6.5.0",
     "babel-preset-stage-2": "^6.5.0",
+    "css-loader": "^0.23.1",
+    "extract-text-webpack-plugin": "^1.0.1",
     "node-inspector": "^0.12.8",
     "nodemon": "^1.9.2",
-    "uglifycss": "^0.0.20",
+    "style-loader": "^0.13.1",
     "webpack": "^1.13.0"
   }
 }

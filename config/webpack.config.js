@@ -1,6 +1,9 @@
 'use strict'
 const path = require('path');
 const webpack = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
+const VERSION = require('../package.json').version;
 
 module.exports = {
     entry : {
@@ -10,7 +13,7 @@ module.exports = {
     },
     output : {
         path : './dist/js',
-        filename : '[name].js'
+        filename : '[name]-' + VERSION + '.js'
     },
     watch : true,
     module : {
@@ -23,6 +26,10 @@ module.exports = {
                     cacheDirectory : true,
                     presets : ['react', 'es2015', 'stage-2']
                 }
+            },
+            {
+                test: /\.css$/,
+                loader: ExtractTextPlugin.extract("style-loader", "css-loader")
             }
         ]
     },
@@ -32,10 +39,11 @@ module.exports = {
         modulesDirectories : ['node_modules', '..']
     },
     plugins : [
-        new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.js', Infinity),
+        new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor-' + VERSION + '.js', Infinity),
         new webpack.ProvidePlugin({
             $: 'jquery',
             jQuery: 'jquery'
-        })
+        }),
+        new ExtractTextPlugin('../css/weatherapp-' + VERSION + '.css')
     ]
 };
