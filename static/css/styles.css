@@ -1213,7 +1213,7 @@ form textarea {
     transition: .3s ease;
     font-weight: 400;
 }
-.main-navigation .menu .menu-item.current-menu-item a, .main-navigation .menu .menu-item:hover a {
+.main-navigation .menu a.current-menu-item, .main-navigation .menu .menu-item:hover a {
     border-color: #009ad8;
     color: #009ad8;
 }

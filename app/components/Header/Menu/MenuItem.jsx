@@ -1,11 +1,13 @@
 'use strict'
 
 import React from 'react';
+import {Link} from 'react-router';
 
 const MenuItem = (props) => {
-    let selected = props.item.name == props.page ? ' current-menu-item' : '';
     return (
-        <li className={"menu-item" + selected} key={props.index}><a href={props.item.link}>{props.item.name}</a></li>
+        <li className="menu-item" key={props.index}>
+            <Link activeClassName="current-menu-item" to={props.item.link}>{props.item.name}</Link>
+        </li>
     )
 };
 
