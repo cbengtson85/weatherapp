@@ -20,18 +20,20 @@ class LocationSearchForm extends React.Component  {
     }
 
     handleSearchKeyUp(e) {
-        const {dispatch, searchTermLength} = this.props;
+        const {dispatch, searchTermLength, currentSuggestionIndex, locationsList} = this.props;
 
         switch (e.keyCode) {
             //up
             case 38:
                 e.preventDefault();
-                dispatch(ACTIONS.moveHighlighted('up'));
+                if(currentSuggestionIndex != 0)
+                    dispatch(ACTIONS.moveHighlighted('up'));
                 break;
             //down
             case 40:
                 e.preventDefault();
-                dispatch(ACTIONS.moveHighlighted('down'));
+                if(locationsList != undefined && currentSuggestionIndex != locationsList.length -1)
+                    dispatch(ACTIONS.moveHighlighted('down'));
                 break;
             //return
             case 13:

@@ -8,7 +8,7 @@ export const RECEIVE_LOCATIONS = 'RECEIVE_LOCATIONS';
 export const GET_CACHED_LOCATIONS = 'GET_CACHED_LOCATIONS';
 export const RETURN_NO_RESULTS = 'RETURN_NO_RESULTS';
 export const MOVE_HIGHLIGHTED = 'MOVE_HIGHLIGHTED';
-export const MOUSE_HIGHLIGHT = 'MOUS_HIGHLIGHT';
+export const MOUSE_HIGHLIGHT = 'MOUSE_HIGHLIGHT';
 
 const requestLocations = actionCreator(REQUEST_LOCATIONS, 'searchVal', 'jqXhr');
 const receiveLocations = actionCreator(RECEIVE_LOCATIONS, 'searchVal', 'response');

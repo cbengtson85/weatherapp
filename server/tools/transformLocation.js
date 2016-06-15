@@ -34,7 +34,7 @@ const getFormattedAddressForList = item => {
 };
 
 const getFormattedAddressForDisplay= item => {
-    return '';
+    return getFormattedAddressForList(item);
 };
 
 const transformLocationSearch = data => {

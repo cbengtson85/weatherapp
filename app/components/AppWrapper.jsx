@@ -5,12 +5,12 @@ import React from 'react';
 import Header from 'app/components/Header';
 import {Footer} from 'app/components/Footer';
 
-const AppWrapper = (Component) => class extends React.Component {
+const AppWrapper = (Component, page) => class extends React.Component {
     render() {
         return (
             <div>
-                <Header />
-                <Component />
+                <Header page={page} />
+                <Component {...this.props} />
                 <Footer />
             </div>
         )

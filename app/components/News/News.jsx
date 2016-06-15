@@ -85,6 +85,6 @@ class NewsContent extends React.Component {
     }
 }
 
-let News = AppWrapper(NewsContent);
+let News = AppWrapper(NewsContent, 'News');
 
 export default News;
