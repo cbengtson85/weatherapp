@@ -7,6 +7,11 @@ import * as ACTIONS from 'app/actions';
 
 class LocationSearchForm extends React.Component  {
 
+    componentDidMount() {
+        const {dispatch} = this.props;
+        dispatch(ACTIONS.returnNoResults(''));
+    }
+
     handleClear(e) {
         e.preventDefault();
         const {dispatch} = this.props;

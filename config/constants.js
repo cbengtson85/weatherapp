@@ -21,6 +21,7 @@ exports.LOCATION_RESULT_FORMAT = {
         country : '',
         formattedAddressForList : '',
         formattedAddressForDisplay : '',
+        formattedAddressForUrl : '',
         longitude : '',
         latitude : ''
 };

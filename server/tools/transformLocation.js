@@ -33,9 +33,32 @@ const getFormattedAddressForList = item => {
     return formatted;
 };
 
-const getFormattedAddressForDisplay= item => {
+const getFormattedAddressForDisplay = item => {
     return getFormattedAddressForList(item);
 };
+
+const getFormattedAddressForUrl = item => {
+    let formatted = item.city;
+    if(item.countryCode == 'US') {
+        if(item.city == item.state)
+            return item.state;
+        formatted += ' ' + item.state;
+        return formatted;
+    }
+    if(item.city == item.state && item.state == item.country)
+        return formatted;
+    if(item.city == item.state) {
+        formatted += ' ' + item.country;
+        return formatted;
+    }
+    if(item.state == item.country) {
+        formatted += ' ' + item.country;
+        return formatted;
+    }
+    formatted += ' ' + item.state + ' ' + item.country;
+
+    return formatted;
+}
 
 const transformLocationSearch = data => {
     let transformedData = Object.assign({}, constants.LOCATION_RESPONSE_FORMAT);
@@ -53,6 +76,7 @@ const transformLocationSearch = data => {
             item.country = resource.countryName;
             item.formattedAddressForList = getFormattedAddressForList(item);
             item.formattedAddressForDisplay = getFormattedAddressForDisplay(item);
+            item.formattedAddressForUrl = getFormattedAddressForUrl(item);
             item.longitude = resource.lng;
             item.latitude = resource.lat;
             item.id = generateId(item);
@@ -86,6 +110,7 @@ const transformLocationPostal = data => {
             item.country = countryName;
             item.formattedAddressForList = getFormattedAddressForList(item);
             item.formattedAddressForDisplay = getFormattedAddressForDisplay(item);
+            item.formattedAddressForUrl = getFormattedAddressForUrl(item);
             item.longitude = resource.lng;
             item.latitude = resource.lat;
             item.id = generateId(item);
