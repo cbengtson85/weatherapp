@@ -30,7 +30,7 @@ const locations = (state = locationsInitialState, action) => {
             if(action.response.results != undefined && action.response.results.length > 0)
                 newList = {...oldList, [action.searchVal] : action.response.results};
             return {...state, loading : false, locationsList : newList, currentSuggestionIndex : 0};
-        case ACTIONS.RETURN_NO_RESULTS:
+        case ACTIONS.CLEAR_SEARCH_RESULTS:
             return {...state, currentSearchTerm : action.searchVal, currentSuggestionIndex : 0};
         case ACTIONS.GET_CACHED_LOCATIONS:
             return {...state, currentSearchTerm : action.searchVal, currentSuggestionIndex : 0};

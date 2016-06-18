@@ -6,16 +6,15 @@ import {InputSubmit, AjaxSpinner, ClearIcon} from 'app/components/Common';
 import * as ACTIONS from 'app/actions';
 
 class LocationSearchForm extends React.Component  {
-
-    componentDidMount() {
+    componentWillUnmount() {
         const {dispatch} = this.props;
-        dispatch(ACTIONS.returnNoResults(''));
+        dispatch(ACTIONS.clearSearchResults(''));
     }
 
     handleClear(e) {
         e.preventDefault();
         const {dispatch} = this.props;
-        dispatch(ACTIONS.returnNoResults(''));
+        dispatch(ACTIONS.clearSearchResults(''));
     }
 
     handleChange(e) {
@@ -48,7 +47,7 @@ class LocationSearchForm extends React.Component  {
             //escape
             case 27:
                 if(searchTermLength > 0)
-                    dispatch(ACTIONS.returnNoResults(''));
+                    dispatch(ACTIONS.clearSearchResults(''));
                 break;
         }
     }

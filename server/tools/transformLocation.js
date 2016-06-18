@@ -56,7 +56,6 @@ const getFormattedAddressForUrl = item => {
         return formatted;
     }
     formatted += ' ' + item.state + ' ' + item.country;
-
     return formatted;
 }
 

@@ -6,14 +6,14 @@ const constants = require('config/constants');
 export const REQUEST_LOCATIONS = 'REQUEST_LOCATIONS';
 export const RECEIVE_LOCATIONS = 'RECEIVE_LOCATIONS';
 export const GET_CACHED_LOCATIONS = 'GET_CACHED_LOCATIONS';
-export const RETURN_NO_RESULTS = 'RETURN_NO_RESULTS';
+export const CLEAR_SEARCH_RESULTS = 'CLEAR_SEARCH_RESULTS';
 export const MOVE_HIGHLIGHTED = 'MOVE_HIGHLIGHTED';
 export const MOUSE_HIGHLIGHT = 'MOUSE_HIGHLIGHT';
 
 const requestLocations = actionCreator(REQUEST_LOCATIONS, 'searchVal', 'jqXhr');
 const receiveLocations = actionCreator(RECEIVE_LOCATIONS, 'searchVal', 'response');
 const getCachedLocations = actionCreator(GET_CACHED_LOCATIONS, 'searchVal');
-const returnNoResults = actionCreator(RETURN_NO_RESULTS, 'searchVal');
+const clearSearchResults = actionCreator(CLEAR_SEARCH_RESULTS, 'searchVal');
 const moveHighlighted = actionCreator(MOVE_HIGHLIGHTED, 'direction');
 const mouseHighlight = actionCreator(MOUSE_HIGHLIGHT, 'index');
 
@@ -42,7 +42,7 @@ const locationsRequest = (state, searchVal) => {
                 dispatch(receiveLocations(searchVal, constants.LOCATION_RESPONSE_FORMAT));
             });
         } else {
-            dispatch(returnNoResults(searchVal));
+            dispatch(clearSearchResults(searchVal));
         }
     }
 };
@@ -56,4 +56,4 @@ const getLocations = searchVal => {
     }
 };
 
-export {getLocations, returnNoResults, moveHighlighted, mouseHighlight};
+export {getLocations, clearSearchResults, moveHighlighted, mouseHighlight};
