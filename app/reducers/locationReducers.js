@@ -2,6 +2,7 @@
 
 import * as ACTIONS from 'app/actions';
 import {locationsInitialState} from 'app/store';
+import {LOCATION_CHANGE} from 'react-router-redux';
 
 const moveSuggestionIndex = (state, direction) => {
     let searchTerm = state.currentSearchTerm;
@@ -30,8 +31,12 @@ const locations = (state = locationsInitialState, action) => {
             if(action.response.results != undefined && action.response.results.length > 0)
                 newList = {...oldList, [action.searchVal] : action.response.results};
             return {...state, loading : false, locationsList : newList, currentSuggestionIndex : 0};
+        case LOCATION_CHANGE:
         case ACTIONS.CLEAR_SEARCH_RESULTS:
-            return {...state, currentSearchTerm : action.searchVal, currentSuggestionIndex : 0};
+            let searchVal = action.searchVal;
+            if(searchVal == undefined)
+                searchVal = '';
+            return {...state, currentSearchTerm : searchVal, currentSuggestionIndex : 0};
         case ACTIONS.GET_CACHED_LOCATIONS:
             return {...state, currentSearchTerm : action.searchVal, currentSuggestionIndex : 0};
         case ACTIONS.MOVE_HIGHLIGHTED:

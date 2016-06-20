@@ -6,11 +6,6 @@ import {InputSubmit, AjaxSpinner, ClearIcon} from 'app/components/Common';
 import * as ACTIONS from 'app/actions';
 
 class LocationSearchForm extends React.Component  {
-    componentWillUnmount() {
-        const {dispatch} = this.props;
-        dispatch(ACTIONS.clearSearchResults(''));
-    }
-
     handleClear(e) {
         e.preventDefault();
         const {dispatch} = this.props;
