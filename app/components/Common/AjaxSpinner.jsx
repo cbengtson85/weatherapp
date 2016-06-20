@@ -2,9 +2,9 @@
 
 import React from 'react';
 
-const AjaxSpinner = (props) => {
+const AjaxSpinner = ({height}) => {
     return (
-        <img src="/img/ajax-loader.gif" height={props.height} className="vertical-center" />
+        <img src="/img/ajax-loader.gif" height={height} className="vertical-center" />
     )
 };
 

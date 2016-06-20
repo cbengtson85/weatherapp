@@ -2,9 +2,9 @@
 
 import React from 'react';
 
-const InputSubmit = (props) => {
+const InputSubmit = ({value}) => {
     return (
-        <input type="submit" value={props.value} />
+        <input type="submit" value={value} />
     )
 };
 

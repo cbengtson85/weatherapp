@@ -3,11 +3,11 @@
 import React from 'react';
 import {Link} from 'react-router';
 
-const MenuItem = (props) => {
-    let selected = props.item.name == props.page ? 'current-menu-item' : '';
+const MenuItem = ({item, page}) => {
+    let selected = item.name == page ? 'current-menu-item' : '';
     return (
-        <li className="menu-item" key={props.index}>
-            <Link className={selected} to={props.item.link}>{props.item.name}</Link>
+        <li className="menu-item">
+            <Link className={selected} to={item.link}>{item.name}</Link>
         </li>
     )
 };

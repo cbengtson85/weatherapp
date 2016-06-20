@@ -2,9 +2,9 @@
 
 import React from 'react';
 
-const SocialLink = (props) => {
+const SocialLink = ({site}) => {
     return (
-        <a href="#" key={props.index}><i className={"fa fa-" + props.site}></i></a>
+        <a href="#"><i className={"fa fa-" + site}></i></a>
     )
 };
 
