@@ -5,10 +5,9 @@ import {Link} from 'react-router';
 
 import {mouseHighlight} from 'app/actions';
 
-const LocationSuggestions = (props) => {
+const LocationSuggestions = ({dispatch, locationsList, currentSuggestionIndex}) => {
 
     const handleSuggestionHover = index => {
-        const {dispatch} = props;
         dispatch(mouseHighlight(index));
     };
 
@@ -16,9 +15,9 @@ const LocationSuggestions = (props) => {
         <div className="location-suggestions-container">
             <div className="location-suggestions">
                 <ul className="location-suggestions-list">
-                    {props.locationsList.map((location, index) =>
+                    {locationsList.map((location, index) =>
                         <li key={location.id}>
-                            <Link to={"/weather/" + location.formattedAddressForUrl + "/" + location.longitude + "_" + location.latitude} className={index==props.currentSuggestionIndex ? "suggestion-highlight" : ""}
+                            <Link to={location.formattedAddressForUrl} className={index==currentSuggestionIndex ? "suggestion-highlight" : ""}
                                 onMouseEnter={() => handleSuggestionHover(index)}>
                                 {location.formattedAddressForList}
                             </Link>

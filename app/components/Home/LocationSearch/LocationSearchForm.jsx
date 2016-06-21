@@ -1,11 +1,18 @@
 'use strict'
 
 import React from 'react';
+import {push} from 'react-router-redux';
 
 import {InputSubmit, AjaxSpinner, ClearIcon} from 'app/components/Common';
 import * as ACTIONS from 'app/actions';
 
 class LocationSearchForm extends React.Component  {
+    handleSubmit(e) {
+        e.preventDefault();
+        const {dispatch, selectedLocation} = this.props;
+        if(selectedLocation != null)
+            dispatch(push(selectedLocation.formattedAddressForUrl));
+    }
     handleClear(e) {
         e.preventDefault();
         const {dispatch} = this.props;
@@ -34,11 +41,6 @@ class LocationSearchForm extends React.Component  {
                 if(locationsList != undefined && currentSuggestionIndex != locationsList.length -1)
                     dispatch(ACTIONS.moveHighlighted('down'));
                 break;
-            //return
-            case 13:
-                e.preventDefault();
-                alert('submit search');
-                break;
             //escape
             case 27:
                 if(searchTermLength > 0)
@@ -50,7 +52,7 @@ class LocationSearchForm extends React.Component  {
     render() {
         const {searchTermLength} = this.props;
         return (
-            <form action="#" className="find-location">
+            <form action="/" className="find-location" onSubmit={e => this.handleSubmit(e)}>
                 <input autoComplete="off" onKeyDown={e => this.handleSearchKeyUp(e)}
                     type="text" placeholder="Find your location..." maxLength="100"
                     value={this.props.searchVal} onChange={e => this.handleChange(e)}/>

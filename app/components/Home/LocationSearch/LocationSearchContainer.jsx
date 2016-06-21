@@ -28,6 +28,7 @@ LocationSearchContainer.propTypes = {
     searchTermLength : React.PropTypes.number,
     searchVal : React.PropTypes.string,
     currentSuggestionIndex : React.PropTypes.number,
+    selectedLocation : React.PropTypes.object,
     dispatch : React.PropTypes.func.isRequired
 };
 
@@ -36,12 +37,21 @@ const mapStateToProps = state => {
     const searchTerm = locations.currentSearchTerm;
     const loading = locations.loading;
     const locationsList = locations.locationsList;
+    const currentLocationList = locationsList[searchTerm];
+    const currentIndex = locations.currentSuggestionIndex;
+    let selectedLocation;
+    if(currentLocationList != undefined && currentLocationList.length > 0)
+        selectedLocation = currentLocationList[currentIndex];
+    else
+        selectedLocation = null;
+        
     return {
         isLoading : loading,
-        locationsList : locationsList[searchTerm],
+        locationsList : currentLocationList,
         searchTermLength : searchTerm.length,
         searchVal : searchTerm,
-        currentSuggestionIndex : locations.currentSuggestionIndex
+        currentSuggestionIndex : currentIndex,
+        selectedLocation : selectedLocation
     }
 };
 
