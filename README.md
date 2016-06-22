@@ -2,48 +2,26 @@
 
 -Node 6.2, Mongo 3.2.4, Express, React, Redux, Webpack
 
-1)	Uninstall Node(if installed)
+1)	clone repository
 
-		1	go to /usr/local/lib and delete any node and node_modules
+		git clone https://<username>@bitbucket.org/cbengtson85/weatherapp.git
 
-		2	go to /usr/local/include and delete any node and node_modules directory
-
-		3	if you installed with brew install node, then run brew uninstall node in your terminal
-
-		4	check your Home directory for any local or lib or include folders, and delete any node or node_modules from there
-
-		5	go to /usr/local/bin and delete any node executable
-
-		6	remove /usr/local/share/doc/node/
-
-		7 	remove /usr/local/share/systemtap/tapset/node.stp
-
-		sudo rm /usr/local/bin/npm
-		sudo rm /usr/local/share/man/man1/node.1
-		sudo rm /usr/local/lib/dtrace/node.d
-		sudo rm -rf ~/.npm
-		sudo rm -rf ~/.node-gyp
-		sudo rm /opt/local/bin/node
-		sudo rm /opt/local/include/node
-		sudo rm -rf /opt/local/lib/node_modules
-		sudo rm -rf /usr/local/include/node/
-
-2)	install homebrew (MAC OS X)
+2)	install homebrew (MAC OS X) (optional to install node and mongo)
 
 		/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 3)	install node (from projects root directory)
+
 		brew update
 		sudo chmod 777 /usr/local/share/systemtap/tapset
 		brew install node
-		npm init
 
 4) install packages from package.json  
 
 		npm install     //this will install packages from package.json
 
 
-5) install mongo db using homebrew
+5) install mongo db using homebrew (optional)
 
 		brew update
 		brew install mongodb --with-openssl
@@ -55,6 +33,9 @@
 
 
 BUILD APP & RUN NODE SERVER using nodemon for hot deploying
+
+	start DB
+	mongod
 
 	from terminal in project's root directory run:
 	npm run devbuild
