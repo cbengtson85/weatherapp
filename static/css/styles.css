@@ -1245,7 +1245,7 @@ form textarea {
 .mobile-navigation .menu .menu-item:last-child {
     border-bottom: none;
 }
-.mobile-navigation .menu .menu-item.current-menu-item a {
+.mobile-navigation .menu .menu-item a.current-menu-item {
     color: #009ad8;
 }
 .hero {

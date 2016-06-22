@@ -17,6 +17,7 @@ class LocationSearchForm extends React.Component  {
         e.preventDefault();
         const {dispatch} = this.props;
         dispatch(ACTIONS.clearSearchResults(''));
+        $('#search-input').focus();
     }
 
     handleChange(e) {
@@ -53,7 +54,7 @@ class LocationSearchForm extends React.Component  {
         const {searchTermLength} = this.props;
         return (
             <form action="/" className="find-location" onSubmit={e => this.handleSubmit(e)}>
-                <input autoComplete="off" onKeyDown={e => this.handleSearchKeyUp(e)}
+                <input id="search-input" autoComplete="off" autoFocus onKeyDown={e => this.handleSearchKeyUp(e)}
                     type="text" placeholder="Find your location..." maxLength="100"
                     value={this.props.searchVal} onChange={e => this.handleChange(e)}/>
                 {this.props.isLoading ? <span className="search-loader"><AjaxSpinner height="40" /></span> : ''}
