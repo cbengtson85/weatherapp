@@ -4,6 +4,7 @@ const axios = require('axios');
 const config = require('config');
 const constants = require('config/constants');
 const transformWeather = require('server/tools').transformWeather;
+const logWeatherApiRequest = require('server/tools').logApiRequests.logWeatherApiRequest;
 
 const axiosInstance = axios.create({timeout : config.weatherServiceTimeout});
 
@@ -32,6 +33,7 @@ const makeWeatherRequest = (req, res, q, units) => {
         sendWeatherDataError({}, res);
     const latitude = location[0];
     const longitude = location[1];
+    logWeatherApiRequest();
     axiosInstance.get(buildWeatherEndpoint(latitude, longitude, units))
         .then(response => {
             sendWeatherDataSuccess(response, res, units);
