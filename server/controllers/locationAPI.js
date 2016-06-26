@@ -8,17 +8,17 @@ const logLocationApiRequest = require('server/tools').logApiRequests.logLocation
 
 const axiosInstance = axios.create({timeout : config.locationServiceTimeout});
 
-let sendLocationsListSuccess = (response, res, type) => {
+const sendLocationsListSuccess = (response, res, type) => {
     res.json(transformLocation(response.data, type));
 };
 
-let sendLocationsListError = (response, res) => {
+const sendLocationsListError = (response, res) => {
     console.log('LOCATION API ERROR');
     console.log(response);
-    res.json({sucess : false, response : response});
+    res.json({});
 };
 
-let isCanadaPostalCode = postal => {
+const isCanadaPostalCode = postal => {
     var regex = new RegExp(/[a-zA-Z][0-9][a-zA-Z](-| |)[0-9][a-zA-Z][0-9]/);
     if(regex.test(postal))
         return true;
@@ -26,13 +26,13 @@ let isCanadaPostalCode = postal => {
         return false;
 };
 
-let buildSearchEndpoint = q => {
+const buildSearchEndpoint = q => {
     return config.locationServiceEndpoint + '?' + constants.Q + '=' + q + '&' + constants.MAX_ROWS + '=' +
         config.locationServiceMaxResults + '&' + constants.USER_NAME + '=' + config.locationServiceKey +
         '&' + constants.FUZZY + '=' + constants.FUZZY_VALUE + '&' + constants.COUNTRY_BIAS + '=' + 'US';
 };
 
-let buildPostalCodeEndpoint = (q, isCanada) => {
+const buildPostalCodeEndpoint = (q, isCanada) => {
     let searchParamVal = constants.POSTAL_CODE_STARTSWITH + '=' + q;
     if(isCanada)
         searchParamVal = constants.POSTAL_CODE + '=' + q;
@@ -41,7 +41,7 @@ let buildPostalCodeEndpoint = (q, isCanada) => {
         config.locationServiceMaxResults + '&' + constants.USER_NAME + '=' + config.locationServiceKey;
 };
 
-let isEmptyResponse = locationResponse => {
+const isEmptyResponse = locationResponse => {
     if(typeof locationResponse == 'undefined' || !Object.keys(locationResponse).length)
         return true;
     if(typeof locationResponse.geonames != 'undefined' && locationResponse.geonames.length > 0)
@@ -52,7 +52,7 @@ let isEmptyResponse = locationResponse => {
     return true;
 };
 
-let makeLocationPostalCodeRequest = (req, res, endpoint, q, stop) => {
+const makeLocationPostalCodeRequest = (req, res, endpoint, q, stop) => {
     logLocationApiRequest();
     axiosInstance.get(endpoint)
         .then(response => {
@@ -66,7 +66,7 @@ let makeLocationPostalCodeRequest = (req, res, endpoint, q, stop) => {
         });
 };
 
-let makeLocationSearchRequest = (req, res, endpoint, q, stop) => {
+const makeLocationSearchRequest = (req, res, endpoint, q, stop) => {
     logLocationApiRequest();
     axiosInstance.get(endpoint)
         .then(response => {
@@ -80,7 +80,7 @@ let makeLocationSearchRequest = (req, res, endpoint, q, stop) => {
         });
 }
 
-let makeLocationRequest = (req, res, q) => {
+const makeLocationRequest = (req, res, q) => {
     let qLength = q.length;
     if(!isNaN(q)) {
         makeLocationPostalCodeRequest(req, res, buildPostalCodeEndpoint(q, false), q);

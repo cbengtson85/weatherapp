@@ -27,6 +27,9 @@ config = {
 	locationServiceKey : 'bengtc',
 	locationServiceTimeout : 7000,
 	locationServiceMaxResults : 10,
+	weatherServiceEndpoint : 'https://api.forecast.io/forecast/',
+	weatherServiceKey : '24a90ebe31382974ba7d38837c986249',
+	weatherServiceTimeout : 10000,
 	dbUrl : 'mongodb://localhost:27017/weatherapp'
 };
 

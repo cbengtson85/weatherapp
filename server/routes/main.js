@@ -1,7 +1,7 @@
 'use strict'
 
 const controllers = require('server/controllers');
-let router = require('express').Router();
+const router = require('express').Router();
 
 
 router.get('/api-requests-count', controllers.main.renderApiRequestsCount);

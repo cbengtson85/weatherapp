@@ -8,7 +8,7 @@
 const constants = require('config/constants');
 const countryCodes = require('config/countryCodes');
 
-const generateId = item => item.longitude + '_' + item.latitude;
+const generateId = item => item.latitude + '_' + item.longitude;
 
 const getFormattedAddressForList = item => {
     let formatted = item.city;
@@ -39,7 +39,7 @@ const getFormattedAddressForDisplay = item => {
 
 const buildWeatherRouteUrl = (formatted, item) => {
     const formatted2 = formatted.replace(/\s+/g, '-');
-    return '/weather/' + formatted2 + '/' + item.longitude + '_' + item.latitude;
+    return '/weather/' + formatted2 + '/' + item.latitude + '_' + item.longitude;
 }
 
 const getFormattedAddressForUrl = item => {

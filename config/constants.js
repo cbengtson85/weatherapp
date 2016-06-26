@@ -14,17 +14,36 @@ exports.LOCATION_RESPONSE_FORMAT = {
     results : []
 };
 exports.LOCATION_RESULT_FORMAT = {
-        id : '',
-        city : '',
-        state : '',
-        countryCode : '',
-        country : '',
-        formattedAddressForList : '',
-        formattedAddressForDisplay : '',
-        formattedAddressForUrl : '',
-        longitude : '',
-        latitude : ''
+    id : '',
+    city : '',
+    state : '',
+    countryCode : '',
+    country : '',
+    formattedAddressForList : '',
+    formattedAddressForDisplay : '',
+    formattedAddressForUrl : '',
+    longitude : '',
+    latitude : ''
 };
 exports.LOCATION_SEARCH_ENDPOINT = '/api/location-search/';
 exports.MIN_SEARCH_LENGTH = 3;
 exports.API_REQUESTS_COLLECTION = 'apiRequests';
+exports.WEATHER_DATA_FORMAT = {
+    unit : '',
+    dayOfWeek : '',
+    formattedDate : '',
+    formattedDateHourly : '',
+    icon : '',
+    temp : '',
+    tempHigh : '',
+    tempLow : '',
+    precipitation : '',
+    windSpeed : '',
+    windDirection : ''
+};
+
+exports.WEATHER_RESPONSE_FORMAT = {
+    current : {},
+    hourly : [],
+    daily : []
+};

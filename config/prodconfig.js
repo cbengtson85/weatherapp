@@ -10,8 +10,8 @@
 let config = {};
 
 config = {
-	webPort : 8580,
-	sslPort : 5443,
+	webPort : 80,
+	sslPort : 443,
 };
 
 module.exports = config;

@@ -3,6 +3,6 @@
 const controllers = require('server/controllers');
 const router = require('express').Router();
 
-router.get('/location-search/:q', controllers.locationAPI.getLocationsList);
+router.get('/weather-data/:q', controllers.weatherAPI.getWeatherData);
 
 module.exports = router;
