@@ -1,11 +1,15 @@
 'use strict'
 
+const constants = require('config/constants');
+
 const locationsInitialState = {
     jqXhr : null,
     currentSearchTerm : '',
-    loading: false,
+    loading : false,
     locationsList : {},
     currentSuggestionIndex : 0
 };
 
-export {locationsInitialState};
+const weatherInitialState = {...constants.WEATHER_RESPONSE_FORMAT, loading : false};
+
+export {locationsInitialState, weatherInitialState};

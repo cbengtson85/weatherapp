@@ -4,14 +4,27 @@ import React from 'react';
 import {connect} from 'react-redux';
 
 import {CurrentWeather, WeatherForecastItem} from 'app/components/Home/Weather';
+import * as ACTIONS from 'app/actions';
 
 class WeatherContainer extends React.Component {
+    componentWillMount() {
+        const {dispatch, weatherCoordinates} = this.props;
+        dispatch(ACTIONS.getWeatherData(weatherCoordinates));
+    }
+    componentWillReceiveProps(nextProps) {
+        if(nextProps.weatherCoordinates != this.props.weatherCoordinates) {
+            const {dispatch} = this.props;
+            dispatch(ACTIONS.getWeatherData(nextProps.weatherCoordinates));
+        }
+    }
+
     render() {
+        const {isLoading} = this.props;
         return (
             <div className="forecast-table">
                 <div className="container">
                     <div className="forecast-container">
-                        <CurrentWeather />
+                        <CurrentWeather {...this.props} />
                         <WeatherForecastItem />
                         <WeatherForecastItem />
                         <WeatherForecastItem />
@@ -26,25 +39,25 @@ class WeatherContainer extends React.Component {
 }
 
 WeatherContainer.propTypes = {
+    weatherCoordinates : React.PropTypes.string,
     isLoading : React.PropTypes.bool.isRequired,
-    locationsList : React.PropTypes.array,
-    searchTermLength : React.PropTypes.number,
-    searchVal : React.PropTypes.string,
-    currentSuggestionIndex : React.PropTypes.number,
+    currentWeather : React.PropTypes.object,
+    unitTemp : React.PropTypes.string,
+    unitSpeed : React.PropTypes.string,
+    dailyWeather : React.PropTypes.array,
+    hourlyWeather : React.PropTypes.array,
     dispatch : React.PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => {
-    const {locations} = state;
-    const searchTerm = locations.currentSearchTerm;
-    const loading = locations.loading;
-    const locationsList = locations.locationsList;
+    const {weather} = state;
     return {
-        isLoading : loading,
-        locationsList : locationsList[searchTerm],
-        searchTermLength : searchTerm.length,
-        searchVal : searchTerm,
-        currentSuggestionIndex : locations.currentSuggestionIndex
+        isLoading : weather.loading,
+        currentWeather : weather.current,
+        dailyWeather : weather.daily,
+        hourlyWeather : weather.hourly,
+        unitTemp : weather.unitTemp,
+        unitSpeed : weather.unitSpeed
     }
 };
 

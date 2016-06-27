@@ -29,7 +29,6 @@ exports.LOCATION_SEARCH_ENDPOINT = '/api/location-search/';
 exports.MIN_SEARCH_LENGTH = 3;
 exports.API_REQUESTS_COLLECTION = 'apiRequests';
 exports.WEATHER_DATA_FORMAT = {
-    unit : '',
     dayOfWeek : '',
     formattedDate : '',
     formattedDateHourly : '',
@@ -43,7 +42,10 @@ exports.WEATHER_DATA_FORMAT = {
 };
 
 exports.WEATHER_RESPONSE_FORMAT = {
-    current : {},
+    unitTemp : 'F',
+    unitSpeed : 'mph',
+    current : null,
     hourly : [],
     daily : []
 };
+exports.WEATHER_DATA_ENDPOINT = '/api/weather-data/';

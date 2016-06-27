@@ -15,13 +15,13 @@ const sendWeatherDataSuccess = (response, res, units) => {
 const sendWeatherDataError = (response, res) => {
     console.log('WEATHER API ERROR');
     console.log(response);
-    res.json({success : false});
+    res.json(constants.WEATHER_RESPONSE_FORMAT);
 };
 
 const buildWeatherEndpoint = (lat, long, units) => {
     let unit = units;
     if(typeof units == 'undefined' || units == '')
-        unit = 'us';
+        unit = 'ca';
     return config.weatherServiceEndpoint + config.weatherServiceKey + '/' + lat + ',' + long + '?units='
         + units + '&exclude=minutely,flags';
 };

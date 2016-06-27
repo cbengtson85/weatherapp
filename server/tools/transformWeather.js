@@ -9,11 +9,18 @@ const constants = require('config/constants');
 const dateFormat = require('dateformat');
 const getDirectionFromDeg = require('server/tools').getDirectionFromDeg;
 
-const getUnit = units => {
+const getUnitTemp = units => {
     if(units == 'us')
         return 'F';
     else
         return 'C';
+};
+
+const getUnitSpeed = units => {
+    if(units == 'us')
+        return 'mph';
+    else
+        return 'km/h';
 };
 
 const getDayOfWeek = time => {
@@ -29,14 +36,15 @@ const getFormattedDateHourly = time => {
 };
 
 module.exports = (data, units) => {
-    let unit = getUnit(units);
     let transformedData = Object.assign({}, constants.WEATHER_RESPONSE_FORMAT);
+    transformedData.unitTemp = getUnitTemp(units);
+    transformedData.unitSpeed = getUnitSpeed(units);
+
     let current = Object.assign({}, constants.WEATHER_DATA_FORMAT);
 
     if(data.currently != undefined) {
         const time = new Date(data.currently.time*1000);
 
-        current.unit = unit;
         current.dayOfWeek = getDayOfWeek(time);
         current.formattedDate = getFormattedDate(time);
         current.formattedDateHourly = getFormattedDateHourly(time);
@@ -56,7 +64,6 @@ module.exports = (data, units) => {
             let hourlyItem = Object.assign({}, constants.WEATHER_DATA_FORMAT);
             const time = new Date(item.time*1000);
 
-            hourlyItem.unit = unit;
             hourlyItem.dayOfWeek = getDayOfWeek(time);
             hourlyItem.formattedDate = getFormattedDate(time);
             hourlyItem.formattedDateHourly = getFormattedDateHourly(time);
@@ -79,7 +86,6 @@ module.exports = (data, units) => {
             let dailyItem = Object.assign({}, constants.WEATHER_DATA_FORMAT);
             const time = new Date(item.time*1000);
 
-            dailyItem.unit = unit;
             dailyItem.dayOfWeek = getDayOfWeek(time);
             dailyItem.formattedDate = getFormattedDate(time);
             dailyItem.formattedDateHourly = getFormattedDateHourly(time);
@@ -95,6 +101,5 @@ module.exports = (data, units) => {
         });
     }
     transformedData.daily = dailyList;
-
     return transformedData;
 };
