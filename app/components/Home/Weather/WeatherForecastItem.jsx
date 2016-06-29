@@ -8,6 +8,7 @@ const WeatherForecastItem = ({item, unitTemp}) => {
         <div className="forecast">
             <div className="forecast-header">
                 <div className="day">{item.dayOfWeek}</div>
+                <div className="day">{item.formattedDate}</div>
             </div>
             <div className="forecast-content">
                 <div className="forecast-icon">
