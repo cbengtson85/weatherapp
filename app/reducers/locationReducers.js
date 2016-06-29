@@ -21,6 +21,20 @@ const moveSuggestionIndex = (state, direction) => {
     return nextIndex;
 };
 
+const getSelectedLocation = state => {
+    const searchTerm = state.currentSearchTerm;
+    const locationsList = state.locationsList;
+    const currentLocationList = locationsList[searchTerm];
+    const currentIndex = state.currentSuggestionIndex;
+    let selectedLocation;
+    if(currentLocationList != undefined && currentLocationList.length > 0)
+        selectedLocation = currentLocationList[currentIndex];
+    else
+        selectedLocation = null;
+
+    return selectedLocation;
+};
+
 const locations = (state = locationsInitialState, action) => {
     switch (action.type) {
         case ACTIONS.REQUEST_LOCATIONS:
@@ -30,8 +44,19 @@ const locations = (state = locationsInitialState, action) => {
             let newList = oldList;
             if(action.response.results != undefined && action.response.results.length > 0)
                 newList = {...oldList, [action.searchVal] : action.response.results};
-            return {...state, loading : false, locationsList : newList, currentSuggestionIndex : 0};
+            let newStateReceive = {...state, loading : false, locationsList : newList, currentSuggestionIndex : 0};
+            return {...newStateReceive, selectedLocation : getSelectedLocation(newStateReceive)};
         case LOCATION_CHANGE:
+            if(action.payload.pathname != undefined && action.payload.pathname.indexOf('/weather/') > -1) {
+                let selectedLocation = getSelectedLocation(state);
+                let savedSelectedLocations = state.savedSelectedLocations;
+                if(selectedLocation != null)
+                    savedSelectedLocations = {...state.savedSelectedLocations, [selectedLocation.id] : selectedLocation};
+
+                return {...state, currentSearchTerm : '', currentSuggestionIndex : 0, selectedLocation : selectedLocation, savedSelectedLocations : savedSelectedLocations};
+            } else {
+                return {...state, currentSearchTerm : '', currentSuggestionIndex : 0, selectedLocation : null};
+            }
         case ACTIONS.CLEAR_SEARCH_RESULTS:
             let searchVal = action.searchVal;
             if(searchVal == undefined)
@@ -40,9 +65,11 @@ const locations = (state = locationsInitialState, action) => {
         case ACTIONS.GET_CACHED_LOCATIONS:
             return {...state, currentSearchTerm : action.searchVal, currentSuggestionIndex : 0};
         case ACTIONS.MOVE_HIGHLIGHTED:
-            return {...state, currentSuggestionIndex : moveSuggestionIndex(state, action.direction)};
+            let newStateMove = {...state, currentSuggestionIndex : moveSuggestionIndex(state, action.direction)};
+            return {...newStateMove, selectedLocation : getSelectedLocation(newStateMove)};
         case ACTIONS.MOUSE_HIGHLIGHT:
-            return {...state, currentSuggestionIndex : action.index};
+            let newStateMouse = {...state, currentSuggestionIndex : action.index};
+            return {...newStateMouse, selectedLocation : getSelectedLocation(newStateMouse)};
         default:
             return state;
     }

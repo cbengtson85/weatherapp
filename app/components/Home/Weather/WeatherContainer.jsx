@@ -3,7 +3,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-import {CurrentWeather, WeatherForecastItem} from 'app/components/Home/Weather';
+import {CurrentWeather, WeatherForecastItem, LoadingIndicator} from 'app/components/Home/Weather';
 import * as ACTIONS from 'app/actions';
 
 class WeatherContainer extends React.Component {
@@ -23,6 +23,7 @@ class WeatherContainer extends React.Component {
         return (
             <div className="forecast-table">
                 <div className="container">
+                    {isLoading ? <LoadingIndicator /> : ''}
                     <div className="forecast-container">
                         <CurrentWeather {...this.props} />
                         <WeatherForecastItem />
@@ -46,18 +47,22 @@ WeatherContainer.propTypes = {
     unitSpeed : React.PropTypes.string,
     dailyWeather : React.PropTypes.array,
     hourlyWeather : React.PropTypes.array,
+    selectedLocation : React.PropTypes.object,
+    savedSelectedLocations : React.PropTypes.object,
     dispatch : React.PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => {
-    const {weather} = state;
+    const {weather, locations} = state;
     return {
         isLoading : weather.loading,
         currentWeather : weather.current,
         dailyWeather : weather.daily,
         hourlyWeather : weather.hourly,
         unitTemp : weather.unitTemp,
-        unitSpeed : weather.unitSpeed
+        unitSpeed : weather.unitSpeed,
+        selectedLocation : locations.selectedLocation,
+        savedSelectedLocations : locations.savedSelectedLocations
     }
 };
 

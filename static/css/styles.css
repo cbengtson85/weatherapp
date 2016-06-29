@@ -1870,8 +1870,30 @@ form textarea {
     transform: translateY(-50%);
 }
 
+.horizontal-center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .location-suggestions-list a {
     color: #ffffff;
+}
+
+div.container {
+    position: relative;
+}
+
+.weather-loading {
+    background-color: #000000;
+    opacity: .5;
+    position: absolute;
+    top: 0;
+    width: calc(100% - 30px);
+    height: calc(100% - 50px);
+    border-radius: 10px;
+    z-index: 5;
+
 }
 
 @media (max-width: 767px) {

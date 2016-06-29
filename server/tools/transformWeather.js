@@ -35,6 +35,10 @@ const getFormattedDateHourly = time => {
     return dateFormat(time, 'h:00 TT');
 };
 
+const round = value => {
+    return Math.round(value);
+};
+
 module.exports = (data, units) => {
     let transformedData = Object.assign({}, constants.WEATHER_RESPONSE_FORMAT);
     transformedData.unitTemp = getUnitTemp(units);
@@ -49,11 +53,11 @@ module.exports = (data, units) => {
         current.formattedDate = getFormattedDate(time);
         current.formattedDateHourly = getFormattedDateHourly(time);
         current.icon = data.currently.icon;
-        current.temp = data.currently.temperature;
-        current.tempHigh = data.currently.temperature;
-        current.tempLow = data.currently.temperature;
-        current.precipitation = data.currently.precipProbability;
-        current.windSpeed = data.currently.windSpeed;
+        current.temp = round(data.currently.temperature);
+        current.tempHigh = round(data.currently.temperature);
+        current.tempLow = round(data.currently.temperature);
+        current.precipitation = round(data.currently.precipProbability*100);
+        current.windSpeed = round(data.currently.windSpeed);
         current.windDirection = getDirectionFromDeg(data.currently.windBearing);
     }
     transformedData.current = current;
@@ -68,11 +72,11 @@ module.exports = (data, units) => {
             hourlyItem.formattedDate = getFormattedDate(time);
             hourlyItem.formattedDateHourly = getFormattedDateHourly(time);
             hourlyItem.icon = item.icon;
-            hourlyItem.temp = item.temperature;
-            hourlyItem.tempHigh = item.temperature;
-            hourlyItem.tempLow = item.temperature;
-            hourlyItem.precipitation = item.precipProbability;
-            hourlyItem.windSpeed = item.windSpeed;
+            hourlyItem.temp = round(item.temperature);
+            hourlyItem.tempHigh = round(item.temperature);
+            hourlyItem.tempLow = round(item.temperature);
+            hourlyItem.precipitation = round(item.precipProbability*100);
+            hourlyItem.windSpeed = round(item.windSpeed);
             hourlyItem.windDirection = getDirectionFromDeg(item.windBearing);
 
             hourlyList.push(hourlyItem);
@@ -90,11 +94,11 @@ module.exports = (data, units) => {
             dailyItem.formattedDate = getFormattedDate(time);
             dailyItem.formattedDateHourly = getFormattedDateHourly(time);
             dailyItem.icon = item.icon;
-            dailyItem.temp = item.temperature;
-            dailyItem.tempHigh = item.temperatureMax;
-            dailyItem.tempLow = item.temperatureMin;
-            dailyItem.precipitation = item.precipProbability;
-            dailyItem.windSpeed = item.windSpeed;
+            dailyItem.temp = round(item.temperatureMax);
+            dailyItem.tempHigh = round(item.temperatureMax);
+            dailyItem.tempLow = round(item.temperatureMin);
+            dailyItem.precipitation = round(item.precipProbability*100);
+            dailyItem.windSpeed = round(item.windSpeed);
             dailyItem.windDirection = getDirectionFromDeg(item.windBearing);
 
             dailyList.push(dailyItem);

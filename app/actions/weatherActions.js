@@ -8,8 +8,8 @@ const constants = require('config/constants');
 export const REQUEST_WEATHER= 'REQUEST_WEATHER';
 export const RECEIVE_WEATHER= 'RECEIVE_WEATHER';
 
-const requestLocations = actionCreator(REQUEST_WEATHER, 'coordinates');
-const receiveLocations = actionCreator(RECEIVE_WEATHER, 'coordinates', 'response');
+const requestWeather = actionCreator(REQUEST_WEATHER, 'coordinates');
+const receiveWeather = actionCreator(RECEIVE_WEATHER, 'coordinates', 'response');
 
 const weatherRequest = (state, coordinates) => {
     return dispatch => {
@@ -17,16 +17,16 @@ const weatherRequest = (state, coordinates) => {
             type : 'get',
             url : constants.WEATHER_DATA_ENDPOINT + encodeURI(coordinates) + '?units=us',
             beforeSend : function() {
-                dispatch(requestLocations(coordinates));
+                dispatch(requestWeather(coordinates));
             }
         }).done(function(responseObj) {
             if(responseObj.current == null) {
-                receiveLocations(coordinates, constants.WEATHER_RESPONSE_FORMAT);
+                dispatch(receiveWeather(coordinates, constants.WEATHER_RESPONSE_FORMAT));
             } else {
-                dispatch(receiveLocations(coordinates, responseObj));
+                dispatch(receiveWeather(coordinates, responseObj));
             }
         }).fail(function(x,y,z) {
-            dispatch(receiveLocations(coordinates, constants.WEATHER_RESPONSE_FORMAT));
+            dispatch(receiveWeather(coordinates, constants.WEATHER_RESPONSE_FORMAT));
         });
     }
 };

@@ -7,7 +7,9 @@ const locationsInitialState = {
     currentSearchTerm : '',
     loading : false,
     locationsList : {},
-    currentSuggestionIndex : 0
+    currentSuggestionIndex : 0,
+    selectedLocation : null,
+    savedSelectedLocations : {}
 };
 
 const weatherInitialState = {...constants.WEATHER_RESPONSE_FORMAT, loading : false};

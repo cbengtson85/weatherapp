@@ -39,12 +39,8 @@ const mapStateToProps = state => {
     const locationsList = locations.locationsList;
     const currentLocationList = locationsList[searchTerm];
     const currentIndex = locations.currentSuggestionIndex;
-    let selectedLocation;
-    if(currentLocationList != undefined && currentLocationList.length > 0)
-        selectedLocation = currentLocationList[currentIndex];
-    else
-        selectedLocation = null;
-        
+    const selectedLocation = locations.selectedLocation;
+
     return {
         isLoading : loading,
         locationsList : currentLocationList,
