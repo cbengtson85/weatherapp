@@ -44,7 +44,6 @@ WeatherContainer.propTypes = {
     unitSpeed : React.PropTypes.string,
     dailyWeather : React.PropTypes.array,
     hourlyWeather : React.PropTypes.array,
-    selectedLocation : React.PropTypes.object,
     savedSelectedLocations : React.PropTypes.object,
     dispatch : React.PropTypes.func.isRequired
 };
@@ -58,7 +57,6 @@ const mapStateToProps = state => {
         hourlyWeather : weather.hourly,
         unitTemp : weather.unitTemp,
         unitSpeed : weather.unitSpeed,
-        selectedLocation : locations.selectedLocation,
         savedSelectedLocations : locations.savedSelectedLocations
     }
 };

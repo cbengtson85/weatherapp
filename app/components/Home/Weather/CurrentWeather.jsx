@@ -20,13 +20,9 @@ const CurrentWeather = ({currentWeather, unitTemp, unitSpeed, selectedLocation, 
          windDirection = currentWeather.windDirection;
     }
     let formattedAddressForDisplay;
-    if(selectedLocation != null)
-        formattedAddressForDisplay = selectedLocation.formattedAddressForDisplay;
-    else {
-        let ssl = savedSelectedLocations[weatherCoordinates];
-        if(ssl != undefined)
-            formattedAddressForDisplay = ssl.formattedAddressForDisplay;
-    }
+    let ssl = savedSelectedLocations[weatherCoordinates];
+    if(ssl != undefined)
+        formattedAddressForDisplay = ssl.formattedAddressForDisplay;
 
     return (
         <div className="today forecast">
