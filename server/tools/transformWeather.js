@@ -54,8 +54,6 @@ module.exports = (data, units) => {
         current.formattedDateHourly = getFormattedDateHourly(time);
         current.icon = data.currently.icon;
         current.temp = round(data.currently.temperature);
-        current.tempHigh = round(data.currently.temperature);
-        current.tempLow = round(data.currently.temperature);
         current.precipitation = round(data.currently.precipProbability*100);
         current.windSpeed = round(data.currently.windSpeed);
         current.windDirection = getDirectionFromDeg(data.currently.windBearing);
@@ -87,21 +85,26 @@ module.exports = (data, units) => {
     let dailyList = [];
     if(data.daily != undefined && data.daily.data != undefined) {
         data.daily.data.map((item, index) => {
-            let dailyItem = Object.assign({}, constants.WEATHER_DATA_FORMAT);
-            const time = new Date(item.time*1000);
+            if(index == 0) {
+                transformedData.current.tempHigh = round(item.temperatureMax);
+                transformedData.current.tempLow = round(item.temperatureMin);
+            } else {
+                let dailyItem = Object.assign({}, constants.WEATHER_DATA_FORMAT);
+                const time = new Date(item.time*1000);
 
-            dailyItem.dayOfWeek = getDayOfWeek(time);
-            dailyItem.formattedDate = getFormattedDate(time);
-            dailyItem.formattedDateHourly = getFormattedDateHourly(time);
-            dailyItem.icon = item.icon;
-            dailyItem.temp = round(item.temperatureMax);
-            dailyItem.tempHigh = round(item.temperatureMax);
-            dailyItem.tempLow = round(item.temperatureMin);
-            dailyItem.precipitation = round(item.precipProbability*100);
-            dailyItem.windSpeed = round(item.windSpeed);
-            dailyItem.windDirection = getDirectionFromDeg(item.windBearing);
+                dailyItem.dayOfWeek = getDayOfWeek(time);
+                dailyItem.formattedDate = getFormattedDate(time);
+                dailyItem.formattedDateHourly = getFormattedDateHourly(time);
+                dailyItem.icon = item.icon;
+                dailyItem.temp = round(item.temperatureMax);
+                dailyItem.tempHigh = round(item.temperatureMax);
+                dailyItem.tempLow = round(item.temperatureMin);
+                dailyItem.precipitation = round(item.precipProbability*100);
+                dailyItem.windSpeed = round(item.windSpeed);
+                dailyItem.windDirection = getDirectionFromDeg(item.windBearing);
 
-            dailyList.push(dailyItem);
+                dailyList.push(dailyItem);
+            }
         });
     }
     transformedData.daily = dailyList;

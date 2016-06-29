@@ -19,19 +19,16 @@ class WeatherContainer extends React.Component {
     }
 
     render() {
-        const {isLoading} = this.props;
+        const {isLoading, dailyWeather, unitTemp, unitSpeed} = this.props;
         return (
             <div className="forecast-table">
                 <div className="container">
                     {isLoading ? <LoadingIndicator /> : ''}
                     <div className="forecast-container">
                         <CurrentWeather {...this.props} />
-                        <WeatherForecastItem />
-                        <WeatherForecastItem />
-                        <WeatherForecastItem />
-                        <WeatherForecastItem />
-                        <WeatherForecastItem />
-                        <WeatherForecastItem />
+                        {dailyWeather.map((item, index) =>
+                            <WeatherForecastItem key={index} item={item} unitTemp={unitTemp} unitSpeed={unitSpeed} />
+                        )}
                     </div>
                 </div>
             </div>
