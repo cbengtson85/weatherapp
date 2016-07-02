@@ -12,6 +12,6 @@ const locationsInitialState = {
     savedSelectedLocations : {}
 };
 
-const weatherInitialState = {...constants.WEATHER_RESPONSE_FORMAT, loading : false};
+const weatherInitialState = {...constants.WEATHER_RESPONSE_FORMAT, loading : false, currentUnit : 'F', currentWeatherCoordinates : ''};
 
 export {locationsInitialState, weatherInitialState};

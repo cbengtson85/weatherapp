@@ -12,14 +12,14 @@ class HomeContent extends React.Component {
     render() {
         let weatherCoordinates;
         if(this.props.params.search == undefined || this.props.params.search == '')
-            weatherCoordinates = '29.76328_-95.36327';
+            weatherCoordinates = null;
         else
             weatherCoordinates = this.props.params.search;
 
         return (
             <main className="main-content">
                 <LocationSearchContainer />
-                <WeatherContainer weatherCoordinates={weatherCoordinates} />
+                {weatherCoordinates != null && weatherCoordinates != undefined ? <WeatherContainer weatherCoordinates={weatherCoordinates} /> : ''}
                 <HomeStatic />
             </main>
         )

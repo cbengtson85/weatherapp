@@ -8,13 +8,13 @@ import * as ACTIONS from 'app/actions';
 
 class WeatherContainer extends React.Component {
     componentWillMount() {
-        const {dispatch, weatherCoordinates} = this.props;
-        dispatch(ACTIONS.getWeatherData(weatherCoordinates));
+        const {dispatch, weatherCoordinates, currentUnit} = this.props;
+        dispatch(ACTIONS.getWeatherData(weatherCoordinates, currentUnit));
     }
     componentWillReceiveProps(nextProps) {
         if(nextProps.weatherCoordinates != this.props.weatherCoordinates) {
             const {dispatch} = this.props;
-            dispatch(ACTIONS.getWeatherData(nextProps.weatherCoordinates));
+            dispatch(ACTIONS.getWeatherData(nextProps.weatherCoordinates, nextProps.currentUnit));
         }
     }
 
@@ -45,6 +45,7 @@ WeatherContainer.propTypes = {
     dailyWeather : React.PropTypes.array,
     hourlyWeather : React.PropTypes.array,
     savedSelectedLocations : React.PropTypes.object,
+    currentUnit : React.PropTypes.string,
     dispatch : React.PropTypes.func.isRequired
 };
 
@@ -57,7 +58,8 @@ const mapStateToProps = state => {
         hourlyWeather : weather.hourly,
         unitTemp : weather.unitTemp,
         unitSpeed : weather.unitSpeed,
-        savedSelectedLocations : locations.savedSelectedLocations
+        savedSelectedLocations : locations.savedSelectedLocations,
+        currentUnit : weather.currentUnit
     }
 };
 

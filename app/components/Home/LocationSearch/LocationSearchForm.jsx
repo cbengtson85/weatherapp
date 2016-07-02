@@ -4,6 +4,7 @@ import React from 'react';
 import {push} from 'react-router-redux';
 
 import {InputSubmit, AjaxSpinner, ClearIcon} from 'app/components/Common';
+import {UnitSelectors} from 'app/components/Home/LocationSearch';
 import * as ACTIONS from 'app/actions';
 
 class LocationSearchForm extends React.Component  {
@@ -51,7 +52,7 @@ class LocationSearchForm extends React.Component  {
     }
 
     render() {
-        const {searchTermLength} = this.props;
+        const {searchTermLength, currentUnit} = this.props;
         return (
             <form action="/" className="find-location" onSubmit={e => this.handleSubmit(e)}>
                 <input id="search-input" autoComplete="off" autoFocus onKeyDown={e => this.handleSearchKeyUp(e)}
@@ -60,6 +61,8 @@ class LocationSearchForm extends React.Component  {
                 {this.props.isLoading ? <span className="search-loader"><AjaxSpinner height="40" cssClass="vertical-center" /></span> : ''}
                 {this.props.searchTermLength > 0 && !this.props.isLoading ?
                     <a href="#" className="clear-field" onClick={e => this.handleClear(e)}><ClearIcon height="20" /></a> : ''}
+
+                <UnitSelectors {...this.props} />
                 <InputSubmit value="Find" />
             </form>
 

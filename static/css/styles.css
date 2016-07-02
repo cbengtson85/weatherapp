@@ -1854,13 +1854,13 @@ form textarea {
 
 .search-loader {
     position: absolute;
-    right: 120px;
+    right: 190px;
     height: 100%;
 }
 
 .clear-field {
     position: absolute;
-    right: 125px;
+    right: 195px;
     height: 100%;
 }
 
@@ -1899,13 +1899,76 @@ div.container {
     font-size: 2em;
 }
 
+.unit-selector-container {
+    position: absolute;
+    font-size: 1.5em;
+    right: 120px;
+    top: 0;
+    color: #009ad8;
+    height: 100%;
+}
+
+.unit-selector {
+    border: 1px solid #009ad8;
+    border-radius: 5px;
+}
+
+.unit-selector div {
+    cursor: pointer;
+    display: inline-block;
+    padding: 2px 0;
+    width: 30px;
+    text-align: center;
+}
+
+.unit-selector .unit-selected {
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #009ad8;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .location-suggestions, .find-location input[type="text"] {
+        font-size: 1.5em;
+    }
+
+    .find-location input[type="submit"] {
+        padding: 0 35px;
+    }
+
+    .unit-selector-container {
+        right: 110px;
+        font-size: 1.3em;
+    }
+
+    .search-loader {
+        right: 180px;
+    }
+
+    .clear-field {
+        right: 185px;
+    }
+}
+
 @media (max-width: 767px) {
     .location-suggestions, .find-location input[type="text"] {
         font-size: 1.2em;
     }
-}
-@media (min-width: 768px) and (max-width: 991px) {
-    .location-suggestions, .find-location input[type="text"] {
-        font-size: 1.5em;
+
+    .find-location input[type="submit"] {
+        padding: 0 30px;
+    }
+
+    .unit-selector-container {
+        right: 100px;
+        font-size: 1.1em;
+    }
+
+    .search-loader {
+        right: 170px;
+    }
+
+    .clear-field {
+        right: 175px;
     }
 }

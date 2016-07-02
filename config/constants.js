@@ -28,6 +28,7 @@ exports.LOCATION_RESULT_FORMAT = {
 exports.LOCATION_SEARCH_ENDPOINT = '/api/location-search/';
 exports.MIN_SEARCH_LENGTH = 3;
 exports.API_REQUESTS_COLLECTION = 'apiRequests';
+exports.MAX_FORECAST_DAYS = 6;
 exports.WEATHER_DATA_FORMAT = {
     dayOfWeek : '',
     formattedDate : '',

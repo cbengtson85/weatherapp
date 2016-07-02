@@ -56,4 +56,5 @@ const getLocations = searchVal => {
     }
 };
 
+
 export {getLocations, clearSearchResults, moveHighlighted, mouseHighlight};

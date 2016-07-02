@@ -21,9 +21,15 @@ const sendWeatherDataError = (response, res) => {
 const buildWeatherEndpoint = (lat, long, units) => {
     let unit = units;
     if(typeof units == 'undefined' || units == '')
+        unit = 'us';
+    else if(units == 'F')
+        unit = 'us';
+    else {
         unit = 'ca';
+    }
+
     return config.weatherServiceEndpoint + config.weatherServiceKey + '/' + lat + ',' + long + '?units='
-        + units + '&exclude=minutely,flags';
+        + unit + '&exclude=minutely,flags';
 };
 
 const makeWeatherRequest = (req, res, q, units) => {

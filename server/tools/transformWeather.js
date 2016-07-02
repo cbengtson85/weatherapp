@@ -10,14 +10,14 @@ const dateFormat = require('dateformat');
 const getDirectionFromDeg = require('server/tools').getDirectionFromDeg;
 
 const getUnitTemp = units => {
-    if(units == 'us')
+    if(units == undefined)
         return 'F';
     else
-        return 'C';
+        return units;
 };
 
 const getUnitSpeed = units => {
-    if(units == 'us')
+    if(units == 'F')
         return 'mph';
     else
         return 'km/h';
@@ -88,7 +88,7 @@ module.exports = (data, units) => {
             if(index == 0) {
                 transformedData.current.tempHigh = round(item.temperatureMax);
                 transformedData.current.tempLow = round(item.temperatureMin);
-            } else {
+            } else if(index <= constants.MAX_FORECAST_DAYS) {
                 let dailyItem = Object.assign({}, constants.WEATHER_DATA_FORMAT);
                 const time = new Date(item.time*1000);
 

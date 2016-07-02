@@ -7,17 +7,20 @@ const constants = require('config/constants');
 
 export const REQUEST_WEATHER= 'REQUEST_WEATHER';
 export const RECEIVE_WEATHER= 'RECEIVE_WEATHER';
+export const SELECT_UNIT = 'SELECT_UNIT';
 
-const requestWeather = actionCreator(REQUEST_WEATHER, 'coordinates');
+const requestWeather = actionCreator(REQUEST_WEATHER, 'coordinates', 'unit');
 const receiveWeather = actionCreator(RECEIVE_WEATHER, 'coordinates', 'response');
+const selectUnitAction = actionCreator(SELECT_UNIT, 'unit');
 
-const weatherRequest = (state, coordinates) => {
+
+const weatherRequest = (state, coordinates, unit) => {
     return dispatch => {
         $.ajax({
             type : 'get',
-            url : constants.WEATHER_DATA_ENDPOINT + encodeURI(coordinates) + '?units=us',
+            url : constants.WEATHER_DATA_ENDPOINT + encodeURI(coordinates) + '?units=' + unit,
             beforeSend : function() {
-                dispatch(requestWeather(coordinates));
+                dispatch(requestWeather(coordinates, unit));
             }
         }).done(function(responseObj) {
             if(responseObj.current == null) {
@@ -31,10 +34,20 @@ const weatherRequest = (state, coordinates) => {
     }
 };
 
-const getWeatherData = coordinates => {
+const getWeatherData = (coordinates, unit) => {
     return (dispatch, getState) => {
-        return dispatch(weatherRequest(getState(), coordinates));
+        return dispatch(weatherRequest(getState(), coordinates, unit));
     }
 };
 
-export {getWeatherData};
+const selectUnit = unit => {
+    return (dispatch, getState) => {
+        const state = getState();
+        if(state.weather.currentWeatherCoordinates != undefined && state.weather.currentWeatherCoordinates != '')
+            return dispatch(getWeatherData(state.weather.currentWeatherCoordinates, unit));
+        else
+            return dispatch(selectUnitAction(unit));
+    }
+}
+
+export {getWeatherData, selectUnit, selectUnitAction};
