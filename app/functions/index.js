@@ -16,5 +16,19 @@ const actionCreator = (type, ...argNames) => {
     }
 };
 
+const getUnitFromStorage = () => {
+    let unit = 'F'
+    try {
+        unit = localStorage.getItem('unit');
+        if(unit == null || unit == undefined || unit == '')
+            return 'F';
+        else {
+            return unit;
+        }
+    } catch(e) {
+        return unit;
+    }
+}
 
-export {slideToggle, actionCreator};
+
+export {slideToggle, actionCreator, getUnitFromStorage};

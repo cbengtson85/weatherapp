@@ -1,6 +1,7 @@
 'use strict'
 
 const constants = require('config/constants');
+import {getUnitFromStorage} from 'app/functions';
 
 const locationsInitialState = {
     jqXhr : null,
@@ -12,6 +13,6 @@ const locationsInitialState = {
     savedSelectedLocations : {}
 };
 
-const weatherInitialState = {...constants.WEATHER_RESPONSE_FORMAT, loading : false, currentUnit : 'F', currentWeatherCoordinates : ''};
+const weatherInitialState = {...constants.WEATHER_RESPONSE_FORMAT, loading : false, currentUnit : getUnitFromStorage(), currentWeatherCoordinates : ''};
 
 export {locationsInitialState, weatherInitialState};
