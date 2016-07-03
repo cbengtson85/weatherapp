@@ -35,7 +35,7 @@ const CurrentWeather = ({currentWeather, unitTemp, unitSpeed, selectedLocation, 
                 <div className="degree">
                     <div className="num">{temp}<sup>o</sup>{unitTemp}</div>
                     <div className="forecast-icon">
-                        <img src={"/img/icons/" + icon + ".svg"} alt="" width="90" />
+                        {icon != undefined ? <img src={"/img/icons/" + icon + ".svg"} alt="" width="90" /> : ''}
                     </div>
                 </div>
                 <span><img src="/img/icon-umberella.png" alt="" />{precipitation}%</span>

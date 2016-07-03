@@ -1927,6 +1927,17 @@ div.container {
     background-color: #009ad8;
 }
 
+.extended-details {
+    margin-top: 5px;
+}
+
+.extended-details img {
+    margin-right: 5px;
+    vertical-align: middle;
+    height: 15px;
+    font-size: .9em;
+}
+
 @media (min-width: 768px) and (max-width: 991px) {
     .location-suggestions, .find-location input[type="text"] {
         font-size: 1.5em;

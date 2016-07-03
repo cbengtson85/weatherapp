@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-const WeatherForecastItem = ({item, unitTemp}) => {
+const WeatherForecastItem = ({item, unitTemp, unitSpeed}) => {
 
     return (
         <div className="forecast">
@@ -16,6 +16,12 @@ const WeatherForecastItem = ({item, unitTemp}) => {
                 </div>
                 <div className="degree">{item.tempHigh}<sup>o</sup>{unitTemp}</div>
                 <small>{item.tempLow}<sup>o</sup>{unitTemp}</small>
+                <div className="extended-details">
+                    <span classname=""><img src="/img/icon-umberella.png" alt="" />{item.precipitation}%</span>
+                </div>
+                <div className="extended-details">
+                    <span><img src="/img/icon-wind.png" alt="" />{item.windSpeed}{unitSpeed}</span>
+                </div>
             </div>
         </div>
     )
