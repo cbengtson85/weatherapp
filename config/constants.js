@@ -10,6 +10,10 @@ exports.Q = 'q';
 exports.POSTAL_CODE_STARTSWITH = 'postalcode_startsWith';
 exports.POSTAL_CODE = 'postalcode';
 exports.COUNTRY_BIAS = 'countryBias';
+exports.STYLE = 'style';
+exports.STYLE_VALUE = 'FULL';
+exports.LATITUDE = 'lat';
+exports.LONGITUDE = 'lng';
 exports.LOCATION_RESPONSE_FORMAT = {
     results : []
 };
@@ -26,6 +30,15 @@ exports.LOCATION_RESULT_FORMAT = {
     latitude : ''
 };
 exports.LOCATION_SEARCH_ENDPOINT = '/api/location-search/';
+exports.PLACE_NAME_RESPONSE_FORMAT = {
+    id : '',
+    city : '',
+    state : '',
+    countryCode : '',
+    country : '',
+    formattedAddressForDisplay : ''
+};
+exports.WEATHER_DATA_ENDPOINT = '/api/place-name-search/';
 exports.MIN_SEARCH_LENGTH = 3;
 exports.API_REQUESTS_COLLECTION = 'apiRequests';
 exports.MAX_FORECAST_DAYS = 6;

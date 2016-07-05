@@ -3,7 +3,7 @@
 const axios = require('axios');
 const config = require('config');
 const constants = require('config/constants');
-const transformLocation = require('server/tools').transformLocation;
+const transformLocation = require('server/transform').transformLocation;
 const logLocationApiRequest = require('server/tools').logApiRequests.logLocationApiRequest;
 
 const axiosInstance = axios.create({timeout : config.locationServiceTimeout});
@@ -15,7 +15,7 @@ const sendLocationsListSuccess = (response, res, type) => {
 const sendLocationsListError = (response, res) => {
     console.log('LOCATION API ERROR');
     console.log(response);
-    res.json({});
+    res.json(constants.LOCATION_RESPONSE_FORMAT);
 };
 
 const isCanadaPostalCode = postal => {

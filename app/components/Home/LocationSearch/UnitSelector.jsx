@@ -1,16 +1,16 @@
 'use strict'
 
 import React from 'react';
-import {Link} from 'react-router';
 
 import * as ACTIONS from 'app/actions';
+import {setLocalStorageItem} from 'app/functions';
 
 const UnitSelector = ({unit, currentUnit, dispatch}) => {
     let isSelected = currentUnit == unit ? true : false;
     const updateUnit = u => {
         if(u != currentUnit) {
             dispatch(ACTIONS.selectUnit(u));
-            localStorage.setItem('unit', u);
+            setLocalStorageItem('unit', u);
         }
     }
     return (

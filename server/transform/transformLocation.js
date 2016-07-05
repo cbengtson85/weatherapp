@@ -7,35 +7,10 @@
 
 const constants = require('config/constants');
 const countryCodes = require('config/countryCodes');
+const getFormattedAddressForList = require('server/tools').getFormattedAddressForList;
+const getFormattedAddressForDisplay = require('server/tools').getFormattedAddressForDisplay;
 
 const generateId = item => item.latitude + '_' + item.longitude;
-
-const getFormattedAddressForList = item => {
-    let formatted = item.city;
-    if(item.countryCode == 'US') {
-        if(item.city == item.state)
-            return item.state;
-        formatted += ', ' + item.state;
-        return formatted;
-    }
-    if(item.city == item.state && item.state == item.country)
-        return formatted;
-    if(item.city == item.state) {
-        formatted += ', ' + item.country;
-        return formatted;
-    }
-    if(item.state == item.country) {
-        formatted += ', ' + item.country;
-        return formatted;
-    }
-    formatted += ', ' + item.state + ', ' + item.country;
-
-    return formatted;
-};
-
-const getFormattedAddressForDisplay = item => {
-    return getFormattedAddressForList(item);
-};
 
 const buildWeatherRouteUrl = (formatted, item) => {
     const formatted2 = formatted.replace(/\s+/g, '-');
@@ -68,7 +43,7 @@ const transformLocationSearch = data => {
     let transformedData = Object.assign({}, constants.LOCATION_RESPONSE_FORMAT);
     let results = [];
     let resourceList = data.geonames;
-    if(typeof resourceList && resourceList.length > 0) {
+    if(typeof resourceList != 'undefined' && resourceList.length > 0) {
         resourceList.map((resource, index) => {
             let item = Object.assign({}, constants.LOCATION_RESULT_FORMAT);
 
@@ -97,7 +72,7 @@ const transformLocationPostal = data => {
     let transformedData = Object.assign({}, constants.LOCATION_RESPONSE_FORMAT);
     let results = [];
     let resourceList = data.postalCodes;
-    if(typeof resourceList && resourceList.length > 0) {
+    if(typeof resourceList != 'undefined' && resourceList.length > 0) {
 
         resourceList.map((resource, index) => {
             let item = Object.assign({}, constants.LOCATION_RESULT_FORMAT);

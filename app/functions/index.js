@@ -16,6 +16,12 @@ const actionCreator = (type, ...argNames) => {
     }
 };
 
+const setLocalStorageItem = (key, value) => {
+    try {
+        localStorage.setItem(key, value);
+    } catch(e) {}
+}
+
 const getUnitFromStorage = () => {
     let unit = 'F'
     try {
@@ -31,4 +37,4 @@ const getUnitFromStorage = () => {
 }
 
 
-export {slideToggle, actionCreator, getUnitFromStorage};
+export {slideToggle, actionCreator, getUnitFromStorage, setLocalStorageItem};

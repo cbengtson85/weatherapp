@@ -3,7 +3,7 @@
 const axios = require('axios');
 const config = require('config');
 const constants = require('config/constants');
-const transformWeather = require('server/tools').transformWeather;
+const transformWeather = require('server/transform').transformWeather;
 const logWeatherApiRequest = require('server/tools').logApiRequests.logWeatherApiRequest;
 
 const axiosInstance = axios.create({timeout : config.weatherServiceTimeout});
