@@ -4,6 +4,26 @@ import * as ACTIONS from 'app/actions';
 import {weatherInitialState} from 'app/store';
 import {LOCATION_CHANGE} from 'react-router-redux';
 
+import {setLocalStorageItem} from 'app/functions';
+const constants = require('config/constants');
+
+const updateViewedLocations = state => {
+    let locations = state.viewedLocations.slice();
+    let coordinates = state.currentWeatherCoordinates;
+    if(locations.indexOf(coordinates) < 0) {
+        locations.push(coordinates);
+        if(locations.length > constants.MAX_STORED_LOCATIONS) {
+            locations.splice(0, 1);
+        }
+    } else {
+        let index = locations.indexOf(coordinates);
+        locations.splice(index, 1);
+        locations.push(coordinates);
+    }
+    setLocalStorageItem(constants.VIEWED_LOCATIONS, locations.toString());
+    return locations;
+}
+
 const weather = (state = weatherInitialState, action) => {
     switch (action.type) {
         case ACTIONS.SELECT_UNIT:
@@ -11,7 +31,7 @@ const weather = (state = weatherInitialState, action) => {
         case ACTIONS.REQUEST_WEATHER:
             return {...state, loading : true, currentWeatherCoordinates : action.coordinates, currentUnit : action.unit};
         case ACTIONS.RECEIVE_WEATHER:
-            const newState = {...action.response, loading : false};
+            const newState = {...action.response, loading : false, viewedLocations : updateViewedLocations(state)};
             return {...state, ...newState};
         case LOCATION_CHANGE:
             if(action.payload.pathname == undefined || action.payload.pathname.indexOf('/weather/') < 0)

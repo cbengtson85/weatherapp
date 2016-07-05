@@ -3,7 +3,7 @@
 import React from 'react';
 
 import * as ACTIONS from 'app/actions';
-import {setLocalStorageItem, getLocalStorageItem} from 'app/functions';
+import {setLocalStorageItem, getLocalStorageItem, getNameFromStorage} from 'app/functions';
 
 class CurrentWeather extends React.Component {
     componentDidMount() {
@@ -11,7 +11,6 @@ class CurrentWeather extends React.Component {
         if(Object.keys(savedSelectedLocations).length < 1 && getLocalStorageItem(weatherCoordinates) == undefined)
             dispatch(ACTIONS.getPlaceName(weatherCoordinates));
     }
-
 
     render() {
         const {displayNameFromStorage, currentWeather, unitTemp, unitSpeed, selectedLocation, weatherCoordinates, savedSelectedLocations} = this.props;
@@ -35,14 +34,14 @@ class CurrentWeather extends React.Component {
         let ssl = savedSelectedLocations[weatherCoordinates];
         if(ssl != undefined) {
             formattedAddressForDisplay = ssl.formattedAddressForDisplay;
-            setLocalStorageItem(weatherCoordinates, formattedAddressForDisplay);
+            setLocalStorageItem(weatherCoordinates, JSON.stringify({name : formattedAddressForDisplay, url : ssl.formattedAddressForUrl}));
+        } else {
+            let displayName = getNameFromStorage(weatherCoordinates);
+            if(displayName == undefined && ssl == undefined)
+                formattedAddressForDisplay = displayNameFromStorage;
+            else if(ssl == undefined)
+                formattedAddressForDisplay = displayName;
         }
-        let displayName = getLocalStorageItem(weatherCoordinates);
-        if(displayName == undefined && ssl == undefined)
-            formattedAddressForDisplay = displayNameFromStorage;
-        else if(ssl == undefined)
-            formattedAddressForDisplay = displayName;
-
         return (
             <div className="today forecast">
                 <div className="forecast-header">

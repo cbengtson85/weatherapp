@@ -1,5 +1,7 @@
 'use strict'
 
+const constants = require('config/constants');
+
 const slideToggle = selector => {
     $(selector).slideToggle();
 };
@@ -28,6 +30,16 @@ const getLocalStorageItem = key => {
     } catch(e) {}
 }
 
+const getNameFromStorage = coordinates => {
+    let item = getLocalStorageItem(coordinates);
+    let name = '';
+    if(item != undefined) {
+        let obj = JSON.parse(item);
+        name = obj.name;
+    }
+    return name;
+}
+
 const getUnitFromStorage = () => {
     let unit = 'F'
     try {
@@ -42,5 +54,12 @@ const getUnitFromStorage = () => {
     }
 }
 
+const getViewedLocations = () => {
+    let locations = getLocalStorageItem(constants.VIEWED_LOCATIONS);
+    if(locations == undefined)
+        return [];
+    return locations.split(',');
+}
 
-export {slideToggle, actionCreator, getUnitFromStorage, setLocalStorageItem, getLocalStorageItem};
+export {slideToggle, actionCreator, getUnitFromStorage, setLocalStorageItem, getLocalStorageItem,
+    getNameFromStorage, getViewedLocations};

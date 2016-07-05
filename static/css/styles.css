@@ -1938,6 +1938,25 @@ div.container {
     font-size: .9em;
 }
 
+.recent-locations-container {
+    position: relative;
+    top: -35px;
+}
+
+.recent-locations-container a {
+    color: #bfc1c8;
+    padding: 10px;
+    margin-right: 5px;
+    border: 3px solid #009ad8;
+    border-radius: 20px;
+    background-color: #1e202b;
+}
+
+.recent-locations-container a:hover {
+    color: #ffffff;
+    background-color: #009ad8;
+}
+
 @media (min-width: 768px) and (max-width: 991px) {
     .location-suggestions, .find-location input[type="text"] {
         font-size: 1.5em;

@@ -5,6 +5,6 @@ import LocationSuggestions from 'app/components/Home/LocationSearch/LocationSugg
 import LocationSearchForm from 'app/components/Home/LocationSearch/LocationSearchForm.jsx';
 import UnitSelector from 'app/components/Home/LocationSearch/UnitSelector.jsx';
 import UnitSelectors from 'app/components/Home/LocationSearch/UnitSelectors.jsx';
+import ViewedLocations from 'app/components/Home/LocationSearch/ViewedLocations.jsx';
 
-
-export {LocationSearchContainer, LocationSuggestions, LocationSearchForm, UnitSelector, UnitSelectors};
+export {LocationSearchContainer, LocationSuggestions, LocationSearchForm, UnitSelector, UnitSelectors, ViewedLocations};

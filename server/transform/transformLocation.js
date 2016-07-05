@@ -9,35 +9,9 @@ const constants = require('config/constants');
 const countryCodes = require('config/countryCodes');
 const getFormattedAddressForList = require('server/tools').getFormattedAddressForList;
 const getFormattedAddressForDisplay = require('server/tools').getFormattedAddressForDisplay;
+const getFormattedAddressForUrl = require('server/tools').getFormattedAddressForUrl;
 
 const generateId = item => item.latitude + '_' + item.longitude;
-
-const buildWeatherRouteUrl = (formatted, item) => {
-    const formatted2 = formatted.replace(/\s+/g, '-');
-    return '/weather/' + formatted2 + '/' + item.latitude + '_' + item.longitude;
-}
-
-const getFormattedAddressForUrl = item => {
-    let formatted = item.city;
-    if(item.countryCode == 'US') {
-        if(item.city == item.state)
-            return buildWeatherRouteUrl(item.state, item);
-        formatted += ' ' + item.state;
-        return buildWeatherRouteUrl(formatted, item);
-    }
-    if(item.city == item.state && item.state == item.country)
-        return buildWeatherRouteUrl(formatted, item);
-    if(item.city == item.state) {
-        formatted += ' ' + item.country;
-        return buildWeatherRouteUrl(formatted, item);
-    }
-    if(item.state == item.country) {
-        formatted += ' ' + item.country;
-        return buildWeatherRouteUrl(formatted, item);
-    }
-    formatted += ' ' + item.state + ' ' + item.country;
-    return buildWeatherRouteUrl(formatted, item);
-}
 
 const transformLocationSearch = data => {
     let transformedData = Object.assign({}, constants.LOCATION_RESPONSE_FORMAT);

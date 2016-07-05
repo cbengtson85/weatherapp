@@ -14,6 +14,7 @@ exports.STYLE = 'style';
 exports.STYLE_VALUE = 'FULL';
 exports.LATITUDE = 'lat';
 exports.LONGITUDE = 'lng';
+exports.VIEWED_LOCATIONS = 'viewedLocations';
 exports.LOCATION_RESPONSE_FORMAT = {
     results : []
 };
@@ -63,3 +64,4 @@ exports.WEATHER_RESPONSE_FORMAT = {
     daily : []
 };
 exports.WEATHER_DATA_ENDPOINT = '/api/weather-data/';
+exports.MAX_STORED_LOCATIONS = 7;
