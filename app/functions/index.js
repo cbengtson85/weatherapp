@@ -22,10 +22,16 @@ const setLocalStorageItem = (key, value) => {
     } catch(e) {}
 }
 
+const getLocalStorageItem = key => {
+    try {
+        return localStorage.getItem(key);
+    } catch(e) {}
+}
+
 const getUnitFromStorage = () => {
     let unit = 'F'
     try {
-        unit = localStorage.getItem('unit');
+        unit = getLocalStorageItem('unit');
         if(unit == null || unit == undefined || unit == '')
             return 'F';
         else {
@@ -37,4 +43,4 @@ const getUnitFromStorage = () => {
 }
 
 
-export {slideToggle, actionCreator, getUnitFromStorage, setLocalStorageItem};
+export {slideToggle, actionCreator, getUnitFromStorage, setLocalStorageItem, getLocalStorageItem};

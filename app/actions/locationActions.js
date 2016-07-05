@@ -1,6 +1,8 @@
 'use strict'
 
 import {actionCreator} from 'app/functions';
+
+import {setLocalStorageItem} from 'app/functions';
 const constants = require('config/constants');
 
 export const REQUEST_LOCATIONS = 'REQUEST_LOCATIONS';
@@ -9,6 +11,7 @@ export const GET_CACHED_LOCATIONS = 'GET_CACHED_LOCATIONS';
 export const CLEAR_SEARCH_RESULTS = 'CLEAR_SEARCH_RESULTS';
 export const MOVE_HIGHLIGHTED = 'MOVE_HIGHLIGHTED';
 export const MOUSE_HIGHLIGHT = 'MOUSE_HIGHLIGHT';
+export const RECEIVE_PLACE_NAME_DATA = 'RECEIVE_PLACE_NAME_DATA';
 
 const requestLocations = actionCreator(REQUEST_LOCATIONS, 'searchVal', 'jqXhr');
 const receiveLocations = actionCreator(RECEIVE_LOCATIONS, 'searchVal', 'response');
@@ -16,6 +19,7 @@ const getCachedLocations = actionCreator(GET_CACHED_LOCATIONS, 'searchVal');
 const clearSearchResults = actionCreator(CLEAR_SEARCH_RESULTS, 'searchVal');
 const moveHighlighted = actionCreator(MOVE_HIGHLIGHTED, 'direction');
 const mouseHighlight = actionCreator(MOUSE_HIGHLIGHT, 'index');
+const receivePlaceName = actionCreator(RECEIVE_PLACE_NAME_DATA, 'addressDisplayName');
 
 const locationRequestNeeded = (state, searchVal) => {
     if(!state.locations.locationsList[searchVal])
@@ -56,5 +60,16 @@ const getLocations = searchVal => {
     }
 };
 
+const getPlaceName = coordinates => {
+    return (dispatch, getState) => {
+        $.ajax({
+            type : 'get',
+            url : constants.PLACE_NAME_ENDPOINT + encodeURI(coordinates),
+        }).done(function(responseObj) {
+            setLocalStorageItem(coordinates, responseObj.formattedAddressForDisplay);
+            dispatch(receivePlaceName(responseObj.formattedAddressForDisplay));
+        });
+    }
+};
 
-export {getLocations, clearSearchResults, moveHighlighted, mouseHighlight};
+export {getLocations, clearSearchResults, moveHighlighted, mouseHighlight, getPlaceName};

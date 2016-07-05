@@ -70,6 +70,8 @@ const locations = (state = locationsInitialState, action) => {
         case ACTIONS.MOUSE_HIGHLIGHT:
             let newStateMouse = {...state, currentSuggestionIndex : action.index};
             return {...newStateMouse, selectedLocation : getSelectedLocation(newStateMouse)};
+        case ACTIONS.RECEIVE_PLACE_NAME_DATA:
+            return {...state, displayNameFromStorage : action.addressDisplayName};
         default:
             return state;
     }

@@ -10,7 +10,8 @@ const locationsInitialState = {
     locationsList : {},
     currentSuggestionIndex : 0,
     selectedLocation : null,
-    savedSelectedLocations : {}
+    savedSelectedLocations : {},
+    displayNameFromStorage : ''
 };
 
 const weatherInitialState = {...constants.WEATHER_RESPONSE_FORMAT, loading : false, currentUnit : getUnitFromStorage(), currentWeatherCoordinates : ''};

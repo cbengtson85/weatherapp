@@ -38,7 +38,7 @@ exports.PLACE_NAME_RESPONSE_FORMAT = {
     country : '',
     formattedAddressForDisplay : ''
 };
-exports.WEATHER_DATA_ENDPOINT = '/api/place-name-search/';
+exports.PLACE_NAME_ENDPOINT = '/api/place-name-search/';
 exports.MIN_SEARCH_LENGTH = 3;
 exports.API_REQUESTS_COLLECTION = 'apiRequests';
 exports.MAX_FORECAST_DAYS = 6;
