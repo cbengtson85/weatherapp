@@ -36,7 +36,7 @@ const getFormattedAddressForDisplay = item => {
 };
 
 const buildWeatherRouteUrl = (formatted, item) => {
-    const formatted2 = formatted.replace(/\s+/g, '-');
+    const formatted2 = formatted.replace(/\s+|\/+/g, '-');
     return '/weather/' + formatted2 + '/' + item.latitude + '_' + item.longitude;
 }
 
