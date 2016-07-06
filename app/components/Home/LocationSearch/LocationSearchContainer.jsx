@@ -15,7 +15,7 @@ class LocationSearchContainer extends React.Component {
         return (
             <div className="hero">
                 <div className="container search-container">
-                    {viewedLocations.length > 0 ? <ViewedLocations viewedLocations={rViewedLocations} /> : ''}
+                    {viewedLocations.length > 0 ? <ViewedLocations {...this.props} viewedLocations={rViewedLocations} /> : ''}
                     <LocationSearchForm {...this.props} />
                     {hasResults ? <LocationSuggestions {...this.props} /> : ''}
                 </div>

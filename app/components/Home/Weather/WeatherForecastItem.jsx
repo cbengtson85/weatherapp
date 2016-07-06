@@ -3,7 +3,6 @@
 import React from 'react';
 
 const WeatherForecastItem = ({item, unitTemp, unitSpeed}) => {
-
     return (
         <div className="forecast">
             <div className="forecast-header">

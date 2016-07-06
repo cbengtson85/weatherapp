@@ -60,7 +60,7 @@ class LocationSearchForm extends React.Component  {
                     value={this.props.searchVal} onChange={e => this.handleChange(e)}/>
                 {this.props.isLoading ? <span className="search-loader"><AjaxSpinner height="40" cssClass="vertical-center" /></span> : ''}
                 {this.props.searchTermLength > 0 && !this.props.isLoading ?
-                    <a href="#" className="clear-field" onClick={e => this.handleClear(e)}><ClearIcon height="20" /></a> : ''}
+                    <a href="#" className="clear-field" onClick={e => this.handleClear(e)}><ClearIcon height="20" cssClass="vertical-center" /></a> : ''}
 
                 <UnitSelectors {...this.props} />
                 <InputSubmit value="Find" />

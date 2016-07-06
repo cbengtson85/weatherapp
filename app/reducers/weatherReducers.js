@@ -8,7 +8,7 @@ import {setLocalStorageItem} from 'app/functions';
 const constants = require('config/constants');
 
 const updateViewedLocations = state => {
-    let locations = state.viewedLocations.slice();
+    let locations = state.viewedLocations.concat();
     let coordinates = state.currentWeatherCoordinates;
     if(locations.indexOf(coordinates) < 0) {
         locations.push(coordinates);
@@ -19,6 +19,16 @@ const updateViewedLocations = state => {
         let index = locations.indexOf(coordinates);
         locations.splice(index, 1);
         locations.push(coordinates);
+    }
+    setLocalStorageItem(constants.VIEWED_LOCATIONS, locations.toString());
+    return locations;
+}
+
+const removeViewedLocation = (state, coordinates) => {
+    let locations = state.viewedLocations.concat();
+    if(locations.indexOf(coordinates) > -1) {
+        let index = locations.indexOf(coordinates);
+        locations.splice(index, 1);
     }
     setLocalStorageItem(constants.VIEWED_LOCATIONS, locations.toString());
     return locations;
@@ -36,6 +46,8 @@ const weather = (state = weatherInitialState, action) => {
         case LOCATION_CHANGE:
             if(action.payload.pathname == undefined || action.payload.pathname.indexOf('/weather/') < 0)
                 return {...state, currentWeatherCoordinates : ''};
+        case ACTIONS.REMOVE_VIEWED_LOCATION:
+            return {...state, viewedLocations : removeViewedLocation(state, action.coordinates)}
         default:
             return state;
     }

@@ -2,9 +2,9 @@
 
 import React from 'react';
 
-const ClearIcon = ({height}) => {
+const ClearIcon = ({height, cssClass}) => {
     return (
-        <img src="/img/clear-x.png" height={height} className="vertical-center" />
+        <img src="/img/clear-x.png" height={height} className={cssClass} />
     )
 };
 

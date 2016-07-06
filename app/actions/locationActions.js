@@ -12,7 +12,6 @@ export const CLEAR_SEARCH_RESULTS = 'CLEAR_SEARCH_RESULTS';
 export const MOVE_HIGHLIGHTED = 'MOVE_HIGHLIGHTED';
 export const MOUSE_HIGHLIGHT = 'MOUSE_HIGHLIGHT';
 export const RECEIVE_PLACE_NAME_DATA = 'RECEIVE_PLACE_NAME_DATA';
-export const STORE_LOCATION_IN_STORAGE = 'STORE_LOCATION_IN_STORAGE';
 
 const requestLocations = actionCreator(REQUEST_LOCATIONS, 'searchVal', 'jqXhr');
 const receiveLocations = actionCreator(RECEIVE_LOCATIONS, 'searchVal', 'response');
@@ -21,7 +20,6 @@ const clearSearchResults = actionCreator(CLEAR_SEARCH_RESULTS, 'searchVal');
 const moveHighlighted = actionCreator(MOVE_HIGHLIGHTED, 'direction');
 const mouseHighlight = actionCreator(MOUSE_HIGHLIGHT, 'index');
 const receivePlaceName = actionCreator(RECEIVE_PLACE_NAME_DATA, 'addressDisplayName');
-const storeLocationInStorage = actionCreator(STORE_LOCATION_IN_STORAGE, 'coordinates', 'addressDisplayName', 'url');
 
 const locationRequestNeeded = (state, searchVal) => {
     if(!state.locations.locationsList[searchVal])
