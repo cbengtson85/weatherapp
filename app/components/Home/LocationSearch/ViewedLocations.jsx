@@ -29,7 +29,7 @@ const UnitSelectors = ({viewedLocations, dispatch}) => {
     return (
         <div className="recent-locations-container">
             {viewedLocations.map((item, index) => {
-                    let obj = getStorageItem(item);console.log(obj);
+                    let obj = getStorageItem(item);
                     if(obj.name != '') {
                         return (
                             <Link key={item} to={obj.url}>{obj.name}<span onClick={e => handleClear(e, item)}><ClearIcon height="20" /></span></Link>
