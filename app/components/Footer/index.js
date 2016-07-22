@@ -1,6 +1,4 @@
 'use strict'
 
-import Footer from 'app/components/Footer/Footer.jsx';
-import SubscribeForm from 'app/components/Footer/SubscribeForm.jsx'
-
-export {Footer, SubscribeForm};
+export {default as Footer} from 'app/components/Footer/Footer.jsx';
+export {default as SubscribeForm} from 'app/components/Footer/SubscribeForm.jsx'

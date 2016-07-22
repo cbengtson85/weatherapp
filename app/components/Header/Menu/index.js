@@ -1,6 +1,4 @@
 'use strict'
 
-import MenuItems from 'app/components/Header/Menu/MenuItems.jsx';
-import MenuItem from 'app/components/Header/Menu/MenuItem.jsx';
-
-export {MenuItem, MenuItems};
+export {default as MenuItems} from 'app/components/Header/Menu/MenuItems.jsx';
+export {default as MenuItem} from 'app/components/Header/Menu/MenuItem.jsx';

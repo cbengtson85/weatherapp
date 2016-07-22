@@ -1,6 +1,4 @@
 'use strict'
 
-import SocialLinks from 'app/components/Social/SocialLinks.jsx';
-import SocialLink from 'app/components/Social/SocialLink.jsx';
-
-export {SocialLink, SocialLinks};
+export {default as SocialLinks} from 'app/components/Social/SocialLinks.jsx';
+export {default as SocialLink} from 'app/components/Social/SocialLink.jsx';

@@ -1,7 +1,6 @@
 'use strict'
 
-import InputSubmit from 'app/components/Common/InputSubmit.jsx';
-import AjaxSpinner from 'app/components/Common/AjaxSpinner.jsx';
-import ClearIcon from 'app/components/Common/ClearIcon.jsx';
-
-export {InputSubmit, AjaxSpinner, ClearIcon};
+export {default as InputSubmit} from 'app/components/Common/InputSubmit.jsx';
+export {default as AjaxSpinner} from 'app/components/Common/AjaxSpinner.jsx';
+export {default as ClearIcon} from 'app/components/Common/ClearIcon.jsx';
+export {default as CurrentLocationIcon} from 'app/components/Common/CurrentLocationIcon.jsx';

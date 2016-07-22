@@ -6,10 +6,7 @@ import {LocationSearchForm, LocationSuggestions, ViewedLocations} from 'app/comp
 
 class LocationSearchContainer extends React.Component {
     render() {
-        let hasResults = false;
-        const {locationsList, viewedLocations} = this.props;
-        if(typeof locationsList != 'undefined' && locationsList.length > 0)
-            hasResults = true;
+        const {viewedLocations} = this.props;
         const rViewedLocations = viewedLocations.concat().reverse();
 
         return (
@@ -17,7 +14,7 @@ class LocationSearchContainer extends React.Component {
                 <div className="container search-container">
                     {viewedLocations.length > 0 ? <ViewedLocations {...this.props} viewedLocations={rViewedLocations} /> : ''}
                     <LocationSearchForm {...this.props} />
-                    {hasResults ? <LocationSuggestions {...this.props} /> : ''}
+                    <LocationSuggestions {...this.props} />
                 </div>
             </div>
         )

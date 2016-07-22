@@ -1,5 +1,3 @@
 'use strict'
 
-import Header from 'app/components/Header/Header.jsx';
-
-export default Header;
+export {default as Header} from 'app/components/Header/Header.jsx';
