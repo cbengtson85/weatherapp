@@ -17,7 +17,7 @@ const LocationSuggestions = ({dispatch, locationsList, currentSuggestionIndex}) 
         <div className="location-suggestions-container">
             <div className="location-suggestions">
                 <ul className="location-suggestions-list">
-                    {locationsList == undefined ? <CurrentLocationItem /> : ''}
+                    {locationsList == undefined ? <CurrentLocationItem dispatch={dispatch} /> : ''}
                     {lList.map((location, index) =>
                         <li key={location.id}>
                             <Link to={location.formattedAddressForUrl} className={index==currentSuggestionIndex ? "suggestion-highlight" : ""}

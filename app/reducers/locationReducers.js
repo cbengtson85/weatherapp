@@ -72,6 +72,13 @@ const locations = (state = locationsInitialState, action) => {
             return {...newStateMouse, selectedLocation : getSelectedLocation(newStateMouse)};
         case ACTIONS.RECEIVE_PLACE_NAME_DATA:
             return {...state, displayNameFromStorage : action.addressDisplayName};
+        case ACTIONS.REQUEST_CURRENT_LOCATION:
+            return {...state, loading : true};
+        case ACTIONS.RECEIVE_CURRENT_LOCATION_SUCCESS:
+            return {...state, loading : false};
+        case ACTIONS.RECEIVE_CURRENT_LOCATION_ERROR:
+            alert(action.errMessage);
+            return {...state, loading : false};
         default:
             return state;
     }

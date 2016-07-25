@@ -2,12 +2,17 @@
 
 import React from 'react';
 import {CurrentLocationIcon} from 'app/components/Common';
+import * as ACTIONS from 'app/actions';
 
-const CurrentLocationItem = () => {
+const CurrentLocationItem = ({dispatch}) => {
+    const handleUseCurrentLocation = e => {
+        e.preventDefault();
+        dispatch(ACTIONS.getCurrentLocation());
+    }
     return (
         <li className="use-current-location">
-            <a href="#" className="suggestion-highlight">
-                <CurrentLocationIcon height="25" cssClass="" />Use My Current Location
+            <a href="#" onClick={e => handleUseCurrentLocation(e)}>
+                <CurrentLocationIcon height="25" cssClass="" /> Use My Current Location
             </a>
         </li>
     )

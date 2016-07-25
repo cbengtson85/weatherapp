@@ -16,7 +16,7 @@ const WeatherForecastItem = ({item, unitTemp, unitSpeed}) => {
                 <div className="degree">{item.tempHigh}<sup>o</sup>{unitTemp}</div>
                 <small>{item.tempLow}<sup>o</sup>{unitTemp}</small>
                 <div className="extended-details">
-                    <span classname=""><img src="/img/icon-umberella.png" alt="" />{item.precipitation}%</span>
+                    <span><img src="/img/icon-umberella.png" alt="" />{item.precipitation}%</span>
                 </div>
                 <div className="extended-details">
                     <span><img src="/img/icon-wind.png" alt="" />{item.windSpeed}{unitSpeed}</span>
