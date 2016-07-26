@@ -73,8 +73,9 @@ const getPlaceName = coordinates => {
             type : 'get',
             url : constants.PLACE_NAME_ENDPOINT + encodeURI(coordinates),
         }).done(function(responseObj) {
-            setLocalStorageItem(coordinates, JSON.stringify({name : responseObj.formattedAddressForDisplay, url : responseObj.formattedAddressForUrl}));
-            dispatch(receivePlaceName(responseObj.formattedAddressForDisplay));
+            let addressDisplayName = responseObj.formattedAddressForDisplay;
+            setLocalStorageItem(coordinates, JSON.stringify({name : addressDisplayName , url : responseObj.formattedAddressForUrl}));
+            dispatch(receivePlaceName(addressDisplayName));
         });
     }
 };

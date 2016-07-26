@@ -6,10 +6,36 @@ import * as ACTIONS from 'app/actions';
 import {setLocalStorageItem, getLocalStorageItem, getNameFromStorage} from 'app/functions';
 
 class CurrentWeather extends React.Component {
+
     componentDidMount() {
         const {savedSelectedLocations, weatherCoordinates, dispatch} = this.props;
         if(Object.keys(savedSelectedLocations).length < 1 && getLocalStorageItem(weatherCoordinates) == undefined)
             dispatch(ACTIONS.getPlaceName(weatherCoordinates));
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if(nextProps.weatherCoordinates != this.props.weatherCoordinates) {
+            const {savedSelectedLocations, weatherCoordinates, dispatch, displayNameFromStorage} = nextProps;
+            if(this.getFormattedDisplayName(weatherCoordinates, savedSelectedLocations, displayNameFromStorage) == '')
+                dispatch(ACTIONS.getPlaceName(weatherCoordinates));
+        }
+    }
+
+    getFormattedDisplayName(coordinates, locations, displayNameFromStorage) {
+        let ssl = locations[coordinates];
+        let formattedAddressForDisplay = '';
+        if(ssl != undefined) {
+            formattedAddressForDisplay = ssl.formattedAddressForDisplay;
+            setLocalStorageItem(coordinates, JSON.stringify({name : formattedAddressForDisplay, url : ssl.formattedAddressForUrl}));
+        } else {
+            let displayName = getNameFromStorage(coordinates);
+            if(displayName == '' && ssl == undefined) {
+                formattedAddressForDisplay = displayNameFromStorage;
+            } else if(ssl == undefined) {
+                formattedAddressForDisplay = displayName;
+            }
+        }
+        return formattedAddressForDisplay;
     }
 
     render() {
@@ -30,18 +56,7 @@ class CurrentWeather extends React.Component {
              windSpeed = currentWeather.windSpeed;
              windDirection = currentWeather.windDirection;
         }
-        let formattedAddressForDisplay;
-        let ssl = savedSelectedLocations[weatherCoordinates];
-        if(ssl != undefined) {
-            formattedAddressForDisplay = ssl.formattedAddressForDisplay;
-            setLocalStorageItem(weatherCoordinates, JSON.stringify({name : formattedAddressForDisplay, url : ssl.formattedAddressForUrl}));
-        } else {
-            let displayName = getNameFromStorage(weatherCoordinates);
-            if(displayName == undefined && ssl == undefined)
-                formattedAddressForDisplay = displayNameFromStorage;
-            else if(ssl == undefined)
-                formattedAddressForDisplay = displayName;
-        }
+        let formattedAddressForDisplay = this.getFormattedDisplayName(weatherCoordinates, savedSelectedLocations, displayNameFromStorage);
         return (
             <div className="today forecast">
                 <div className="forecast-header">
