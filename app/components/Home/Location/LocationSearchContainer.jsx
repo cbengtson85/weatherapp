@@ -2,7 +2,7 @@
 
 import React from 'react';
 import {connect} from 'react-redux';
-import {LocationSearchForm, LocationSuggestions, ViewedLocations} from 'app/components/Home/LocationSearch';
+import {LocationSearchForm, LocationSuggestions, ViewedLocations} from 'app/components/Home/Location';
 
 class LocationSearchContainer extends React.Component {
     render() {

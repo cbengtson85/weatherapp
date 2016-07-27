@@ -69,3 +69,9 @@ exports.GEOLOCATION_OPTIONS = {
   enableHighAccuracy: true,
   timeout: 5000
 };
+exports.SLIDER_OPTIONS = {
+    infinite: false,
+    speed: 400,
+    slidesToScroll: 1,
+    variableWidth: true
+}

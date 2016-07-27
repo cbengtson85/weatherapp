@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-import {UnitSelector} from 'app/components/Home/LocationSearch';
+import {UnitSelector} from 'app/components/Home/Location';
 
 const UnitSelectors = props => {
     return (

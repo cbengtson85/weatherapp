@@ -56,7 +56,7 @@ const getUnitFromStorage = () => {
 
 const getViewedLocations = () => {
     let locations = getLocalStorageItem(constants.VIEWED_LOCATIONS);
-    if(locations == undefined)
+    if(locations == undefined || locations == '')
         return [];
     return locations.split(',');
 }

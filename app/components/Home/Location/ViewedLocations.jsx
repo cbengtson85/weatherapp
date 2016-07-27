@@ -2,14 +2,16 @@
 
 import React from 'react';
 
-import {UnitSelector} from 'app/components/Home/LocationSearch';
+import {UnitSelector} from 'app/components/Home/Location';
 import {Link} from 'react-router';
+const Slider = require('react-slick');
+const constants = require('config/constants');
 
 import {getLocalStorageItem} from 'app/functions';
 import {ClearIcon} from 'app/components/Common';
 import * as ACTIONS from 'app/actions';
 
-const UnitSelectors = ({viewedLocations, dispatch}) => {
+const ViewedLocations = ({viewedLocations, dispatch}) => {
     const getStorageItem = item => {
         let obj = {name : '', url : ''};
         let sItem = getLocalStorageItem(item);
@@ -26,19 +28,26 @@ const UnitSelectors = ({viewedLocations, dispatch}) => {
         dispatch(ACTIONS.removeViewedLocation(coordinates));
     }
 
+    let settings = constants.SLIDER_OPTIONS;
+
     return (
         <div className="recent-locations-container">
-            {viewedLocations.map((item, index) => {
-                    let obj = getStorageItem(item);
-                    if(obj.name != '') {
+            <Slider {...settings}>
+                {viewedLocations.map((item, index) => {
+                        let obj = getStorageItem(item);
+                        let name = obj.name != '' ? obj.name : '';
                         return (
-                            <Link key={item} to={obj.url}>{obj.name}<span onClick={e => handleClear(e, item)}><ClearIcon height="20" /></span></Link>
+                            <div key={item}>
+                                <Link  to={obj.url}>
+                                    {name}<span onClick={e => handleClear(e, item)}><ClearIcon height="20" /></span>
+                                </Link>
+                            </div>
                         )
-                    }
+                    })
                 }
-            )}
+            </Slider>
         </div>
     )
 };
 
-export default UnitSelectors;
+export default ViewedLocations;

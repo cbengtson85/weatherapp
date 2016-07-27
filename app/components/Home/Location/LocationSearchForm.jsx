@@ -4,7 +4,7 @@ import React from 'react';
 import {push} from 'react-router-redux';
 
 import {InputSubmit, AjaxSpinner, ClearIcon} from 'app/components/Common';
-import {UnitSelectors} from 'app/components/Home/LocationSearch';
+import {UnitSelectors} from 'app/components/Home/Location';
 import * as ACTIONS from 'app/actions';
 
 class LocationSearchForm extends React.Component  {

@@ -5,7 +5,7 @@ import {Link} from 'react-router';
 
 const constants = require('config/constants');
 import {mouseHighlight} from 'app/actions';
-import {CurrentLocationItem} from 'app/components/Home/LocationSearch';
+import {CurrentLocationItem} from 'app/components/Home/Location';
 
 const LocationSuggestions = ({dispatch, locationsList, currentSuggestionIndex}) => {
 
