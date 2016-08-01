@@ -64,14 +64,14 @@ exports.WEATHER_RESPONSE_FORMAT = {
     daily : []
 };
 exports.WEATHER_DATA_ENDPOINT = '/api/weather-data/';
-exports.MAX_STORED_LOCATIONS = 7;
+exports.MAX_STORED_LOCATIONS = 10;
 exports.GEOLOCATION_OPTIONS = {
   enableHighAccuracy: true,
   timeout: 5000
 };
 exports.SLIDER_OPTIONS = {
     infinite: false,
-    speed: 400,
+    speed: 300,
     slidesToScroll: 1,
     variableWidth: true
 }

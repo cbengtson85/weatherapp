@@ -35,7 +35,7 @@ const ViewedLocations = ({viewedLocations, dispatch}) => {
             <Slider {...settings}>
                 {viewedLocations.map((item, index) => {
                         let obj = getStorageItem(item);
-                        let name = obj.name != '' ? obj.name : '';
+                        let name = obj.name != '' ? obj.name : item;
                         return (
                             <div key={item}>
                                 <Link  to={obj.url}>
