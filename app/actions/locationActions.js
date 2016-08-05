@@ -16,6 +16,7 @@ export const RECEIVE_PLACE_NAME_DATA = 'RECEIVE_PLACE_NAME_DATA';
 export const REQUEST_CURRENT_LOCATION = 'REQUEST_CURRENT_LOCATION';
 export const RECEIVE_CURRENT_LOCATION_SUCCESS = 'RECEIVE_CURRENT_LOCATION_SUCCESS';
 export const RECEIVE_CURRENT_LOCATION_ERROR = 'RECEIVE_CURRENT_LOCATION_ERROR';
+export const HIDE_LOCATION_ERROR = 'HIDE_LOCATION_ERROR';
 
 const requestLocations = actionCreator(REQUEST_LOCATIONS, 'searchVal', 'jqXhr');
 const receiveLocations = actionCreator(RECEIVE_LOCATIONS, 'searchVal', 'response');
@@ -27,6 +28,7 @@ const receivePlaceName = actionCreator(RECEIVE_PLACE_NAME_DATA, 'addressDisplayN
 const requestCurrentLocation = actionCreator(REQUEST_CURRENT_LOCATION);
 const receiveCurrentLocationSuccess = actionCreator(RECEIVE_CURRENT_LOCATION_SUCCESS, 'coordinates');
 const receiveCurrentLocationError = actionCreator(RECEIVE_CURRENT_LOCATION_ERROR, 'errMessage');
+const hideLocationError = actionCreator(HIDE_LOCATION_ERROR);
 
 const locationRequestNeeded = (state, searchVal) => {
     if(!state.locations.locationsList[searchVal])
@@ -101,4 +103,4 @@ const getCurrentLocation = () => {
     }
 }
 
-export {getLocations, clearSearchResults, moveHighlighted, mouseHighlight, getPlaceName, getCurrentLocation};
+export {getLocations, clearSearchResults, moveHighlighted, mouseHighlight, getPlaceName, getCurrentLocation, hideLocationError};

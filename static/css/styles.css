@@ -2017,6 +2017,20 @@ header.site-header {
     padding: 20px 0;
 }
 
+.main-content {
+    position: relative;
+}
+
+.error-message {
+    position: absolute;
+    top: 0px;
+    background-color: #f54d4d;
+    color: #ffffff;
+    padding: 5px 0;
+    text-align: center;
+    width: 100%;
+}
+
 @media (max-width: 767px) {
     .location-suggestions, .find-location input[type="text"] {
         font-size: 1.2em;

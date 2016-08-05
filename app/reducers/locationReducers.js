@@ -75,10 +75,11 @@ const locations = (state = locationsInitialState, action) => {
         case ACTIONS.REQUEST_CURRENT_LOCATION:
             return {...state, loading : true};
         case ACTIONS.RECEIVE_CURRENT_LOCATION_SUCCESS:
-            return {...state, loading : false};
+            return {...state, currentLocationError : false, loading : false};
         case ACTIONS.RECEIVE_CURRENT_LOCATION_ERROR:
-            alert(action.errMessage);
-            return {...state, loading : false};
+            return {...state, currentLocationError : true, loading : false};
+        case ACTIONS.HIDE_LOCATION_ERROR:
+            return {...state, currentLocationError : false};
         default:
             return state;
     }

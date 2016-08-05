@@ -67,7 +67,7 @@ exports.WEATHER_DATA_ENDPOINT = '/api/weather-data/';
 exports.MAX_STORED_LOCATIONS = 10;
 exports.GEOLOCATION_OPTIONS = {
   enableHighAccuracy: true,
-  timeout: 5000
+  timeout: 7000
 };
 exports.SLIDER_OPTIONS = {
     infinite: false,
@@ -75,3 +75,5 @@ exports.SLIDER_OPTIONS = {
     slidesToScroll: 1,
     variableWidth: true
 }
+exports.CURRENT_LOCATION_ERROR = 'Error determining location, please try again or check location permissions.';
+exports.ERROR_MESSAGE_DISPLAY_TIMEOUT = 5000;

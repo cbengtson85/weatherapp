@@ -11,7 +11,8 @@ const locationsInitialState = {
     currentSuggestionIndex : 0,
     selectedLocation : null,
     savedSelectedLocations : {},
-    displayNameFromStorage : ''
+    displayNameFromStorage : '',
+    currentLocationError : false
 };
 
 const weatherInitialState = {...constants.WEATHER_RESPONSE_FORMAT, loading : false,
