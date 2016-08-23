@@ -2,7 +2,6 @@
 
 import React from 'react';
 
-import {UnitSelector} from 'app/components/Home/Location';
 import {Link} from 'react-router';
 const Slider = require('react-slick');
 const constants = require('config/constants');
@@ -33,7 +32,7 @@ const ViewedLocations = ({viewedLocations, dispatch}) => {
     return (
         <div className="recent-locations-container">
             <Slider {...settings}>
-                {viewedLocations.map((item, index) => {
+                {viewedLocations.map((item) => {
                         let obj = getStorageItem(item);
                         let name = obj.name != '' ? obj.name : item;
                         return (
@@ -48,6 +47,11 @@ const ViewedLocations = ({viewedLocations, dispatch}) => {
             </Slider>
         </div>
     )
+};
+
+ViewedLocations.propTypes = {
+    viewedLocations : React.PropTypes.array,
+    dispatch : React.PropTypes.func.isRequired
 };
 
 export default ViewedLocations;

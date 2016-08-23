@@ -8,4 +8,8 @@ const SocialLink = ({site}) => {
     )
 };
 
+SocialLink.propTypes = {
+    site : React.PropTypes.string
+};
+
 export default SocialLink;

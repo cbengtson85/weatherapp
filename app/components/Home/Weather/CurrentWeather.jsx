@@ -39,7 +39,7 @@ class CurrentWeather extends React.Component {
     }
 
     render() {
-        const {displayNameFromStorage, currentWeather, unitTemp, unitSpeed, selectedLocation, weatherCoordinates, savedSelectedLocations} = this.props;
+        const {displayNameFromStorage, currentWeather, unitTemp, unitSpeed, weatherCoordinates, savedSelectedLocations} = this.props;
         let dayOfWeek;
         let formattedDate;
         let temp;
@@ -78,6 +78,18 @@ class CurrentWeather extends React.Component {
             </div>
         )
     }
+}
+
+CurrentWeather.propTypes = {
+    weatherCoordinates : React.PropTypes.string,
+    currentWeather : React.PropTypes.object,
+    unitTemp : React.PropTypes.string,
+    unitSpeed : React.PropTypes.string,
+    dailyWeather : React.PropTypes.array,
+    savedSelectedLocations : React.PropTypes.object,
+    displayNameFromStorage : React.PropTypes.string,
+    selectedLocation : React.PropTypes.object,
+    dispatch : React.PropTypes.func.isRequired
 };
 
 export default CurrentWeather;

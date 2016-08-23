@@ -16,9 +16,16 @@ module.exports = {
         path : './dist/js',
         filename : '[name]-' + VERSION + '.js'
     },
-    watch : true,
+    //watch : true,
     //devtool : '#source-map',
     module : {
+        preLoaders: [
+            {
+                test: [/\.js$/, /\.es6$/, /\.jsx$/],
+                loader: 'eslint',
+                exclude: /node_modules/
+            }
+        ],
         loaders : [
             {
                 test : [/\.js$/, /\.es6$/, /\.jsx$/],
@@ -47,5 +54,8 @@ module.exports = {
             jQuery: 'jquery'
         }),
         new ExtractTextPlugin('../css/weatherapp-' + VERSION + '.css')
-    ]
+    ],
+    eslint: {
+        configFile : '.eslintrc.json',
+    }
 };

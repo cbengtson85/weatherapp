@@ -8,4 +8,9 @@ const InputSubmit = ({value}) => {
     )
 };
 
+
+InputSubmit.propTypes = {
+    value : React.PropTypes.string
+};
+
 export default InputSubmit;

@@ -26,4 +26,11 @@ const WeatherForecastItem = ({item, unitTemp, unitSpeed}) => {
     )
 };
 
+WeatherForecastItem.propTypes = {
+    unitTemp : React.PropTypes.string,
+    unitSpeed : React.PropTypes.string,
+    item : React.PropTypes.object,
+    dispatch : React.PropTypes.func.isRequired
+};
+
 export default WeatherForecastItem;

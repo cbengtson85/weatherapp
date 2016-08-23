@@ -40,12 +40,15 @@ const weather = (state = weatherInitialState, action) => {
             return {...state, currentUnit : action.unit};
         case ACTIONS.REQUEST_WEATHER:
             return {...state, loading : true, currentWeatherCoordinates : action.coordinates, currentUnit : action.unit};
-        case ACTIONS.RECEIVE_WEATHER:
+        case ACTIONS.RECEIVE_WEATHER: {
             const newState = {...action.response, loading : false, viewedLocations : updateViewedLocations(state)};
             return {...state, ...newState};
+        }
         case LOCATION_CHANGE:
             if(action.payload.pathname == undefined || action.payload.pathname.indexOf('/weather/') < 0)
                 return {...state, currentWeatherCoordinates : ''};
+            else
+                return state;
         case ACTIONS.REMOVE_VIEWED_LOCATION:
             return {...state, viewedLocations : removeViewedLocation(state, action.coordinates)}
         default:

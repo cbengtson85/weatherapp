@@ -8,4 +8,9 @@ const CurrentLocationIcon = ({height, cssClass}) => {
     )
 };
 
+CurrentLocationIcon.propTypes = {
+    height : React.PropTypes.string,
+    cssClass : React.PropTypes.string
+};
+
 export default CurrentLocationIcon;

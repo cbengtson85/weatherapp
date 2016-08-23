@@ -12,4 +12,9 @@ const MenuItem = ({item, page}) => {
     )
 };
 
+MenuItem.propTypes = {
+    item : React.PropTypes.object,
+    page : React.PropTypes.string
+};
+
 export default MenuItem;

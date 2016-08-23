@@ -52,7 +52,6 @@ class LocationSearchForm extends React.Component  {
     }
 
     render() {
-        const {searchTermLength, currentUnit} = this.props;
         return (
             <form action="/" className="find-location" onSubmit={e => this.handleSubmit(e)}>
                 <input id="search-input" autoComplete="off" autoFocus onKeyDown={e => this.handleSearchKeyUp(e)}
@@ -69,5 +68,15 @@ class LocationSearchForm extends React.Component  {
         )
     }
 }
+
+LocationSearchForm.propTypes = {
+    selectedLocation : React.PropTypes.object,
+    searchTermLength : React.PropTypes.number,
+    currentSuggestionIndex : React.PropTypes.number,
+    locationsList : React.PropTypes.array,
+    searchVal : React.PropTypes.string,
+    isLoading : React.PropTypes.bool.isRequired,
+    dispatch : React.PropTypes.func.isRequired
+};
 
 export default LocationSearchForm;

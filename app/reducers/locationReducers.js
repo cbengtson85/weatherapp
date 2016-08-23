@@ -39,13 +39,14 @@ const locations = (state = locationsInitialState, action) => {
     switch (action.type) {
         case ACTIONS.REQUEST_LOCATIONS:
             return {...state, jqXhr : action.jqXhr, loading : true, currentSearchTerm : action.searchVal, currentSuggestionIndex : 0};
-        case ACTIONS.RECEIVE_LOCATIONS:
+        case ACTIONS.RECEIVE_LOCATIONS: {
             const oldList = state.locationsList;
             let newList = oldList;
             if(action.response.results != undefined && action.response.results.length > 0)
                 newList = {...oldList, [action.searchVal] : action.response.results};
             let newStateReceive = {...state, loading : false, locationsList : newList, currentSuggestionIndex : 0};
             return {...newStateReceive, selectedLocation : getSelectedLocation(newStateReceive)};
+        }
         case LOCATION_CHANGE:
             if(action.payload.pathname != undefined && action.payload.pathname.indexOf('/weather/') > -1) {
                 let selectedLocation = getSelectedLocation(state);
@@ -57,19 +58,22 @@ const locations = (state = locationsInitialState, action) => {
             } else {
                 return {...state, currentSearchTerm : '', currentSuggestionIndex : 0, selectedLocation : null};
             }
-        case ACTIONS.CLEAR_SEARCH_RESULTS:
+        case ACTIONS.CLEAR_SEARCH_RESULTS: {
             let searchVal = action.searchVal;
             if(searchVal == undefined)
                 searchVal = '';
             return {...state, currentSearchTerm : searchVal, currentSuggestionIndex : 0};
+        }
         case ACTIONS.GET_CACHED_LOCATIONS:
             return {...state, currentSearchTerm : action.searchVal, currentSuggestionIndex : 0};
-        case ACTIONS.MOVE_HIGHLIGHTED:
+        case ACTIONS.MOVE_HIGHLIGHTED: {
             let newStateMove = {...state, currentSuggestionIndex : moveSuggestionIndex(state, action.direction)};
             return {...newStateMove, selectedLocation : getSelectedLocation(newStateMove)};
-        case ACTIONS.MOUSE_HIGHLIGHT:
+        }
+        case ACTIONS.MOUSE_HIGHLIGHT: {
             let newStateMouse = {...state, currentSuggestionIndex : action.index};
             return {...newStateMouse, selectedLocation : getSelectedLocation(newStateMouse)};
+        }
         case ACTIONS.RECEIVE_PLACE_NAME_DATA:
             return {...state, displayNameFromStorage : action.addressDisplayName};
         case ACTIONS.REQUEST_CURRENT_LOCATION:

@@ -51,7 +51,7 @@ const locationsRequest = (state, searchVal) => {
                 }
             }).done(function(responseObj) {
                 dispatch(receiveLocations(searchVal, responseObj));
-            }).fail(function(x,y,z) {
+            }).fail(function() {
                 dispatch(receiveLocations(searchVal, constants.LOCATION_RESPONSE_FORMAT));
             });
         } else {
@@ -70,7 +70,7 @@ const getLocations = searchVal => {
 };
 
 const getPlaceName = coordinates => {
-    return (dispatch, getState) => {
+    return (dispatch) => {
         $.ajax({
             type : 'get',
             url : constants.PLACE_NAME_ENDPOINT + encodeURI(coordinates),
@@ -93,7 +93,7 @@ const geoLocationError = (error, dispatch) => {
 }
 
 const getCurrentLocation = () => {
-    return (dispatch, getState) => {
+    return (dispatch) => {
         if(typeof navigator != 'undefined' && navigator.geolocation) {
             dispatch(requestCurrentLocation());
             navigator.geolocation.getCurrentPosition(location => {geoLocationSuccess(location, dispatch)},

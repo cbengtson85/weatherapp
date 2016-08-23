@@ -8,4 +8,9 @@ const ClearIcon = ({height, cssClass}) => {
     )
 };
 
+ClearIcon.propTypes = {
+    height : React.PropTypes.string,
+    cssClass : React.PropTypes.string
+};
+
 export default ClearIcon;

@@ -24,6 +24,6 @@ class HomeRootContainer extends React.Component {
             </Provider>
         )
     }
-};
+}
 
 export default HomeRootContainer;

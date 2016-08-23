@@ -18,4 +18,8 @@ const CurrentLocationItem = ({dispatch}) => {
     )
 };
 
+CurrentLocationItem.propTypes = {
+    dispatch : React.PropTypes.func.isRequired
+};
+
 export default CurrentLocationItem;

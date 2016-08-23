@@ -3,7 +3,6 @@
 import React from 'react';
 import {Link} from 'react-router';
 
-const constants = require('config/constants');
 import {mouseHighlight} from 'app/actions';
 import {CurrentLocationItem} from 'app/components/Home/Location';
 
@@ -30,6 +29,12 @@ const LocationSuggestions = ({dispatch, locationsList, currentSuggestionIndex}) 
             </div>
         </div>
     )
+};
+
+LocationSuggestions.propTypes = {
+    locationsList : React.PropTypes.array,
+    currentSuggestionIndex : React.PropTypes.number,
+    dispatch : React.PropTypes.func.isRequired
 };
 
 export default LocationSuggestions;

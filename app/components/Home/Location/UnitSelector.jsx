@@ -20,4 +20,10 @@ const UnitSelector = ({unit, currentUnit, dispatch}) => {
     )
 };
 
+UnitSelector.propTypes = {
+    currentUnit : React.PropTypes.string,
+    unit : React.PropTypes.string,
+    dispatch : React.PropTypes.func.isRequired
+};
+
 export default UnitSelector;

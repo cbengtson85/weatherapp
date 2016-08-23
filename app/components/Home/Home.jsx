@@ -1,7 +1,6 @@
 'use strict'
 
 import React from 'react';
-import {Route} from 'react-router';
 
 import AppWrapper from 'app/components/AppWrapper';
 import HomeStatic from 'app/components/Home/HomeStatic';
@@ -25,6 +24,10 @@ class HomeContent extends React.Component {
         )
     }
 }
+
+HomeContent.propTypes = {
+    params : React.PropTypes.object
+};
 
 let Home = AppWrapper(HomeContent, 'Home');
 

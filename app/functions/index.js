@@ -21,13 +21,17 @@ const actionCreator = (type, ...argNames) => {
 const setLocalStorageItem = (key, value) => {
     try {
         localStorage.setItem(key, value);
-    } catch(e) {}
+    } catch(e) {
+        console.error(e);
+    }
 }
 
 const getLocalStorageItem = key => {
     try {
         return localStorage.getItem(key);
-    } catch(e) {}
+    } catch(e) {
+        console.error(e);
+    }
 }
 
 const getNameFromStorage = coordinates => {

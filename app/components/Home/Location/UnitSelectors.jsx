@@ -8,8 +8,8 @@ const UnitSelectors = props => {
     return (
         <div className="unit-selector-container">
             <div className="unit-selector vertical-center">
-                <UnitSelector unit="F" {...props} unit="F" />
-                <UnitSelector unit="C" {...props} unit="C" />
+                <UnitSelector unit="F" {...props} />
+                <UnitSelector unit="C" {...props} />
             </div>
         </div>
     )

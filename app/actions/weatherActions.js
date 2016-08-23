@@ -27,7 +27,7 @@ const weatherRequest = (state, coordinates, unit) => {
             } else {
                 dispatch(receiveWeather(coordinates, responseObj));
             }
-        }).fail(function(x,y,z) {
+        }).fail(function() {
             dispatch(receiveWeather(coordinates, constants.WEATHER_RESPONSE_FORMAT));
         });
     }

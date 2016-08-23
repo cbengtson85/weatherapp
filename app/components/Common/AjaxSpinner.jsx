@@ -8,4 +8,9 @@ const AjaxSpinner = ({height, cssClass}) => {
     )
 };
 
+AjaxSpinner.propTypes = {
+    height : React.PropTypes.string,
+    cssClass : React.PropTypes.string
+};
+
 export default AjaxSpinner;
