@@ -10,10 +10,11 @@ const constants = require('config/constants');
 
 class LocationSearchContainer extends React.Component {
 
-    handleRemoveLocationError() {
+    handleRemoveLocationError = () => {
         const {dispatch} = this.props;
         setTimeout(() => {dispatch(ACTIONS.hideLocationError())}, constants.ERROR_MESSAGE_DISPLAY_TIMEOUT);
-    }
+    };
+
     render() {
         const {viewedLocations} = this.props;
         const rViewedLocations = viewedLocations.concat().reverse();
@@ -21,7 +22,7 @@ class LocationSearchContainer extends React.Component {
         return (
             <div className="hero">
                 {this.props.currentLocationError ? <ErrorMessage msg={constants.CURRENT_LOCATION_ERROR}
-                    mountFunction={this.handleRemoveLocationError.bind(this)} /> : ''}
+                    mountFunction={this.handleRemoveLocationError} /> : ''}
                 <div className="container search-container">
                     {viewedLocations.length > 0 ? <ViewedLocations {...this.props} viewedLocations={rViewedLocations} /> : ''}
                     <LocationSearchForm {...this.props} />

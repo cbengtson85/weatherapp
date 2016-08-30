@@ -34,15 +34,23 @@ const getLocalStorageItem = key => {
     }
 }
 
-const getNameFromStorage = coordinates => {
-    let item = getLocalStorageItem(coordinates);
+const getObjectFromStorage = key => {
+    let sItem = getLocalStorageItem(key);
+    if(sItem != undefined) {
+        sItem = JSON.parse(sItem);
+    }
+    return sItem;
+}
+
+const getNameFromStorage = key => {
+    let obj = getObjectFromStorage(key);
     let name = '';
-    if(item != undefined) {
-        let obj = JSON.parse(item);
+    if(obj != undefined) {
         name = obj.name;
     }
     return name;
 }
+
 
 const getUnitFromStorage = () => {
     let unit = 'F'
@@ -66,4 +74,4 @@ const getViewedLocations = () => {
 }
 
 export {slideToggle, actionCreator, getUnitFromStorage, setLocalStorageItem, getLocalStorageItem,
-    getNameFromStorage, getViewedLocations};
+    getNameFromStorage, getViewedLocations, getObjectFromStorage};

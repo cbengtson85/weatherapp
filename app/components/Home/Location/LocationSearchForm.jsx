@@ -8,26 +8,26 @@ import {UnitSelectors} from 'app/components/Home/Location';
 import * as ACTIONS from 'app/actions';
 
 class LocationSearchForm extends React.Component  {
-    handleSubmit(e) {
+    handleSubmit = e => {
         e.preventDefault();
         const {dispatch, selectedLocation} = this.props;
         if(selectedLocation != null)
             dispatch(push(selectedLocation.formattedAddressForUrl));
     }
-    handleClear(e) {
+    handleClear = e => {
         e.preventDefault();
         const {dispatch} = this.props;
         dispatch(ACTIONS.clearSearchResults(''));
         $('#search-input').focus();
     }
 
-    handleChange(e) {
+    handleChange = e => {
         const {dispatch} = this.props;
         let searchVal = e.target.value;
         dispatch(ACTIONS.getLocations(searchVal));
     }
 
-    handleSearchKeyUp(e) {
+    handleSearchKeyUp = e => {
         const {dispatch, searchTermLength, currentSuggestionIndex, locationsList} = this.props;
 
         switch (e.keyCode) {
@@ -53,13 +53,13 @@ class LocationSearchForm extends React.Component  {
 
     render() {
         return (
-            <form action="/" className="find-location" onSubmit={e => this.handleSubmit(e)}>
-                <input id="search-input" autoComplete="off" autoFocus onKeyDown={e => this.handleSearchKeyUp(e)}
+            <form action="/" className="find-location" onSubmit={this.handleSubmit}>
+                <input id="search-input" autoComplete="off" autoFocus onKeyDown={this.handleSearchKeyUp}
                     type="text" placeholder="Find your location..." maxLength="100"
-                    value={this.props.searchVal} onChange={e => this.handleChange(e)}/>
+                    value={this.props.searchVal} onChange={this.handleChange}/>
                 {this.props.isLoading ? <span className="search-loader"><AjaxSpinner height="40" cssClass="vertical-center" /></span> : ''}
                 {this.props.searchTermLength > 0 && !this.props.isLoading ?
-                    <a href="#" className="clear-field" onClick={e => this.handleClear(e)}><ClearIcon height="20" cssClass="vertical-center" /></a> : ''}
+                    <a href="#" className="clear-field" onClick={this.handleClear}><ClearIcon height="20" cssClass="vertical-center" /></a> : ''}
 
                 <UnitSelectors {...this.props} />
                 <InputSubmit value="Find" />

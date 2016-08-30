@@ -2,52 +2,33 @@
 
 import React from 'react';
 
-import {Link} from 'react-router';
 const Slider = require('react-slick');
 const constants = require('config/constants');
 
-import {getLocalStorageItem} from 'app/functions';
-import {ClearIcon} from 'app/components/Common';
+import {ViewedLocation} from 'app/components/Home/Location';
 import * as ACTIONS from 'app/actions';
 
-const ViewedLocations = ({viewedLocations, dispatch}) => {
-    const getStorageItem = item => {
-        let obj = {name : '', url : ''};
-        let sItem = getLocalStorageItem(item);
-        if(sItem != undefined) {
-            sItem = JSON.parse(sItem);
-            obj.name = sItem.name;
-            obj.url = sItem.url;
-        }
-        return obj;
-    }
+class ViewedLocations extends React.Component {
 
-    const handleClear = (e, coordinates) => {
+    handleClear = (e, coordinates) => {
         e.preventDefault();
-        dispatch(ACTIONS.removeViewedLocation(coordinates));
+        this.props.dispatch(ACTIONS.removeViewedLocation(coordinates));
     }
 
-    let settings = constants.SLIDER_OPTIONS;
-
-    return (
-        <div className="recent-locations-container">
-            <Slider {...settings}>
-                {viewedLocations.map((item) => {
-                        let obj = getStorageItem(item);
-                        let name = obj.name != '' ? obj.name : item;
-                        return (
-                            <div key={item}>
-                                <Link  to={obj.url}>
-                                    {name}<span onClick={e => handleClear(e, item)}><ClearIcon height="20" /></span>
-                                </Link>
-                            </div>
-                        )
-                    })
-                }
-            </Slider>
-        </div>
-    )
-};
+    render() {
+        return (
+            <div className="recent-locations-container">
+                <Slider {...constants.SLIDER_OPTIONS}>
+                    {this.props.viewedLocations.map((item) =>
+                        <div key={item} >
+                            <ViewedLocation handleClear={this.handleClear} item={item} />
+                        </div>
+                    )}
+                </Slider>
+            </div>
+        )
+    }
+}
 
 ViewedLocations.propTypes = {
     viewedLocations : React.PropTypes.array,

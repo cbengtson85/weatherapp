@@ -7,14 +7,14 @@ import {setLocalStorageItem} from 'app/functions';
 
 const UnitSelector = ({unit, currentUnit, dispatch}) => {
     let isSelected = currentUnit == unit ? true : false;
-    const updateUnit = u => {
-        if(u != currentUnit) {
-            dispatch(ACTIONS.selectUnit(u));
-            setLocalStorageItem('unit', u);
+    const updateUnit = () => {
+        if(unit != currentUnit) {
+            dispatch(ACTIONS.selectUnit(unit));
+            setLocalStorageItem('unit', unit);
         }
     }
     return (
-        <div className={isSelected ? 'unit-selected' : ''} onClick={()=> updateUnit(unit)}>
+        <div className={isSelected ? 'unit-selected' : ''} onClick={updateUnit}>
             <sup>o</sup>{unit}
         </div>
     )

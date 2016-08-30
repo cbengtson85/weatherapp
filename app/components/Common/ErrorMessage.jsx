@@ -17,7 +17,7 @@ class ErrorMessage extends React.PureComponent {
 }
 
 ErrorMessage.propTypes = {
-    mountFunction : React.PropTypes.function,
+    mountFunction : React.PropTypes.func,
     msg : React.PropTypes.string
 };
 

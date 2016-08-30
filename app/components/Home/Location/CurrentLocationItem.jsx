@@ -11,7 +11,7 @@ const CurrentLocationItem = ({dispatch}) => {
     }
     return (
         <li className="use-current-location">
-            <a href="#" onClick={e => handleUseCurrentLocation(e)}>
+            <a href="#" onClick={handleUseCurrentLocation}>
                 <CurrentLocationIcon height="25" cssClass="" /> Use My Current Location
             </a>
         </li>

@@ -56,6 +56,6 @@ module.exports = {
         new ExtractTextPlugin('../css/weatherapp-' + VERSION + '.css')
     ],
     eslint: {
-        configFile : '.eslintrc.json',
+        configFile : '.eslintrc.json'
     }
 };

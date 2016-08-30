@@ -5,6 +5,9 @@ import {MenuItems} from 'app/components/Header/Menu';
 import {slideToggle} from 'app/functions';
 
 const Header = (props) => {
+    const toggle = () => {
+        slideToggle('.mobile-navigation')
+    }
     return (
         <header className="site-header">
             <div className="container">
@@ -16,7 +19,7 @@ const Header = (props) => {
                     </div>
                 </a>
                 <div className="main-navigation">
-                    <button type="button" className="menu-toggle" onClick={() => slideToggle('.mobile-navigation')}><i className="fa fa-bars"></i></button>
+                    <button type="button" className="menu-toggle" onClick={toggle}><i className="fa fa-bars"></i></button>
                     <MenuItems {...props} />
                 </div>
                 <div className="mobile-navigation">
