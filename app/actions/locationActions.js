@@ -73,7 +73,7 @@ const getPlaceName = coordinates => {
     return (dispatch) => {
         $.ajax({
             type : 'get',
-            url : constants.PLACE_NAME_ENDPOINT + encodeURI(coordinates),
+            url : constants.PLACE_NAME_ENDPOINT + encodeURI(coordinates)
         }).done(function(responseObj) {
             let addressDisplayName = responseObj.formattedAddressForDisplay;
             setLocalStorageItem(coordinates, JSON.stringify({name : addressDisplayName , url : responseObj.formattedAddressForUrl}));

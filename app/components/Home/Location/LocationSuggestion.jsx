@@ -9,7 +9,7 @@ const LocationSuggestion = ({location, index, currentSuggestionIndex, handleSugg
     };
     return (
         <li>
-            <Link onMouseEnter={suggestHover} to={location.formattedAddressForUrl} className={index==currentSuggestionIndex ? "suggestion-highlight" : ""}>
+            <Link onMouseEnter={suggestHover} to={location.formattedAddressForUrl} className={index==currentSuggestionIndex ? 'suggestion-highlight' : ''}>
                 {location.formattedAddressForList}
             </Link>
         </li>

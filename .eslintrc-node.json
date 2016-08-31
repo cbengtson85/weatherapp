@@ -16,6 +16,12 @@
     },
     "extends": ["eslint:recommended"],
     "rules": {
-        "no-console": "off"
+        "no-console": "off",
+        "no-useless-concat": "error",
+        "vars-on-top": "error",
+        "comma-dangle": "error",
+        "no-var": "error",
+        "no-path-concat" : "error",
+        "quotes": ["error", "single"]
     }
 }

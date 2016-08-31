@@ -11,7 +11,7 @@ let config = {};
 
 config = {
 	webPort : 80,
-	sslPort : 443,
+	sslPort : 443
 };
 
 module.exports = config;

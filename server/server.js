@@ -7,8 +7,8 @@ const http = require('http');
 const path = require('path');
 
 //set node_path to root directory
-global.rootPath = path.resolve(__dirname + '/..');
-process.env.NODE_PATH = __dirname + '/..';
+global.rootPath = path.resolve(__dirname, '..');
+process.env.NODE_PATH = path.resolve(__dirname, '..');
 require('module').Module._initPaths();
 
 //initialize config module

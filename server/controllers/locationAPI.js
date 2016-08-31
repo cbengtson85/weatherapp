@@ -19,7 +19,7 @@ const sendLocationsListError = (response, res) => {
 };
 
 const isCanadaPostalCode = postal => {
-    var regex = new RegExp(/[a-zA-Z][0-9][a-zA-Z](-| |)[0-9][a-zA-Z][0-9]/);
+    const regex = new RegExp(/[a-zA-Z][0-9][a-zA-Z](-| |)[0-9][a-zA-Z][0-9]/);
     if(regex.test(postal))
         return true;
     else
@@ -29,7 +29,7 @@ const isCanadaPostalCode = postal => {
 const buildSearchEndpoint = q => {
     return config.locationServiceEndpoint + '?' + constants.Q + '=' + q + '&' + constants.MAX_ROWS + '=' +
         config.locationServiceMaxResults + '&' + constants.USER_NAME + '=' + config.locationServiceKey +
-        '&' + constants.FUZZY + '=' + constants.FUZZY_VALUE + '&' + constants.COUNTRY_BIAS + '=' + 'US';
+        '&' + constants.FUZZY + '=' + constants.FUZZY_VALUE + '&' + constants.COUNTRY_BIAS + '=US';
 };
 
 const buildPostalCodeEndpoint = (q, isCanada) => {

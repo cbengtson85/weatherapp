@@ -2,9 +2,9 @@
 
 exports.getDirectionFromDeg = num => {
     if(num == undefined)
-        return "North";
+        return 'North';
     let val = Math.floor((num / 22.5) + 0.5);
-    let arr = ["North", "North East", "East", "South East", "South", "South West", "West", "North West"];
+    let arr = ['North', 'North East', 'East', 'South East', 'South', 'South West', 'West', 'North West'];
     return arr[(val % 8)];
 }
 

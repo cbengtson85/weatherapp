@@ -5,7 +5,8 @@
     },
     "env": {
         "browser": true,
-        "es6": true
+        "es6": true,
+        "node": true
     },
     "parser": "babel-eslint",
     "parserOptions": {
@@ -22,6 +23,11 @@
     "extends": ["eslint:recommended", "plugin:react/recommended"],
     "rules": {
         "no-console": "off",
+        "no-useless-concat": "error",
+        "vars-on-top": "error",
+        "comma-dangle": "error",
+        "no-var": "error",
+        "quotes": ["error", "single"],
         "react/jsx-no-bind": "error"
     }
 }

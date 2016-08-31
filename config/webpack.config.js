@@ -38,13 +38,13 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                loader: ExtractTextPlugin.extract("style-loader", "css-loader?sourceMap")
+                loader: ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap')
             }
         ]
     },
     resolve : {
         extensions : ['', '.js', '.jsx', '.es6'],
-        root : path.resolve(__dirname + '..', ''),
+        root : path.resolve(__dirname, '..'),
         modulesDirectories : ['node_modules', '..']
     },
     plugins : [

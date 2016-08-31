@@ -11,7 +11,7 @@ const WeatherForecastItem = ({item, unitTemp, unitSpeed}) => {
             </div>
             <div className="forecast-content">
                 <div className="forecast-icon">
-                    <img src={"/img/icons/" + item.icon + ".svg"} alt="" width="48" />
+                    <img src={'/img/icons/' + item.icon + '.svg'} alt="" width="48" />
                 </div>
                 <div className="degree">{item.tempHigh}<sup>o</sup>{unitTemp}</div>
                 <small>{item.tempLow}<sup>o</sup>{unitTemp}</small>
