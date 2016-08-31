@@ -9,13 +9,13 @@ let db;
 exports.connect = () => {
     //connect to mongo DB
     mongodbClient.connect(config.dbUrl, (err, database) => {
-    	if(err) {
-    		console.log('Unable to connect to mongoDB', err);
-    	} else {
-    		//assign db
-    		db = database;
-    		console.log('connected to mongo DB');
-    	}
+        if(err) {
+            console.log('Unable to connect to mongoDB', err);
+        } else {
+            //assign db
+            db = database;
+            console.log('connected to mongo DB');
+        }
     });
 };
 

@@ -11,7 +11,7 @@ exports.saveUserInfo = (req, res) => {
             res.redirect('/?success=false');
             return;
         }
-        db.collection('user').save(formData, (err, result) => {
+        db.collection('user').save(formData, (err) => {
             if (err) {
                 res.redirect('/?success=false');
                 console.error(err.stack);

@@ -1,0 +1,21 @@
+{
+    "globals": {
+        "require": true,
+        "rootPath": true
+    },
+    "env": {
+        "es6": true,
+        "node": true
+    },
+    "parserOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "experimentalObjectRestSpread": true
+        }
+    },
+    "extends": ["eslint:recommended"],
+    "rules": {
+        "no-console": "off"
+    }
+}

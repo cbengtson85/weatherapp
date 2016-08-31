@@ -12,7 +12,6 @@ const getFormattedAddressForUrl = require('server/tools').getFormattedAddressFor
 
 module.exports = (data, q) => {
     let item = Object.assign({}, constants.PLACE_NAME_RESPONSE_FORMAT);
-    let results = [];
     let resourceList = data.geonames;
     if(typeof resourceList != 'undefined' && resourceList.length > 0) {
         const location = q.split('_');

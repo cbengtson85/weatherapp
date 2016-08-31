@@ -62,7 +62,7 @@ module.exports = (data, units) => {
 
     let hourlyList = [];
     if(data.hourly != undefined && data.hourly.data != undefined) {
-        data.hourly.data.map((item, index) => {
+        data.hourly.data.map((item) => {
             let hourlyItem = Object.assign({}, constants.WEATHER_DATA_FORMAT);
             const time = new Date(item.time*1000);
 

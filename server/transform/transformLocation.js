@@ -18,7 +18,7 @@ const transformLocationSearch = data => {
     let results = [];
     let resourceList = data.geonames;
     if(typeof resourceList != 'undefined' && resourceList.length > 0) {
-        resourceList.map((resource, index) => {
+        resourceList.map((resource) => {
             let item = Object.assign({}, constants.LOCATION_RESULT_FORMAT);
 
             item.city = resource.name;
@@ -48,7 +48,7 @@ const transformLocationPostal = data => {
     let resourceList = data.postalCodes;
     if(typeof resourceList != 'undefined' && resourceList.length > 0) {
 
-        resourceList.map((resource, index) => {
+        resourceList.map((resource) => {
             let item = Object.assign({}, constants.LOCATION_RESULT_FORMAT);
 
             let countryCode = resource.countryCode;

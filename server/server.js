@@ -51,12 +51,12 @@ app.use(express.static('static'));
 app.use(require('server/routes'));
 
 //404 page not found
-app.use((req, res, next) => {
+app.use((req, res) => {
   res.status(404).sendFile(rootPath + '/app/views/err/404.html');
 });
 
 //500 internal error
-app.use((err, req, res, next) => {
+app.use((err, req, res) => {
   console.error(err.stack);
   res.status(500).sendFile(rootPath + '/app/views/err/500.html');
 });
