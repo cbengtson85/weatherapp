@@ -66,8 +66,8 @@ exports.WEATHER_RESPONSE_FORMAT = {
 exports.WEATHER_DATA_ENDPOINT = '/api/weather-data/';
 exports.MAX_STORED_LOCATIONS = 10;
 exports.GEOLOCATION_OPTIONS = {
-  enableHighAccuracy: true,
-  timeout: 7000
+    enableHighAccuracy: true,
+    timeout: 7000
 };
 exports.SLIDER_OPTIONS = {
     infinite: false,

@@ -22,6 +22,7 @@
         "comma-dangle": "error",
         "no-var": "error",
         "no-path-concat" : "error",
-        "quotes": ["error", "single"]
+        "quotes": ["error", "single"],
+        "indent": ["error", 4, {"SwitchCase" : 1}]
     }
 }

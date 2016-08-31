@@ -28,6 +28,7 @@
         "comma-dangle": "error",
         "no-var": "error",
         "quotes": ["error", "single"],
+        "indent": ["error", 4, {"SwitchCase" : 1}],
         "react/jsx-no-bind": "error"
     }
 }

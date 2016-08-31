@@ -5,6 +5,7 @@
   "main": "./server/server.js",
   "scripts": {
     "lintNode": "eslint -c .eslintrc-node.json server/* config/*",
+    "lint": "eslint -c .eslintrc.json app/*",
     "preclean": "echo '\\033[0;36m BEGIN cleaning /dist directory \\033[0m'",
     "clean": "find dist -not -name 'dist' -not -name '.gitignore' | xargs rm -rf",
     "postclean": "echo '\\033[1;36m DONE cleaning /dist directory \\033[0m'",
