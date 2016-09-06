@@ -48,13 +48,13 @@ class CurrentWeather extends React.Component {
         let windSpeed;
         let windDirection;
         if(currentWeather != null) {
-             dayOfWeek = currentWeather.dayOfWeek;
-             formattedDate = currentWeather.formattedDate;
-             temp = currentWeather.temp;
-             icon = currentWeather.icon;
-             precipitation = currentWeather.precipitation;
-             windSpeed = currentWeather.windSpeed;
-             windDirection = currentWeather.windDirection;
+            dayOfWeek = currentWeather.dayOfWeek;
+            formattedDate = currentWeather.formattedDate;
+            temp = currentWeather.temp;
+            icon = currentWeather.icon;
+            precipitation = currentWeather.precipitation;
+            windSpeed = currentWeather.windSpeed;
+            windDirection = currentWeather.windDirection;
         }
         let formattedAddressForDisplay = this.getFormattedDisplayName(weatherCoordinates, savedSelectedLocations, displayNameFromStorage);
         return (
