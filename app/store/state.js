@@ -15,7 +15,13 @@ const locationsInitialState = {
     currentLocationError : false
 };
 
-const weatherInitialState = {...constants.WEATHER_RESPONSE_FORMAT, loading : false,
-    viewedLocations : getViewedLocations(), currentUnit : getUnitFromStorage(), currentWeatherCoordinates : ''};
+const weatherInitialState = {...constants.WEATHER_RESPONSE_FORMAT,
+    loading : false,
+    viewedLocations : getViewedLocations(),
+    currentUnit : getUnitFromStorage(),
+    currentWeatherCoordinates : '',
+    showHourly : false
+
+};
 
 export {locationsInitialState, weatherInitialState};

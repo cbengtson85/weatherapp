@@ -30,6 +30,13 @@ class WeatherContainer extends React.Component {
                             <WeatherForecastItem key={index} item={item} unitTemp={unitTemp} unitSpeed={unitSpeed} />
                         )}
                     </div>
+                    <div className="forecast-container">
+                        {dailyWeather.map((item, index) =>
+                            <WeatherForecastItem key={index} item={item} unitTemp={unitTemp} unitSpeed={unitSpeed} />
+                        )}
+                    </div>
+
+                    <div id="change-forecast-view"><a href="#">View Forecast for the Next 48 Hours</a></div>
                 </div>
             </div>
         )
