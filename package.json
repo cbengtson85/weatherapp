@@ -16,6 +16,7 @@
     "devstart": "nodemon --watch server --watch config --watch app/views -e js,marko server/server.js --server dev",
     "devbuildwatch": "webpack --watch --config config/webpack.config.js",
     "devnodestart": "node server/server.js --server dev",
+    "devnodestartdocker": "node server/server.js --server dev --mongoHost weatherappdb",
     "devwatch": "npm run clean; npm run devbuildwatch & npm run devstart"
   },
   "repository": {
