@@ -16,5 +16,4 @@ RUN npm run devbuild
 EXPOSE 8080 4443
 
 #start node
-CMD ["npm", "run", "devnodestart"]
-
+CMD ["npm", "run", "devnodestartdocker"]
