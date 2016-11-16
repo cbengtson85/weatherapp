@@ -1,9 +1,15 @@
 version: '2'
 services:
-    web:
+    weatherapp:
         build:
             context: ..
             dockerfile: ./docker/Dockerfile.node
         ports:
             - "8080:8080"
             - "4443:4443"
+        depends_on:
+            - weatherappdb
+    weatherappdb:
+        build:
+            context: ..
+            dockerfile: ./docker/Dockerfile.mongodb
