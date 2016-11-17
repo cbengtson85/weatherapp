@@ -1,0 +1,16 @@
+FROM node:6.9.1
+MAINTAINER cbengtson85
+
+#create app directory
+RUN mkdir -p /usr/app
+COPY . /usr/app
+
+#set work dir and install dependencies
+WORKDIR /usr/app
+RUN npm install
+
+#expose http and https port
+EXPOSE 8080 4443
+
+#start node
+CMD ["npm", "run", "devwatchdocker"]
