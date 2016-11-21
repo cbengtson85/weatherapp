@@ -13,6 +13,7 @@ services:
             - weatherappdb
         volumes:
             - ../:/usr/app
+            - /usr/app/node_modules/
     weatherappdb:
         build:
             context: ..
