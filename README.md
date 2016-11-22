@@ -1,6 +1,6 @@
 # weatherapp
 
--Node 6.2, Mongo 3.2.4, Express, React, Redux, Webpack
+-Node, Mongo, Express, React, Redux, Webpack
 
 1)	clone repository
 
@@ -46,3 +46,11 @@ BUILD APP & RUN NODE SERVER using nodemon for hot deploying
 
 	CSS build, wepack build (with auto build on change), node server start
 	npm run devwatch
+
+
+-------------------------DOCKER to build and deploy app--------------------------------------------
+
+INSTALL DOCKER and DOCKER-COMPOSE
+	run from project root
+	#this will start up Node and mongo DB with shared volume to the code base
+	docker-compose -f docker/docker-compose.dev.yml up
