@@ -5,7 +5,7 @@ services:
             context: ..
             dockerfile: ./docker/Dockerfile.node-dev
         container_name: weatherapp
-        image: cbengtson85/weatherapp-server
+        image: cbengtson85/weatherapp-server-dev
         ports:
             - "8080:8080"
             - "4443:4443"
