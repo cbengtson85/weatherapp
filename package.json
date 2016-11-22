@@ -11,12 +11,15 @@
     "postclean": "echo '\\033[1;36m DONE cleaning /dist directory \\033[0m'",
     "predevbuild": "echo '\\033[0;36m BEGIN building dev\\033[0m' && npm run clean",
     "devbuild": "webpack --config config/webpack.config.js",
-    "postdevbuild": "echo '\\033[1;32m SUCCESS building dev\\033[0m' && tput bel",
+    "postdevbuild": "echo '\\033[1;32m SUCCESS building dev\\033[0m'",
     "devdebug": "node-inspector & nodemon --debug --watch server --watch config server/server.js --server dev",
     "devstart": "nodemon --watch server --watch config --watch app/views -e js,marko server/server.js --server dev",
+    "devstartdocker": "nodemon --watch server --watch config --watch app/views -e js,marko server/server.js --server dev --mongoHost weatherappdb",
     "devbuildwatch": "webpack --watch --config config/webpack.config.js",
     "devnodestart": "node server/server.js --server dev",
-    "devwatch": "npm run clean; npm run devbuildwatch & npm run devstart"
+    "devnodestartdocker": "node server/server.js --server dev --mongoHost weatherappdb",
+    "devwatch": "npm run clean; npm run devbuildwatch & npm run devstart",
+    "devwatchdocker": "npm run devbuildwatch & npm run devstartdocker"
   },
   "repository": {
     "type": "git",
