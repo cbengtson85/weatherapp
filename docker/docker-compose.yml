@@ -1,0 +1,19 @@
+version: '2'
+services:
+    weatherapp:
+        build:
+            context: ..
+            dockerfile: ./docker/Dockerfile.node
+        container_name: weatherapp
+        image: cbengtson85/weatherapp-server
+        ports:
+            - "8080:8080"
+            - "4443:4443"
+        depends_on:
+            - weatherappdb
+    weatherappdb:
+        build:
+            context: ..
+            dockerfile: ./docker/Dockerfile.mongodb
+        container_name: weatherappdb
+        image: cbengtson85/weatherapp-db
