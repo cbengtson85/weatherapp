@@ -55,3 +55,6 @@ INSTALL DOCKER and DOCKER-COMPOSE
 	run from project root
 	#this will start up Node and mongo DB with shared volume to the code base
 	docker-compose -f docker/docker-compose.dev.yml up
+
+
+	NOTE: run any scripts in /docker/scripts from the project root.
