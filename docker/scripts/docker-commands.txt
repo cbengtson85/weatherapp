@@ -1,0 +1,28 @@
+//build docker image from dockerfile
+docker build -t cbengtson85/weatherapp-server -f ./docker/Dockerfile.node-dev .
+docker build -t cbengtson85/weatherapp-db -f ./docker/Dockerfile.mongodb .
+
+//start docker container
+docker run --rm --net=wa --name weatherappdb -it -p 27017:27017 cbengtson85/weatherapp-db
+docker run --rm --net=wa --name weatherapp -it -p 8080:8080 -p 4443:4443 cbengtson85/weatherapp-server
+
+//create network for DB and server to share
+docker network create wa
+
+//enter container terminal
+docker exec -it weatherapp bash
+
+//stop all running containers
+docker stop $(docker ps -a -q)
+
+//remove all containers
+docker rm $(docker ps -a -q)
+
+//remove all images
+docker rmi $(docker images -q)
+
+//remove all docker volumes
+docker volume rm $(docker volume ls -q)
+
+//start docker containers based on compose file
+docker-compose -f docker/docker-compose.yml up
