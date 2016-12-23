@@ -2,6 +2,7 @@
 
 import React from 'react';
 import {connect} from 'react-redux';
+import {Link} from 'react-router';
 
 import {LoadingIndicator, ExtendedForecast, HourlyForecast} from 'app/components/Home/Weather';
 import * as ACTIONS from 'app/actions';
@@ -19,10 +20,13 @@ class WeatherContainer extends React.Component {
         }
     }
 
-    handleShowHourly = e => {
-        e.preventDefault();
-        const {dispatch, showHourly} = this.props;
-        dispatch(ACTIONS.showHourlyForecast(!showHourly));
+    getForecastUrl = () => {
+        let url = location.pathname;
+        if(url.indexOf('/hourly/') > -1)
+            url = url.replace('/hourly/', '/');
+        else
+            url = url.replace('/weather/', '/weather/hourly/');
+        return url;
     }
 
     render() {
@@ -37,7 +41,7 @@ class WeatherContainer extends React.Component {
                         :
                         (<ExtendedForecast {...this.props} />)
                     }
-                    <div id="change-forecast-view"><a href="#" onClick={this.handleShowHourly}>{toggleText}</a></div>
+                    <div id="change-forecast-view"><Link to={this.getForecastUrl}>{toggleText}</Link></div>
                 </div>
             </div>
         )
