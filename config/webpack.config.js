@@ -17,7 +17,7 @@ module.exports = {
         filename : '[name]-' + VERSION + '.js'
     },
     //watch : true,
-    //devtool : '#source-map',
+    devtool : '#source-map',
     module : {
         preLoaders: [
             {

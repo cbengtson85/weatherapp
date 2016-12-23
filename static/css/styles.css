@@ -1272,7 +1272,6 @@ form textarea {
     padding: 0 40px;
 }
 .forecast-container {
-    width: 100%;
     background: #323544;
     display: table;
     table-layout: fixed;
@@ -1890,7 +1889,7 @@ div.container {
     position: absolute;
     top: 0;
     width: calc(100% - 30px);
-    height: calc(100% - 50px);
+    height: 100%;
     border-radius: 10px;
     z-index: 5;
 }
@@ -1986,6 +1985,79 @@ div.slick-initialized {
     margin: 0 25px;
 }
 
+
+div.forecast-container {
+    margin-top: -90px;
+    margin-bottom: 5px;
+}
+
+header.site-header {
+    padding: 20px 0;
+}
+
+.main-content {
+    position: relative;
+}
+
+.error-message {
+    position: absolute;
+    top: 0px;
+    background-color: #f54d4d;
+    color: #ffffff;
+    padding: 5px 0;
+    text-align: center;
+    width: 100%;
+}
+
+#change-forecast-view {
+    text-align: center;
+    background-color: #19191c;
+    height: 25px;
+    line-height: 25px;
+    border-radius: 10px;
+    font-size: 1.2em;
+}
+
+.hourly-forecast {
+    width: 114px;
+}
+
+.hourly-item:nth-child(even) {
+    background-color: #262936;
+}
+
+.forecast-container div.slick-initialized {
+    margin: 0;
+}
+
+.forecast-container .slick-prev {
+    left: 5px;
+    top: 52%;
+    z-index: 10;
+}
+
+.forecast-container .slick-next {
+    right: 5px;
+    top: 52%;
+    z-index: 10;
+}
+
+.forecast-container .slick-slide img {
+    display: inline;
+}
+
+.forecast-container div.slick-list {
+    padding-top: 0px;
+}
+.forecast, .hourly-item {
+    border-radius: 10px;
+}
+
+.forecast-container .forecast.today .forecast-content {
+    padding-bottom: 29px;
+    padding-top: 29px;
+}
+
 @media (min-width: 768px) and (max-width: 991px) {
     .location-suggestions, .find-location input[type="text"] {
         font-size: 1.5em;
@@ -2009,27 +2081,6 @@ div.slick-initialized {
     }
 }
 
-div.forecast-container {
-    margin-top: -90px;
-}
-
-header.site-header {
-    padding: 20px 0;
-}
-
-.main-content {
-    position: relative;
-}
-
-.error-message {
-    position: absolute;
-    top: 0px;
-    background-color: #f54d4d;
-    color: #ffffff;
-    padding: 5px 0;
-    text-align: center;
-    width: 100%;
-}
 
 @media (max-width: 767px) {
     .location-suggestions, .find-location input[type="text"] {

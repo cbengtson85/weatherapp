@@ -18,6 +18,7 @@ class HomeRootContainer extends React.Component {
             <Provider store={store}>
                 <Router history={history}>
                     <Route path="/news" component={News} />
+                    <Route path="/weather/*/*/:search" component={Home} />
                     <Route path="/weather/*/:search" component={Home} />
                     <Route path="*" component={Home} />
                 </Router>

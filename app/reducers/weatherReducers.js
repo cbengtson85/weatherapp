@@ -46,11 +46,15 @@ const weather = (state = weatherInitialState, action) => {
         }
         case LOCATION_CHANGE:
             if(action.payload.pathname == undefined || action.payload.pathname.indexOf('/weather/') < 0)
-                return {...state, currentWeatherCoordinates : ''};
+                return {...state, currentWeatherCoordinates : '', showHourly: false};
+            else if(action.payload.pathname != undefined && action.payload.pathname.indexOf('/hourly/') > -1)
+                return {...state, showHourly : true}
             else
-                return state;
+                return {...state, showHourly : false};
         case ACTIONS.REMOVE_VIEWED_LOCATION:
             return {...state, viewedLocations : removeViewedLocation(state, action.coordinates)}
+        case ACTIONS.SHOW_HOURLY_FORECAST:
+            return {...state, showHourly : action.showHourly}
         default:
             return state;
     }

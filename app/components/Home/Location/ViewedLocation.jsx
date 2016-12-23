@@ -25,9 +25,9 @@ const ViewedLocation = ({item, handleClear}) => {
     let obj = getStorageItem(item);
     let name = obj.name != '' ? obj.name : item;
     return (
-            <Link to={obj.url}>
-                {name}<span onClick={clearItem}><ClearIcon height="20" /></span>
-            </Link>
+        <Link to={obj.url == undefined ? '#' : obj.url}>
+            {name}<span onClick={clearItem}><ClearIcon height="20" /></span>
+        </Link>
     )
 };
 

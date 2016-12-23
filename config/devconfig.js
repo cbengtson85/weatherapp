@@ -35,7 +35,7 @@ config = {
     placeNameServiceEndpoint : 'http://api.geonames.org/findNearbyJSON',
     placeNameServiceKey : 'bengtc',
     placeNameServiceTimeout : 7000,
-    weatherServiceEndpoint : 'https://api.forecast.io/forecast/',
+    weatherServiceEndpoint : 'https://api.darksky.net/forecast/',
     weatherServiceKey : '24a90ebe31382974ba7d38837c986249',
     weatherServiceTimeout : 10000,
     dbUrl : 'mongodb://' + mongoHostName + ':27017/weatherapp'

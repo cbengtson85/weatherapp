@@ -14,7 +14,6 @@ class HomeContent extends React.Component {
             weatherCoordinates = null;
         else
             weatherCoordinates = this.props.params.search;
-
         return (
             <main className="main-content">
                 <LocationSearchContainer />
