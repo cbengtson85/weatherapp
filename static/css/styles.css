@@ -1889,7 +1889,7 @@ div.container {
     position: absolute;
     top: 0;
     width: calc(100% - 30px);
-    height: calc(100% - 50px);
+    height: 100%;
     border-radius: 10px;
     z-index: 5;
 }
@@ -2014,6 +2014,42 @@ header.site-header {
     background-color: #19191c;
     height: 25px;
     line-height: 25px;
+    border-radius: 10px;
+    font-size: 1.2em;
+}
+
+.hourly-forecast {
+    width: 114px;
+}
+
+.hourly-item:nth-child(even) {
+    background-color: #262936;
+}
+
+.forecast-container div.slick-initialized {
+    margin: 0;
+}
+
+.forecast-container .slick-prev {
+    left: 5px;
+    top: 52%;
+    z-index: 10;
+}
+
+.forecast-container .slick-next {
+    right: 5px;
+    top: 52%;
+    z-index: 10;
+}
+
+.forecast-container .slick-slide img {
+    display: inline;
+}
+
+.forecast-container div.slick-list {
+    padding-top: 0px;
+}
+.forecast, .hourly-item {
     border-radius: 10px;
 }
 

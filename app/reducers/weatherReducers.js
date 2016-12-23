@@ -51,6 +51,8 @@ const weather = (state = weatherInitialState, action) => {
                 return state;
         case ACTIONS.REMOVE_VIEWED_LOCATION:
             return {...state, viewedLocations : removeViewedLocation(state, action.coordinates)}
+        case ACTIONS.SHOW_HOURLY_FORECAST:
+            return {...state, showHourly : action.showHourly}
         default:
             return state;
     }

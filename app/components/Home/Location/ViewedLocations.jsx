@@ -1,8 +1,8 @@
 'use strict'
 
 import React from 'react';
+import Slider from 'react-slick';
 
-const Slider = require('react-slick');
 const constants = require('config/constants');
 
 import {ViewedLocation} from 'app/components/Home/Location';
@@ -18,7 +18,7 @@ class ViewedLocations extends React.Component {
     render() {
         return (
             <div className="recent-locations-container">
-                <Slider {...constants.SLIDER_OPTIONS}>
+                <Slider {...constants.SLIDER_OPTIONS_LOCATIONS}>
                     {this.props.viewedLocations.map((item) =>
                         <div key={item} >
                             <ViewedLocation handleClear={this.handleClear} item={item} />

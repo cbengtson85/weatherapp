@@ -2,11 +2,11 @@
 
 import React from 'react';
 
-const WeatherForecastItem = ({item, unitTemp, unitSpeed}) => {
+const WeatherForecastItem = ({item, unitTemp, unitSpeed, headingDateTime}) => {
     return (
-        <div className="forecast">
+        <div className="forecast hourly-forecast">
             <div className="forecast-header">
-                <div className="day">{item.dayOfWeek}</div>
+                <div className="day">{headingDateTime}</div>
                 <div className="day">{item.formattedDate}</div>
             </div>
             <div className="forecast-content">
@@ -29,7 +29,8 @@ const WeatherForecastItem = ({item, unitTemp, unitSpeed}) => {
 WeatherForecastItem.propTypes = {
     unitTemp : React.PropTypes.string,
     unitSpeed : React.PropTypes.string,
-    item : React.PropTypes.object
+    item : React.PropTypes.object,
+    headingDateTime : React.PropTypes.string
 };
 
 export default WeatherForecastItem;

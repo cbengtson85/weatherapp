@@ -21,7 +21,6 @@ const weatherInitialState = {...constants.WEATHER_RESPONSE_FORMAT,
     currentUnit : getUnitFromStorage(),
     currentWeatherCoordinates : '',
     showHourly : false
-
 };
 
 export {locationsInitialState, weatherInitialState};

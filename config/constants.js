@@ -69,11 +69,20 @@ exports.GEOLOCATION_OPTIONS = {
     enableHighAccuracy: true,
     timeout: 7000
 };
-exports.SLIDER_OPTIONS = {
+exports.SLIDER_OPTIONS_LOCATIONS = {
     infinite: false,
     speed: 300,
     slidesToScroll: 1,
     variableWidth: true
 }
+exports.SLIDER_OPTIONS_HOURLY = {
+    infinite: false,
+    speed: 400,
+    variableWidth: true,
+    swipeToSlide: true,
+    slidesToScroll: 4
+}
 exports.CURRENT_LOCATION_ERROR = 'Error determining location, please try again or check location permissions.';
 exports.ERROR_MESSAGE_DISPLAY_TIMEOUT = 5000;
+exports.VIEW_EXTENDED_FORECAST_TEXT = 'View Extended Forecast';
+exports.VIEW_HOURLY_FORECAST_TEXT = 'View Forecast for the Next 48 Hours';

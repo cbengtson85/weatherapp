@@ -7,11 +7,13 @@ export const REQUEST_WEATHER= 'REQUEST_WEATHER';
 export const RECEIVE_WEATHER= 'RECEIVE_WEATHER';
 export const SELECT_UNIT = 'SELECT_UNIT';
 export const REMOVE_VIEWED_LOCATION = 'REMOVE_VIEWED_LOCATION';
+export const SHOW_HOURLY_FORECAST= 'SHOW_HOURLY_FORECAST';
 
 const requestWeather = actionCreator(REQUEST_WEATHER, 'coordinates', 'unit');
 const receiveWeather = actionCreator(RECEIVE_WEATHER, 'coordinates', 'response');
 const selectUnitAction = actionCreator(SELECT_UNIT, 'unit');
 const removeViewedLocation = actionCreator(REMOVE_VIEWED_LOCATION, 'coordinates');
+const showHourlyForecast = actionCreator(SHOW_HOURLY_FORECAST, 'showHourly');
 
 const weatherRequest = (state, coordinates, unit) => {
     return dispatch => {
@@ -49,4 +51,4 @@ const selectUnit = unit => {
     }
 }
 
-export {getWeatherData, selectUnit, selectUnitAction, removeViewedLocation};
+export {getWeatherData, selectUnit, selectUnitAction, removeViewedLocation, showHourlyForecast};

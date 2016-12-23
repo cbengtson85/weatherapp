@@ -3,8 +3,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-import {CurrentWeather, WeatherForecastItem, LoadingIndicator} from 'app/components/Home/Weather';
+import {LoadingIndicator, ExtendedForecast, HourlyForecast} from 'app/components/Home/Weather';
 import * as ACTIONS from 'app/actions';
+const constants = require('config/constants');
 
 class WeatherContainer extends React.Component {
     componentWillMount() {
@@ -18,25 +19,25 @@ class WeatherContainer extends React.Component {
         }
     }
 
+    handleShowHourly = e => {
+        e.preventDefault();
+        const {dispatch, showHourly} = this.props;
+        dispatch(ACTIONS.showHourlyForecast(!showHourly));
+    }
+
     render() {
-        const {isLoading, dailyWeather, unitTemp, unitSpeed} = this.props;
+        const {isLoading, showHourly} = this.props;
+        let toggleText = showHourly ? constants.VIEW_EXTENDED_FORECAST_TEXT : constants.VIEW_HOURLY_FORECAST_TEXT;
         return (
             <div className="forecast-table">
                 <div className="container">
                     {isLoading ? <LoadingIndicator /> : ''}
-                    <div className="forecast-container">
-                        <CurrentWeather {...this.props} />
-                        {dailyWeather.map((item, index) =>
-                            <WeatherForecastItem key={index} item={item} unitTemp={unitTemp} unitSpeed={unitSpeed} />
-                        )}
-                    </div>
-                    <div className="forecast-container">
-                        {dailyWeather.map((item, index) =>
-                            <WeatherForecastItem key={index} item={item} unitTemp={unitTemp} unitSpeed={unitSpeed} />
-                        )}
-                    </div>
-
-                    <div id="change-forecast-view"><a href="#">View Forecast for the Next 48 Hours</a></div>
+                    {showHourly ?
+                        (<HourlyForecast {...this.props} />)
+                        :
+                        (<ExtendedForecast {...this.props} />)
+                    }
+                    <div id="change-forecast-view"><a href="#" onClick={this.handleShowHourly}>{toggleText}</a></div>
                 </div>
             </div>
         )
@@ -54,6 +55,7 @@ WeatherContainer.propTypes = {
     savedSelectedLocations : React.PropTypes.object,
     currentUnit : React.PropTypes.string,
     displayNameFromStorage : React.PropTypes.string,
+    showHourly : React.PropTypes.bool,
     dispatch : React.PropTypes.func.isRequired
 };
 
@@ -68,7 +70,8 @@ const mapStateToProps = state => {
         unitSpeed : weather.unitSpeed,
         savedSelectedLocations : locations.savedSelectedLocations,
         currentUnit : weather.currentUnit,
-        displayNameFromStorage : locations.displayNameFromStorage
+        displayNameFromStorage : locations.displayNameFromStorage,
+        showHourly : weather.showHourly
     }
 };
 
