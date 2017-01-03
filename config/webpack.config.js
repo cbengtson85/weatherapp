@@ -1,4 +1,5 @@
 'use strict'
+
 const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -8,9 +9,8 @@ const VERSION = require('../package.json').version;
 module.exports = {
     entry : {
         home : './app/entry/home-entry.js',
-        vendor : ['babel-polyfill', 'react', 'react-dom', 'redux',
-            'react-redux', 'redux-logger', 'redux-thunk', 'react-router', 'react-router-redux',
-            'react-slick', 'jquery']
+        vendor : ['react', 'react-dom', 'redux', 'react-redux', 'redux-logger',
+                    'redux-thunk', 'react-router', 'react-router-redux', 'react-slick', 'jquery']
     },
     output : {
         path : './dist/js',
@@ -32,8 +32,7 @@ module.exports = {
                 exclude : /node_modules/,
                 loader : 'babel-loader',
                 query : {
-                    cacheDirectory : true,
-                    presets : ['react', 'es2015', 'stage-2']
+                    cacheDirectory : true
                 }
             },
             {
