@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "weather app",
   "main": "./server/server.js",
-  "moduleRoots": ["."],
+  "moduleRoots": [
+    "."
+  ],
   "scripts": {
     "test": "cross-env NODE_PATH=. mocha --compilers js:babel-core/register -r test/setup.js test/**",
     "lintNode": "eslint -c .eslintrc-node.json server/** config/**",
@@ -43,6 +45,7 @@
     "minimist": "^1.2.0",
     "mongodb": "^2.2.10",
     "react": "^15.3.2",
+    "react-addons-perf": "^15.4.1",
     "react-dom": "^15.3.2",
     "react-redux": "^5.0.1",
     "react-router": "^3.0.0",
