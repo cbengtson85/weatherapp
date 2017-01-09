@@ -1,29 +1,20 @@
 'use strict'
 
 import React from 'react';
-import {MenuItems} from 'app/components/Header/Menu';
-import {slideToggle} from 'app/functions';
+import {SocialLinks} from 'app/components/Social';
 
-const Header = (props) => {
-    const toggle = () => {
-        slideToggle('.mobile-navigation')
-    }
+const Header = () => {
     return (
         <header className="site-header">
             <div className="container">
-                <a href="index.html" className="branding">
+                <a href="/" className="branding">
                     <img src="/img/logo.png" alt="" className="logo" />
                     <div className="logo-type">
-                        <h1 className="site-title">Company name</h1>
-                        <small className="site-description">tagline goes here</small>
+                        <h1 className="site-title">Give Me The Weather</h1>
                     </div>
                 </a>
-                <div className="main-navigation">
-                    <button type="button" className="menu-toggle" onClick={toggle}><i className="fa fa-bars"></i></button>
-                    <MenuItems {...props} />
-                </div>
-                <div className="mobile-navigation">
-                    <MenuItems {...props} />
+                <div className="social-links-container">
+                    <SocialLinks />
                 </div>
             </div>
         </header>

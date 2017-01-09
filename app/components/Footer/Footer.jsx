@@ -1,7 +1,6 @@
 'use strict'
 
 import React from 'react';
-import {SocialLinks} from 'app/components/Social';
 import {SubscribeForm} from 'app/components/Footer';
 
 const Footer = () => {
@@ -12,12 +11,11 @@ const Footer = () => {
                     <div className="col-md-8">
                         <SubscribeForm />
                     </div>
-                    <div className="col-md-3 col-md-offset-1">
-                        <SocialLinks />
-                    </div>
                 </div>
 
                 <p className="colophon">Powered by <a href="http://forecast.io">Forecast.io</a></p>
+                <p className="colophon">Free Website Templates by <a href="http://www.themezy.com">Themezy</a></p>
+                <p className="colophon">Geo data powered by <a href="http://www.geonames.org/">geonames.org</a></p>
             </div>
         </footer>
     )

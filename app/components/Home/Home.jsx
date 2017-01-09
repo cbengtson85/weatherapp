@@ -3,7 +3,6 @@
 import React from 'react';
 
 import AppWrapper from 'app/components/AppWrapper';
-import HomeStatic from 'app/components/Home/HomeStatic';
 import {LocationSearchContainer} from 'app/components/Home/Location';
 import {WeatherContainer} from 'app/components/Home/Weather';
 
@@ -18,7 +17,6 @@ class HomeContent extends React.Component {
             <main className="main-content">
                 <LocationSearchContainer />
                 {weatherCoordinates != null && weatherCoordinates != undefined ? <WeatherContainer weatherCoordinates={weatherCoordinates} /> : ''}
-                <HomeStatic />
             </main>
         )
     }

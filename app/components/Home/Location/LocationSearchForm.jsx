@@ -55,7 +55,7 @@ class LocationSearchForm extends React.Component  {
         return (
             <form action="/" className="find-location" onSubmit={this.handleSubmit}>
                 <input id="search-input" autoComplete="off" autoFocus onKeyDown={this.handleSearchKeyUp}
-                    type="text" placeholder="Find your location..." maxLength="100"
+                    type="text" placeholder="Find a location..." maxLength="100"
                     value={this.props.searchVal} onChange={this.handleChange}/>
                 {this.props.isLoading ? <span className="search-loader"><AjaxSpinner height="40" cssClass="vertical-center" /></span> : ''}
                 {this.props.searchTermLength > 0 && !this.props.isLoading ?

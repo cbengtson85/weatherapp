@@ -2,10 +2,6 @@
 
 const constants = require('config/constants');
 
-const slideToggle = selector => {
-    $(selector).slideToggle();
-};
-
 const actionCreator = (type, ...argNames) => {
     return function(...args) {
         let action = {
@@ -73,5 +69,5 @@ const getViewedLocations = () => {
     return locations.split(',');
 }
 
-export {slideToggle, actionCreator, getUnitFromStorage, setLocalStorageItem, getLocalStorageItem,
+export {actionCreator, getUnitFromStorage, setLocalStorageItem, getLocalStorageItem,
     getNameFromStorage, getViewedLocations, getObjectFromStorage};
