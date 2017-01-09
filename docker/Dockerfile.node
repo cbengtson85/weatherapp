@@ -1,4 +1,4 @@
-FROM node:7.3.1
+FROM node:7.4.0
 MAINTAINER cbengtson85
 
 #create app directory
