@@ -41,7 +41,7 @@ BUILD APP & RUN NODE SERVER using nodemon for hot deploying
 	npm run devbuild
 	npm run devstart
 
-	with debugging
+	with debugging *only works in node versions < 7*
 	npm run devdebug
 
 	CSS build, wepack build (with auto build on change), node server start
