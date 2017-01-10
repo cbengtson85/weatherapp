@@ -43,8 +43,7 @@ module.exports = {
     },
     resolve : {
         extensions : ['', '.js', '.jsx', '.es6'],
-        root : path.resolve(__dirname, '..'),
-        modulesDirectories : ['node_modules', '..']
+        root : path.resolve(__dirname, '..')
     },
     plugins : [
         new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor-' + VERSION + '.js', Infinity),
