@@ -1,4 +1,4 @@
-'use strict'
+/*'use strict'
 
 const bodyParser = require('body-parser');
 const urlEncodedParser = bodyParser.urlencoded({extended: true});
@@ -8,3 +8,4 @@ const router = require('express').Router();
 router.post('/submit-user-data', urlEncodedParser, controllers.user.saveUserInfo);
 
 module.exports = router;
+*/
