@@ -49,7 +49,7 @@ const getNameFromStorage = key => {
 
 
 const getUnitFromStorage = () => {
-    let unit = 'F'
+    let unit = 'F';
     try {
         unit = getLocalStorageItem('unit');
         if(unit == null || unit == undefined || unit == '')
