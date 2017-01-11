@@ -7,7 +7,7 @@ const WeatherForecastItem = ({item, unitTemp, unitSpeed, headingDateTime}) => {
         <div className="forecast hourly-forecast">
             <div className="forecast-header">
                 <div className="day">{headingDateTime}</div>
-                <div className="day">{item.formattedDate}</div>
+                <div className="date">{item.formattedDate}</div>
             </div>
             <div className="forecast-content">
                 <div className="forecast-icon">
