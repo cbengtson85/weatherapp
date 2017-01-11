@@ -3,7 +3,7 @@
 exports.renderHomePage = (req, res) => {
     const template = require('app/views/home.marko');
     let versionNum = process.env.npm_package_version;
-    template.render({version : versionNum, title : 'Weather'}, res);
+    template.render({version : versionNum, title : 'Give Me The Weather'}, res);
 };
 
 exports.renderApiRequestsCount = (req, res) => {

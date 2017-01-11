@@ -4,7 +4,7 @@ import React from 'react';
 
 const SocialLink = ({site}) => {
     return (
-        <a href="#"><i className={'fa fa-' + site}></i></a>
+        <a href={site.url} target="_blank"><i className={'fa fa-' + site.name}></i></a>
     )
 };
 
