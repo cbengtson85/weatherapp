@@ -9,7 +9,7 @@ const SocialLink = ({site}) => {
 };
 
 SocialLink.propTypes = {
-    site : React.PropTypes.string
+    site : React.PropTypes.object
 };
 
 export default SocialLink;
