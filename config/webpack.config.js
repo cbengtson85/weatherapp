@@ -5,6 +5,7 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const VERSION = require('../package.json').version;
+const vendorFileName = 'vendor-' + VERSION + '.js';
 
 module.exports = {
     entry : {
@@ -19,46 +20,52 @@ module.exports = {
     //watch : true,
     devtool : '#source-map',
     module : {
-        preLoaders: [
-            {
-                test: [/\.js$/, /\.es6$/, /\.jsx$/],
-                loader: 'eslint',
-                exclude: /node_modules/
-            }
-        ],
-        loaders : [
+        rules : [
             {
                 test : [/\.js$/, /\.es6$/, /\.jsx$/],
-                exclude : /node_modules/,
-                loader : 'babel-loader',
-                query : {
-                    cacheDirectory : true
-                }
+                loader : 'eslint-loader',
+                enforce : 'pre',
+                options : {
+                    configFile : '.eslintrc.json'
+                },
+                exclude : /node_modules/
             },
             {
-                test: /\.css$/,
-                loader: ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap')
+                test : [/\.js$/, /\.es6$/, /\.jsx$/],
+                loader : 'babel-loader',
+                options : {
+                    cacheDirectory : true
+                },
+                exclude : /node_modules/
+            },
+            {
+                test : /\.css$/,
+                loader : ExtractTextPlugin.extract({loader : 'css-loader?sourceMap'})
             }
         ]
     },
     resolve : {
-        extensions : ['', '.js', '.jsx', '.es6'],
-        root : path.resolve(__dirname, '..')
+        extensions : ['.js', '.jsx', '.es6', '.css'],
+        modules : [path.resolve(__dirname, '..'), 'node_modules']
     },
     plugins : [
-        new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor-' + VERSION + '.js', Infinity),
+        new webpack.optimize.CommonsChunkPlugin({name : 'vendor', filename : vendorFileName}),
         new webpack.ProvidePlugin({
-            $: 'jquery',
-            jQuery: 'jquery'
+            $ : 'jquery',
+            jQuery : 'jquery'
         }),
         /*new webpack.DefinePlugin({
             'process.env':{
                 'NODE_ENV': JSON.stringify('production')
             }
         }),*/
-        new ExtractTextPlugin('../css/weatherapp-' + VERSION + '.css')
-    ],
-    eslint: {
-        configFile : '.eslintrc.json'
-    }
+        new ExtractTextPlugin('../css/weatherapp-' + VERSION + '.css'),
+        /*new webpack.LoaderOptionsPlugin({
+            options : {
+                eslint : {
+                    configFile : '.eslintrc.json'
+                }
+            }
+        })*/
+    ]
 };

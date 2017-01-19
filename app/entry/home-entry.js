@@ -1,7 +1,7 @@
 'use strict'
 
-import 'static/css/slick.css';
-import 'static/css/styles.css';
+import 'static/css/slick';
+import 'static/css/styles';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
