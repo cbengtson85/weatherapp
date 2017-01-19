@@ -30,14 +30,14 @@ class WeatherContainer extends React.Component {
     }
 
     render() {
-        const {isLoading, showHourly} = this.props;
+        const {isLoading, showHourly, hourlyWeather, unitTemp, unitSpeed} = this.props;
         let toggleText = showHourly ? constants.VIEW_EXTENDED_FORECAST_TEXT : constants.VIEW_HOURLY_FORECAST_TEXT;
         return (
             <div className="forecast-table">
                 <div className="container">
                     {isLoading ? <LoadingIndicator /> : ''}
                     {showHourly ?
-                        (<HourlyForecast {...this.props} />)
+                        (<HourlyForecast hourlyWeather={hourlyWeather} unitTemp={unitTemp} unitSpeed={unitSpeed}/>)
                         :
                         (<ExtendedForecast {...this.props} />)
                     }
