@@ -11,7 +11,7 @@ module.exports = {
     entry : {
         home : ['./app/entry/home-entry.js'],
         vendor : ['babel-polyfill', 'react', 'react-dom', 'redux', 'react-redux', 'redux-logger',
-                    'redux-thunk', 'react-router', 'react-router-redux', 'react-slick', 'jquery']
+                    'redux-thunk', 'react-router', 'react-router-redux', 'react-slick', 'axios']
     },
     output : {
         path : './dist/js',
@@ -50,10 +50,10 @@ module.exports = {
     },
     plugins : [
         new webpack.optimize.CommonsChunkPlugin({name : 'vendor', filename : vendorFileName}),
-        new webpack.ProvidePlugin({
+        /*new webpack.ProvidePlugin({
             $ : 'jquery',
             jQuery : 'jquery'
-        }),
+        }),*/
         /*new webpack.DefinePlugin({
             'process.env':{
                 'NODE_ENV': JSON.stringify('production')

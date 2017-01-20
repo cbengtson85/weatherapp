@@ -15,5 +15,5 @@ import HomeRootContainer from 'app/components/Home';
 
 ReactDOM.render(
     <HomeRootContainer />,
-    $('#app').get(0)
+    document.getElementById('app')
  );

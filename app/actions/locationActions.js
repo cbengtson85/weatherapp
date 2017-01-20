@@ -1,8 +1,11 @@
 'use strict'
 
-import {actionCreator} from 'app/functions';
 import {push} from 'react-router-redux';
+import axios from 'axios';
 
+const CancelToken = axios.CancelToken;
+
+import {actionCreator} from 'app/functions';
 import {setLocalStorageItem} from 'app/functions';
 const constants = require('config/constants');
 
@@ -42,18 +45,18 @@ const locationsRequest = (state, searchVal) => {
         if(searchVal.length >= constants.MIN_SEARCH_LENGTH) {
             let xhrObj = state.locations.jqXhr;
             if(xhrObj != undefined && xhrObj != null)
-                xhrObj.abort();
-            $.ajax({
-                type : 'get',
-                url : constants.LOCATION_SEARCH_ENDPOINT + encodeURI(searchVal),
-                beforeSend : function(jqXhr) {
-                    dispatch(requestLocations(searchVal, jqXhr));
-                }
-            }).done(function(responseObj) {
-                dispatch(receiveLocations(searchVal, responseObj));
-            }).fail(function() {
-                dispatch(receiveLocations(searchVal, constants.LOCATION_RESPONSE_FORMAT));
-            });
+                xhrObj();
+            axios.get(constants.LOCATION_SEARCH_ENDPOINT + encodeURI(searchVal), {
+                cancelToken: new CancelToken(function executor(c) {
+                    dispatch(requestLocations(searchVal, c));
+                })
+            })
+                .then(response => {
+                    let responseObj = response.data;
+                    dispatch(receiveLocations(searchVal, responseObj));
+                }).catch(() => {
+                    dispatch(receiveLocations(searchVal, constants.LOCATION_RESPONSE_FORMAT));
+                });
         } else {
             dispatch(clearSearchResults(searchVal));
         }
@@ -71,14 +74,13 @@ const getLocations = searchVal => {
 
 const getPlaceName = coordinates => {
     return (dispatch) => {
-        $.ajax({
-            type : 'get',
-            url : constants.PLACE_NAME_ENDPOINT + encodeURI(coordinates)
-        }).done(function(responseObj) {
-            let addressDisplayName = responseObj.formattedAddressForDisplay;
-            setLocalStorageItem(coordinates, JSON.stringify({name : addressDisplayName , url : responseObj.formattedAddressForUrl}));
-            dispatch(receivePlaceName(addressDisplayName));
-        });
+        axios.get(constants.PLACE_NAME_ENDPOINT + encodeURI(coordinates))
+            .then(response => {
+                let responseObj = response.data;
+                let addressDisplayName = responseObj.formattedAddressForDisplay;
+                setLocalStorageItem(coordinates, JSON.stringify({name : addressDisplayName , url : responseObj.formattedAddressForUrl}));
+                dispatch(receivePlaceName(addressDisplayName));
+            });
     }
 };
 

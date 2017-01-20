@@ -8,10 +8,10 @@ exports.getDirectionFromDeg = num => {
     return arr[(val % 8)];
 }
 
-const getFormattedAddressForList = item => {
+const getFormattedAddressForList = (item, isPlace) => {
     let formatted = item.city;
-    if(item.countryCode == 'US') {
-        if(item.city == item.state)
+    if(item.countryCode == 'US' ) {
+        if(item.city == item.state && !isPlace)
             return item.state;
         formatted += ', ' + item.state;
         return formatted;
@@ -31,8 +31,8 @@ const getFormattedAddressForList = item => {
     return formatted;
 };
 
-const getFormattedAddressForDisplay = item => {
-    return getFormattedAddressForList(item);
+const getFormattedAddressForDisplay = (item, isPlace) => {
+    return getFormattedAddressForList(item, isPlace);
 };
 
 const buildWeatherRouteUrl = (formatted, item) => {
@@ -40,10 +40,10 @@ const buildWeatherRouteUrl = (formatted, item) => {
     return '/weather/' + formatted2 + '/' + item.latitude + '_' + item.longitude;
 }
 
-const getFormattedAddressForUrl = item => {
+const getFormattedAddressForUrl = (item, isPlace) => {
     let formatted = item.city;
     if(item.countryCode == 'US') {
-        if(item.city == item.state)
+        if(item.city == item.state && !isPlace)
             return buildWeatherRouteUrl(item.state, item);
         formatted += ' ' + item.state;
         return buildWeatherRouteUrl(formatted, item);

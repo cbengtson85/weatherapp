@@ -1,5 +1,7 @@
 'use strict'
 
+import axios from 'axios';
+
 import {actionCreator} from 'app/functions';
 const constants = require('config/constants');
 
@@ -17,21 +19,18 @@ const showHourlyForecast = actionCreator(SHOW_HOURLY_FORECAST, 'showHourly');
 
 const weatherRequest = (state, coordinates, unit) => {
     return dispatch => {
-        $.ajax({
-            type : 'get',
-            url : constants.WEATHER_DATA_ENDPOINT + encodeURI(coordinates) + '?units=' + unit,
-            beforeSend : function() {
-                dispatch(requestWeather(coordinates, unit));
-            }
-        }).done(function(responseObj) {
-            if(responseObj.current == null) {
+        dispatch(requestWeather(coordinates, unit));
+        axios.get(constants.WEATHER_DATA_ENDPOINT + encodeURI(coordinates) + '?units=' + unit)
+            .then(response => {
+                let responseObj = response.data;
+                if(responseObj.current == null) {
+                    dispatch(receiveWeather(coordinates, constants.WEATHER_RESPONSE_FORMAT));
+                } else {
+                    dispatch(receiveWeather(coordinates, responseObj));
+                }
+            }).catch(() => {
                 dispatch(receiveWeather(coordinates, constants.WEATHER_RESPONSE_FORMAT));
-            } else {
-                dispatch(receiveWeather(coordinates, responseObj));
-            }
-        }).fail(function() {
-            dispatch(receiveWeather(coordinates, constants.WEATHER_RESPONSE_FORMAT));
-        });
+            });
     }
 };
 

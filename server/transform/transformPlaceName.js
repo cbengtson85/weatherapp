@@ -12,11 +12,9 @@ const getFormattedAddressForUrl = require('server/tools').getFormattedAddressFor
 
 module.exports = (data, q) => {
     let item = Object.assign({}, constants.PLACE_NAME_RESPONSE_FORMAT);
-    let resourceList = data.geonames;
-    if(typeof resourceList != 'undefined' && resourceList.length > 0) {
+    let resource = data.address;
+    if(typeof resource != 'undefined') {
         const location = q.split('_');
-
-        let resource = resourceList[0];
 
         let countryCode = resource.countryCode;
         let countryName = resource.countryName;
@@ -24,7 +22,7 @@ module.exports = (data, q) => {
             countryName = countryCodes[countryCode];
         if(countryName == undefined)
             countryName = countryCode;
-        item.city = resource.name;
+        item.city = resource.placename;
         item.state = resource.adminName1;
         if(item.state == '')
             item.state = countryName;
@@ -32,10 +30,9 @@ module.exports = (data, q) => {
         item.country = countryName;
         item.latitude = location[0];
         item.longitude = location[1];
-        item.formattedAddressForDisplay = getFormattedAddressForDisplay(item);
-        item.formattedAddressForUrl = getFormattedAddressForUrl(item);
+        item.formattedAddressForDisplay = getFormattedAddressForDisplay(item, true);
+        item.formattedAddressForUrl = getFormattedAddressForUrl(item, true);
         item.id = q;
     }
-
     return item;
 };

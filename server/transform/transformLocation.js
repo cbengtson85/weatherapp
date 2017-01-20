@@ -11,7 +11,7 @@ const getFormattedAddressForList = require('server/tools').getFormattedAddressFo
 const getFormattedAddressForDisplay = require('server/tools').getFormattedAddressForDisplay;
 const getFormattedAddressForUrl = require('server/tools').getFormattedAddressForUrl;
 
-const generateId = item => item.latitude + '_' + item.longitude;
+const generateId = item => item.latitude + '_' + item.longitude + '_' + item.city.replace(/\s/g,'');
 
 const transformLocationSearch = data => {
     let transformedData = Object.assign({}, constants.LOCATION_RESPONSE_FORMAT);

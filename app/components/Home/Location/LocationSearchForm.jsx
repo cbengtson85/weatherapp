@@ -18,7 +18,7 @@ class LocationSearchForm extends React.Component  {
         e.preventDefault();
         const {dispatch} = this.props;
         dispatch(ACTIONS.clearSearchResults(''));
-        $('#search-input').focus();
+        document.getElementById('search-input').focus();
     }
 
     handleChange = e => {
