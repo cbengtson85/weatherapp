@@ -60,12 +60,5 @@ module.exports = {
             }
         }),*/
         new ExtractTextPlugin('../css/weatherapp-' + VERSION + '.css'),
-        /*new webpack.LoaderOptionsPlugin({
-            options : {
-                eslint : {
-                    configFile : '.eslintrc.json'
-                }
-            }
-        })*/
     ]
 };
