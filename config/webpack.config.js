@@ -10,7 +10,7 @@ const vendorFileName = 'vendor-' + VERSION + '.js';
 module.exports = {
     entry : {
         home : ['./app/entry/home-entry.js'],
-        vendor : ['babel-polyfill', 'react', 'react-dom', 'redux', 'react-redux', 'redux-logger',
+        vendor : ['react', 'react-dom', 'redux', 'react-redux', 'redux-logger',
                     'redux-thunk', 'react-router', 'react-router-redux', 'react-slick', 'axios']
     },
     output : {
