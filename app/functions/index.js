@@ -8,9 +8,9 @@ const actionCreator = (type, ...argNames) => {
             type
         }
         argNames.forEach((arg, index) => {
-            action[argNames[index]] = args[index]
-        })
-        return action
+            action[argNames[index]] = args[index];
+        });
+        return action;
     }
 };
 

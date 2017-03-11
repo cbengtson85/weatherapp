@@ -5,13 +5,10 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const VERSION = require('../package.json').version;
-const vendorFileName = 'vendor-' + VERSION + '.js';
 
 module.exports = {
     entry : {
-        home : ['./app/entry/home-entry.js'],
-        vendor : ['react', 'react-dom', 'redux', 'react-redux', 'redux-logger',
-                    'redux-thunk', 'react-router', 'react-router-redux', 'react-slick', 'axios']
+        home : ['./app/entry/home-entry.js']
     },
     output : {
         path : './dist/js',
@@ -49,7 +46,10 @@ module.exports = {
         modules : [path.resolve(__dirname, '..'), 'node_modules']
     },
     plugins : [
-        new webpack.optimize.CommonsChunkPlugin({name : 'vendor', filename : vendorFileName}),
+        new webpack.optimize.CommonsChunkPlugin({
+            name : 'vendor',
+            minChunks: ({resource}) => /node_modules/.test(resource)
+        }),
         /*new webpack.ProvidePlugin({
             $ : 'jquery',
             jQuery : 'jquery'
