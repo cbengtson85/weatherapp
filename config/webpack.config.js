@@ -5,13 +5,10 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const VERSION = require('../package.json').version;
-const vendorFileName = 'vendor-' + VERSION + '.js';
 
 module.exports = {
     entry : {
-        home : ['./app/entry/home-entry.js'],
-        vendor : ['react', 'react-dom', 'redux', 'react-redux', 'redux-logger',
-                    'redux-thunk', 'react-router', 'react-router-redux', 'react-slick', 'axios']
+        home : ['./app/entry/home-entry.js']
     },
     output : {
         path : './dist/js',
@@ -34,7 +31,9 @@ module.exports = {
                 test : [/\.js$/, /\.es6$/, /\.jsx$/],
                 loader : 'babel-loader',
                 options : {
-                    cacheDirectory : true
+                    cacheDirectory : true,
+                    babelrc : false,
+                    presets : ["react", [ "es2015", {"modules" : false }], "stage-2"]
                 },
                 exclude : /node_modules/
             },
@@ -49,16 +48,13 @@ module.exports = {
         modules : [path.resolve(__dirname, '..'), 'node_modules']
     },
     plugins : [
-        new webpack.optimize.CommonsChunkPlugin({name : 'vendor', filename : vendorFileName}),
-        /*new webpack.ProvidePlugin({
-            $ : 'jquery',
-            jQuery : 'jquery'
-        }),*/
-        /*new webpack.DefinePlugin({
-            'process.env':{
-                'NODE_ENV': JSON.stringify('production')
-            }
-        }),*/
+        new webpack.optimize.CommonsChunkPlugin({
+            name : 'vendor',
+            minChunks: ({resource}) => /node_modules/.test(resource)
+        }),
+        new webpack.optimize.CommonsChunkPlugin({
+                name : 'manifest'
+        }),
         new ExtractTextPlugin('../css/weatherapp-' + VERSION + '.css'),
     ]
 };
