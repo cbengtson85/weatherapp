@@ -108,5 +108,6 @@ module.exports = (data, units) => {
         });
     }
     transformedData.daily = dailyList;
+    transformedData.alerts = data.alerts;
     return transformedData;
 };
