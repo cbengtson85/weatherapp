@@ -11,7 +11,7 @@ module.exports = {
         home : ['./app/entry/home-entry.js']
     },
     output : {
-        path : './dist/js',
+        path : path.resolve(__dirname, '..', 'dist/js'),
         filename : '[name]-' + VERSION + '.js'
     },
     //watch : true,
