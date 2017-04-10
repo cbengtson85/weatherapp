@@ -5,6 +5,8 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const VERSION = require('../package.json').version;
+
+//const isProd = process.argv.indexOf('-p') !== -1;
 module.exports = {
     entry : {
         home : ['./app/entry/home-entry.js']
