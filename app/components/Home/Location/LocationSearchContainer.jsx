@@ -33,18 +33,20 @@ class LocationSearchContainer extends React.Component {
     }
 }
 
-LocationSearchContainer.propTypes = {
-    isLoading : React.PropTypes.bool.isRequired,
-    locationsList : React.PropTypes.array,
-    searchTermLength : React.PropTypes.number,
-    searchVal : React.PropTypes.string,
-    currentSuggestionIndex : React.PropTypes.number,
-    selectedLocation : React.PropTypes.object,
-    currentUnit : React.PropTypes.string,
-    viewedLocations : React.PropTypes.array,
-    currentLocationError : React.PropTypes.bool,
-    dispatch : React.PropTypes.func.isRequired
-};
+if(process.env.NODE_ENV !== 'production') {
+    LocationSearchContainer.propTypes = {
+        isLoading : React.PropTypes.bool.isRequired,
+        locationsList : React.PropTypes.array,
+        searchTermLength : React.PropTypes.number,
+        searchVal : React.PropTypes.string,
+        currentSuggestionIndex : React.PropTypes.number,
+        selectedLocation : React.PropTypes.object,
+        currentUnit : React.PropTypes.string,
+        viewedLocations : React.PropTypes.array,
+        currentLocationError : React.PropTypes.bool,
+        dispatch : React.PropTypes.func.isRequired
+    };
+}
 
 const mapStateToProps = state => {
     const {locations, weather} = state;

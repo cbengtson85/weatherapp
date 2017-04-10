@@ -5,7 +5,8 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const VERSION = require('../package.json').version;
-
+process.traceDeprecation = true;
+process.traceWarnings = true;
 module.exports = {
     entry : {
         home : ['./app/entry/home-entry.js']
@@ -53,8 +54,8 @@ module.exports = {
             minChunks: ({resource}) => /node_modules/.test(resource)
         }),
         new webpack.optimize.CommonsChunkPlugin({
-                name : 'manifest'
+            name : 'manifest'
         }),
-        new ExtractTextPlugin('../css/weatherapp-' + VERSION + '.css'),
+        new ExtractTextPlugin('../css/weatherapp-' + VERSION + '.css')
     ]
 };

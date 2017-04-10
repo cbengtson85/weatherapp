@@ -2,7 +2,7 @@
 <html>
     <include("./partials/page-start.marko") title="${data.title}" />
     <body>
-        <table if(notEmpty(data.items)) border="1">
+        <table if(data.items.length) border="1">
             <tr>
                 <th>Date</th>
                 <th>Locations Count</th>
