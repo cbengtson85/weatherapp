@@ -14,7 +14,7 @@
     "clean": "find dist -not -name 'dist' -not -name '.gitignore' | xargs rm -rf",
     "postclean": "echo '\\033[1;36m DONE cleaning /dist directory \\033[0m'",
     "predevbuild": "echo '\\033[0;36m BEGIN building dev\\033[0m' && npm run clean",
-    "devbuild": "webpack --config config/webpack.config.js --progress -p",
+    "devbuild": "webpack --config config/webpack.config.js --progress",
     "postdevbuild": "echo '\\033[1;32m SUCCESS building dev\\033[0m'",
     "devdebug": "node-inspector & nodemon --debug --watch server --watch config --watch app/views -e js,marko server/server.js --server dev",
     "devstart": "nodemon --watch server --watch config --watch app/views -e js,marko server/server.js --server dev",
