@@ -1,6 +1,7 @@
 'use strict'
 
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const SocialLink = ({site}) => {
     return (
@@ -8,8 +9,10 @@ const SocialLink = ({site}) => {
     )
 };
 
-SocialLink.propTypes = {
-    site : React.PropTypes.object
-};
+if(process.env.NODE_ENV !== 'production') {
+    SocialLink.propTypes = {
+        site : PropTypes.object
+    };
+}
 
 export default SocialLink;

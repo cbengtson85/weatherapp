@@ -1,6 +1,7 @@
 'use strict'
 
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const WeatherForecastItem = ({item, unitTemp, unitSpeed, headingDateTime}) => {
     return (
@@ -26,11 +27,13 @@ const WeatherForecastItem = ({item, unitTemp, unitSpeed, headingDateTime}) => {
     )
 };
 
-WeatherForecastItem.propTypes = {
-    unitTemp : React.PropTypes.string,
-    unitSpeed : React.PropTypes.string,
-    item : React.PropTypes.object,
-    headingDateTime : React.PropTypes.string
-};
+if(process.env.NODE_ENV !== 'production') {
+    WeatherForecastItem.propTypes = {
+        unitTemp : PropTypes.string,
+        unitSpeed : PropTypes.string,
+        item : PropTypes.object,
+        headingDateTime : PropTypes.string
+    };
+}
 
 export default WeatherForecastItem;

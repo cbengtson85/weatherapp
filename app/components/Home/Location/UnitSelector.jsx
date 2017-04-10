@@ -1,6 +1,7 @@
 'use strict'
 
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import * as ACTIONS from 'app/actions';
 import {setLocalStorageItem} from 'app/functions';
@@ -20,10 +21,12 @@ const UnitSelector = ({unit, currentUnit, dispatch}) => {
     )
 };
 
-UnitSelector.propTypes = {
-    currentUnit : React.PropTypes.string,
-    unit : React.PropTypes.string,
-    dispatch : React.PropTypes.func.isRequired
-};
+if(process.env.NODE_ENV !== 'production') {
+    UnitSelector.propTypes = {
+        currentUnit : PropTypes.string,
+        unit : PropTypes.string,
+        dispatch : PropTypes.func.isRequired
+    };
+}
 
 export default UnitSelector;

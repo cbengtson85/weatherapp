@@ -1,6 +1,7 @@
 'use strict'
 
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import {CurrentWeather, WeatherForecastItem} from 'app/components/Home/Weather';
 
@@ -18,10 +19,12 @@ class ExtendedForecast extends React.Component {
     }
 }
 
-ExtendedForecast.propTypes = {
-    unitTemp : React.PropTypes.string,
-    unitSpeed : React.PropTypes.string,
-    dailyWeather : React.PropTypes.array
-};
+if(process.env.NODE_ENV !== 'production') {
+    ExtendedForecast.propTypes = {
+        unitTemp : PropTypes.string,
+        unitSpeed : PropTypes.string,
+        dailyWeather : PropTypes.array
+    };
+}
 
 export default ExtendedForecast;

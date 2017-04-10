@@ -1,6 +1,7 @@
 'use strict'
 
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class ErrorMessage extends React.PureComponent {
     componentDidMount() {
@@ -16,9 +17,11 @@ class ErrorMessage extends React.PureComponent {
     }
 }
 
-ErrorMessage.propTypes = {
-    mountFunction : React.PropTypes.func,
-    msg : React.PropTypes.string
-};
+if(process.env.NODE_ENV !== 'production') {
+    ErrorMessage.propTypes = {
+        mountFunction : PropTypes.func,
+        msg : PropTypes.string
+    };
+}
 
 export default ErrorMessage;

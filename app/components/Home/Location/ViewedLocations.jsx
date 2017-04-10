@@ -1,6 +1,7 @@
 'use strict'
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import Slider from 'react-slick';
 
 const constants = require('config/constants');
@@ -30,9 +31,11 @@ class ViewedLocations extends React.Component {
     }
 }
 
-ViewedLocations.propTypes = {
-    viewedLocations : React.PropTypes.array,
-    dispatch : React.PropTypes.func.isRequired
-};
+if(process.env.NODE_ENV !== 'production') {
+    ViewedLocations.propTypes = {
+        viewedLocations : PropTypes.array,
+        dispatch : PropTypes.func.isRequired
+    };
+}
 
 export default ViewedLocations;

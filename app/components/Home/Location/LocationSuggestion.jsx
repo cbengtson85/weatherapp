@@ -1,6 +1,7 @@
 'use strict'
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import {Link} from 'react-router';
 
 const LocationSuggestion = ({location, index, currentSuggestionIndex, handleSuggestionHover}) => {
@@ -16,11 +17,13 @@ const LocationSuggestion = ({location, index, currentSuggestionIndex, handleSugg
     )
 };
 
-LocationSuggestion.propTypes = {
-    location : React.PropTypes.object,
-    currentSuggestionIndex : React.PropTypes.number,
-    index : React.PropTypes.number,
-    handleSuggestionHover: React.PropTypes.func
-};
+if(process.env.NODE_ENV !== 'production') {
+    LocationSuggestion.propTypes = {
+        location : PropTypes.object,
+        currentSuggestionIndex : PropTypes.number,
+        index : PropTypes.number,
+        handleSuggestionHover: PropTypes.func
+    };
+}
 
 export default LocationSuggestion;

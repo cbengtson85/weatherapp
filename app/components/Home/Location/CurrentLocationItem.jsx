@@ -1,6 +1,8 @@
 'use strict'
 
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import {CurrentLocationIcon} from 'app/components/Common';
 import * as ACTIONS from 'app/actions';
 
@@ -18,8 +20,10 @@ const CurrentLocationItem = ({dispatch}) => {
     )
 };
 
-CurrentLocationItem.propTypes = {
-    dispatch : React.PropTypes.func.isRequired
-};
+if(process.env.NODE_ENV !== 'production') {
+    CurrentLocationItem.propTypes = {
+        dispatch : PropTypes.func.isRequired
+    };
+}
 
 export default CurrentLocationItem;

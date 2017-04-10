@@ -7,7 +7,6 @@ import {syncHistoryWithStore} from 'react-router-redux';
 
 import {configureStore} from 'app/store';
 import Home from 'app/components/Home/Home.jsx';
-import News from 'app/components/News';
 
 const store = configureStore(/*initialState*/);
 const history = syncHistoryWithStore(browserHistory, store);
@@ -17,7 +16,6 @@ class HomeRootContainer extends React.Component {
         return (
             <Provider store={store}>
                 <Router history={history}>
-                    <Route path="/news" component={News} />
                     <Route path="/weather/*/*/:search" component={Home} />
                     <Route path="/weather/*/:search" component={Home} />
                     <Route path="*" component={Home} />

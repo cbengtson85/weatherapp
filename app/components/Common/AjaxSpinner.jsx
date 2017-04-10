@@ -1,6 +1,7 @@
 'use strict'
 
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const AjaxSpinner = ({height, cssClass}) => {
     return (
@@ -8,9 +9,11 @@ const AjaxSpinner = ({height, cssClass}) => {
     )
 };
 
-AjaxSpinner.propTypes = {
-    height : React.PropTypes.string,
-    cssClass : React.PropTypes.string
-};
+if(process.env.NODE_ENV !== 'production') {
+    AjaxSpinner.propTypes = {
+        height : PropTypes.string,
+        cssClass : PropTypes.string
+    };
+}
 
 export default AjaxSpinner;

@@ -1,6 +1,7 @@
 'use strict'
 
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const InputSubmit = ({value}) => {
     return (
@@ -8,9 +9,10 @@ const InputSubmit = ({value}) => {
     )
 };
 
-
-InputSubmit.propTypes = {
-    value : React.PropTypes.string
-};
+if(process.env.NODE_ENV !== 'production') {
+    InputSubmit.propTypes = {
+        value : PropTypes.string
+    };
+}
 
 export default InputSubmit;

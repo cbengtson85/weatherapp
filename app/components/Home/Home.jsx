@@ -1,6 +1,7 @@
 'use strict'
 
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import AppWrapper from 'app/components/AppWrapper';
 import {LocationSearchContainer} from 'app/components/Home/Location';
@@ -22,9 +23,11 @@ class HomeContent extends React.Component {
     }
 }
 
-HomeContent.propTypes = {
-    params : React.PropTypes.object
-};
+if(process.env.NODE_ENV !== 'production') {
+    HomeContent.propTypes = {
+        params : PropTypes.object
+    };
+}
 
 let Home = AppWrapper(HomeContent, 'Home');
 

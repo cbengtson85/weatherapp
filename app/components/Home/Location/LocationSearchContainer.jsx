@@ -1,6 +1,7 @@
 'use strict'
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
 import {LocationSearchForm, LocationSuggestions, ViewedLocations} from 'app/components/Home/Location';
@@ -35,16 +36,16 @@ class LocationSearchContainer extends React.Component {
 
 if(process.env.NODE_ENV !== 'production') {
     LocationSearchContainer.propTypes = {
-        isLoading : React.PropTypes.bool.isRequired,
-        locationsList : React.PropTypes.array,
-        searchTermLength : React.PropTypes.number,
-        searchVal : React.PropTypes.string,
-        currentSuggestionIndex : React.PropTypes.number,
-        selectedLocation : React.PropTypes.object,
-        currentUnit : React.PropTypes.string,
-        viewedLocations : React.PropTypes.array,
-        currentLocationError : React.PropTypes.bool,
-        dispatch : React.PropTypes.func.isRequired
+        isLoading : PropTypes.bool.isRequired,
+        locationsList : PropTypes.array,
+        searchTermLength : PropTypes.number,
+        searchVal : PropTypes.string,
+        currentSuggestionIndex : PropTypes.number,
+        selectedLocation : PropTypes.object,
+        currentUnit : PropTypes.string,
+        viewedLocations : PropTypes.array,
+        currentLocationError : PropTypes.bool,
+        dispatch : PropTypes.func.isRequired
     };
 }
 

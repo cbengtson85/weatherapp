@@ -1,6 +1,7 @@
 'use strict'
 
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import {mouseHighlight} from 'app/actions';
 import {CurrentLocationItem, LocationSuggestion} from 'app/components/Home/Location';
@@ -30,10 +31,12 @@ class LocationSuggestions extends React.Component {
     }
 }
 
-LocationSuggestions.propTypes = {
-    locationsList : React.PropTypes.array,
-    currentSuggestionIndex : React.PropTypes.number,
-    dispatch : React.PropTypes.func.isRequired
-};
+if(process.env.NODE_ENV !== 'production') {
+    LocationSuggestions.propTypes = {
+        locationsList : PropTypes.array,
+        currentSuggestionIndex : PropTypes.number,
+        dispatch : PropTypes.func.isRequired
+    };
+}
 
 export default LocationSuggestions;

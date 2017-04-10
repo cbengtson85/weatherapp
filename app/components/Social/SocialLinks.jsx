@@ -1,6 +1,7 @@
 'use strict'
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import {SocialLink} from 'app/components/Social';
 
 class SocialLinks extends React.Component {
@@ -14,10 +15,11 @@ class SocialLinks extends React.Component {
         )
     }
 }
-
-SocialLinks.propTypes = {
-    socialSites : React.PropTypes.array
-};
+if(process.env.NODE_ENV !== 'production') {
+    SocialLinks.propTypes = {
+        socialSites : PropTypes.array
+    };
+}
 
 SocialLinks.defaultProps = {
     socialSites : [

@@ -1,6 +1,7 @@
 'use strict'
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import {Link} from 'react-router';
 
 import {ClearIcon} from 'app/components/Common';
@@ -31,9 +32,11 @@ const ViewedLocation = ({item, handleClear}) => {
     )
 };
 
-ViewedLocation.propTypes = {
-    item : React.PropTypes.string,
-    handleClear : React.PropTypes.func
-};
+if(process.env.NODE_ENV !== 'production') {
+    ViewedLocation.propTypes = {
+        item : PropTypes.string,
+        handleClear : PropTypes.func
+    };
+}
 
 export default ViewedLocation;

@@ -1,6 +1,7 @@
 'use strict'
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {Link} from 'react-router';
 
@@ -48,20 +49,22 @@ class WeatherContainer extends React.Component {
     }
 }
 
-WeatherContainer.propTypes = {
-    weatherCoordinates : React.PropTypes.string,
-    isLoading : React.PropTypes.bool.isRequired,
-    currentWeather : React.PropTypes.object,
-    unitTemp : React.PropTypes.string,
-    unitSpeed : React.PropTypes.string,
-    dailyWeather : React.PropTypes.array,
-    hourlyWeather : React.PropTypes.array,
-    savedSelectedLocations : React.PropTypes.object,
-    currentUnit : React.PropTypes.string,
-    displayNameFromStorage : React.PropTypes.string,
-    showHourly : React.PropTypes.bool,
-    dispatch : React.PropTypes.func.isRequired
-};
+if(process.env.NODE_ENV !== 'production') {
+    WeatherContainer.propTypes = {
+        weatherCoordinates : PropTypes.string,
+        isLoading : PropTypes.bool.isRequired,
+        currentWeather : PropTypes.object,
+        unitTemp : PropTypes.string,
+        unitSpeed : PropTypes.string,
+        dailyWeather : PropTypes.array,
+        hourlyWeather : PropTypes.array,
+        savedSelectedLocations : PropTypes.object,
+        currentUnit : PropTypes.string,
+        displayNameFromStorage : PropTypes.string,
+        showHourly : PropTypes.bool,
+        dispatch : PropTypes.func.isRequired
+    };
+}
 
 const mapStateToProps = state => {
     const {weather, locations} = state;

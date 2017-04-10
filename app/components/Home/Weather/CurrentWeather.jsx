@@ -1,6 +1,7 @@
 'use strict'
 
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import * as ACTIONS from 'app/actions';
 import {setLocalStorageItem, getLocalStorageItem, getNameFromStorage} from 'app/functions';
@@ -80,16 +81,18 @@ class CurrentWeather extends React.Component {
     }
 }
 
-CurrentWeather.propTypes = {
-    weatherCoordinates : React.PropTypes.string,
-    currentWeather : React.PropTypes.object,
-    unitTemp : React.PropTypes.string,
-    unitSpeed : React.PropTypes.string,
-    dailyWeather : React.PropTypes.array,
-    savedSelectedLocations : React.PropTypes.object,
-    displayNameFromStorage : React.PropTypes.string,
-    selectedLocation : React.PropTypes.object,
-    dispatch : React.PropTypes.func.isRequired
-};
+if(process.env.NODE_ENV !== 'production') {
+    CurrentWeather.propTypes = {
+        weatherCoordinates : PropTypes.string,
+        currentWeather : PropTypes.object,
+        unitTemp : PropTypes.string,
+        unitSpeed : PropTypes.string,
+        dailyWeather : PropTypes.array,
+        savedSelectedLocations : PropTypes.object,
+        displayNameFromStorage : PropTypes.string,
+        selectedLocation : PropTypes.object,
+        dispatch : PropTypes.func.isRequired
+    };
+}
 
 export default CurrentWeather;

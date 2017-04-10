@@ -1,6 +1,7 @@
 'use strict'
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import Slider from 'react-slick';
 
 const constants = require('config/constants');
@@ -27,10 +28,12 @@ class HourlyForecast extends React.Component {
     }
 }
 
-HourlyForecast.propTypes = {
-    unitTemp : React.PropTypes.string,
-    unitSpeed : React.PropTypes.string,
-    hourlyWeather : React.PropTypes.array
-};
+if(process.env.NODE_ENV !== 'production') {
+    HourlyForecast.propTypes = {
+        unitTemp : PropTypes.string,
+        unitSpeed : PropTypes.string,
+        hourlyWeather : PropTypes.array
+    };
+}
 
 export default HourlyForecast;

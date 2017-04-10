@@ -1,6 +1,7 @@
 'use strict'
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import {push} from 'react-router-redux';
 
 import {InputSubmit, AjaxSpinner, ClearIcon} from 'app/components/Common';
@@ -69,14 +70,16 @@ class LocationSearchForm extends React.Component  {
     }
 }
 
-LocationSearchForm.propTypes = {
-    selectedLocation : React.PropTypes.object,
-    searchTermLength : React.PropTypes.number,
-    currentSuggestionIndex : React.PropTypes.number,
-    locationsList : React.PropTypes.array,
-    searchVal : React.PropTypes.string,
-    isLoading : React.PropTypes.bool.isRequired,
-    dispatch : React.PropTypes.func.isRequired
-};
+if(process.env.NODE_ENV !== 'production') {
+    LocationSearchForm.propTypes = {
+        selectedLocation : PropTypes.object,
+        searchTermLength : PropTypes.number,
+        currentSuggestionIndex : PropTypes.number,
+        locationsList : PropTypes.array,
+        searchVal : PropTypes.string,
+        isLoading : PropTypes.bool.isRequired,
+        dispatch : PropTypes.func.isRequired
+    };
+}
 
 export default LocationSearchForm;
