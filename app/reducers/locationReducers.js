@@ -2,7 +2,6 @@
 
 import * as ACTIONS from 'app/actions';
 import {locationsInitialState} from 'app/store';
-import {LOCATION_CHANGE} from 'react-router-redux';
 
 const moveSuggestionIndex = (state, direction) => {
     let searchTerm = state.currentSearchTerm;
@@ -47,8 +46,8 @@ const locations = (state = locationsInitialState, action) => {
             let newStateReceive = {...state, loading : false, locationsList : newList, currentSuggestionIndex : 0};
             return {...newStateReceive, selectedLocation : getSelectedLocation(newStateReceive)};
         }
-        case LOCATION_CHANGE:
-            if(action.payload.pathname != undefined && action.payload.pathname.indexOf('/weather/') > -1) {
+        case ACTIONS.RECEIVE_WEATHER: {
+            /*if(action.payload.pathname != undefined && action.payload.pathname.indexOf('/weather/') > -1) {
                 let selectedLocation = getSelectedLocation(state);
                 let savedSelectedLocations = state.savedSelectedLocations;
                 if(selectedLocation != null)
@@ -57,7 +56,14 @@ const locations = (state = locationsInitialState, action) => {
                 return {...state, currentSearchTerm : '', currentSuggestionIndex : 0, selectedLocation : selectedLocation, savedSelectedLocations : savedSelectedLocations};
             } else {
                 return {...state, currentSearchTerm : '', currentSuggestionIndex : 0, selectedLocation : null};
-            }
+            }*/
+            let selectedLocation = getSelectedLocation(state);
+            let savedSelectedLocations = state.savedSelectedLocations;
+            if(selectedLocation != null)
+                savedSelectedLocations = {...state.savedSelectedLocations, [selectedLocation.id] : selectedLocation};
+
+            return {...state, currentSearchTerm : '', currentSuggestionIndex : 0, selectedLocation : selectedLocation, savedSelectedLocations : savedSelectedLocations};
+        }
         case ACTIONS.CLEAR_SEARCH_RESULTS: {
             let searchVal = action.searchVal;
             if(searchVal == undefined)

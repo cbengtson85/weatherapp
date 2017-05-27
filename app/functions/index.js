@@ -1,6 +1,7 @@
 'use strict'
 
 const constants = require('config/constants');
+import createBrowserHistory from 'history/createBrowserHistory';
 
 const actionCreator = (type, ...argNames) => {
     return function(...args) {
@@ -69,5 +70,7 @@ const getViewedLocations = () => {
     return locations.split(',');
 }
 
+const history = createBrowserHistory();
+
 export {actionCreator, getUnitFromStorage, setLocalStorageItem, getLocalStorageItem,
-    getNameFromStorage, getViewedLocations, getObjectFromStorage};
+    getNameFromStorage, getViewedLocations, getObjectFromStorage, history};

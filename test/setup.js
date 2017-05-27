@@ -1,9 +1,11 @@
 'use strict'
 
-import jsdom from 'jsdom';
+import {JSDOM} from 'jsdom';
 
-global.document = jsdom.jsdom('');
-global.window = document.defaultView;
+const {window} = new JSDOM('');
+const {document} = window;
+global.document = document;
+global.window = window;
 Object.keys(document.defaultView).forEach((property) => {
     if (typeof global[property] === 'undefined') {
         global[property] = document.defaultView[property];

@@ -2,7 +2,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import {push} from 'react-router-redux';
+import {history} from 'app/functions';
 
 import {InputSubmit, AjaxSpinner, ClearIcon} from 'app/components/Common';
 import {UnitSelectors} from 'app/components/Home/Location';
@@ -11,9 +11,9 @@ import * as ACTIONS from 'app/actions';
 class LocationSearchForm extends React.Component  {
     handleSubmit = e => {
         e.preventDefault();
-        const {dispatch, selectedLocation} = this.props;
+        const {selectedLocation} = this.props;
         if(selectedLocation != null)
-            dispatch(push(selectedLocation.formattedAddressForUrl));
+            history.push(selectedLocation.formattedAddressForUrl);
     }
     handleClear = e => {
         e.preventDefault();

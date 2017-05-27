@@ -1,7 +1,7 @@
 'use strict'
 
-import {push} from 'react-router-redux';
 import axios from 'axios';
+import {history} from 'app/functions';
 
 const CancelToken = axios.CancelToken;
 
@@ -87,7 +87,7 @@ const getPlaceName = coordinates => {
 const geoLocationSuccess = (location, dispatch) => {
     let coordinates = location.coords.latitude + '_' + location.coords.longitude;
     dispatch(receiveCurrentLocationSuccess(coordinates));
-    dispatch(push('/weather/current/' + coordinates));
+    history.push('/weather/current/' + coordinates);
 }
 
 const geoLocationError = (error, dispatch) => {

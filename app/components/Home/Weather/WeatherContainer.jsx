@@ -3,36 +3,42 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {Link} from 'react-router';
+import {Link} from 'react-router-dom';
 
 import {LoadingIndicator, ExtendedForecast, HourlyForecast} from 'app/components/Home/Weather';
 import * as ACTIONS from 'app/actions';
 const constants = require('config/constants');
 
 class WeatherContainer extends React.Component {
-    componentWillMount() {
-        const {dispatch, weatherCoordinates, currentUnit} = this.props;
-        dispatch(ACTIONS.getWeatherData(weatherCoordinates, currentUnit));
+    componentDidMount() {
+        const {dispatch, currentUnit} = this.props;
+        const {search, hourly} = this.props.match.params;
+        dispatch(ACTIONS.getWeatherData(search, currentUnit, hourly));
     }
     componentWillReceiveProps(nextProps) {
-        if(nextProps.weatherCoordinates != this.props.weatherCoordinates) {
-            const {dispatch} = this.props;
-            dispatch(ACTIONS.getWeatherData(nextProps.weatherCoordinates, nextProps.currentUnit));
+        const {dispatch} = this.props;
+        if(nextProps.match.params.search != this.props.match.params.search) {
+            const {hourly} = nextProps.match.params;
+            dispatch(ACTIONS.getWeatherData(nextProps.match.params.search, nextProps.currentUnit, hourly));
         }
+        if(nextProps.match.params.hourly && !this.props.match.params.hourly)
+            dispatch(ACTIONS.showHourlyForecast(true));
+        else if(!nextProps.match.params.hourly && this.props.match.params.hourly)
+            dispatch(ACTIONS.showHourlyForecast(false));
     }
 
-    getForecastUrl = () => {
-        let url = location.pathname;
-        if(url.indexOf('/hourly/') > -1)
-            url = url.replace('/hourly/', '/');
-        else
-            url = url.replace('/weather/', '/weather/hourly/');
-        return url;
+    componentWillUnmount() {
+        this.props.dispatch(ACTIONS.clearCoordinates());
     }
 
     render() {
         const {isLoading, showHourly, hourlyWeather, unitTemp, unitSpeed} = this.props;
         let toggleText = showHourly ? constants.VIEW_EXTENDED_FORECAST_TEXT : constants.VIEW_HOURLY_FORECAST_TEXT;
+        let url = location.pathname;
+        if(url.indexOf('/hourly/') > -1)
+            url = url.replace('/hourly/', '/');
+        else
+            url = url.replace('/weather/', '/weather/hourly/');
         return (
             <div className="forecast-table">
                 <div className="container">
@@ -42,7 +48,7 @@ class WeatherContainer extends React.Component {
                         :
                         (<ExtendedForecast {...this.props} />)
                     }
-                    <div id="change-forecast-view"><Link to={this.getForecastUrl}>{toggleText}</Link></div>
+                    <div id="change-forecast-view"><Link to={url}>{toggleText}</Link></div>
                 </div>
             </div>
         )
@@ -51,7 +57,7 @@ class WeatherContainer extends React.Component {
 
 if(process.env.NODE_ENV !== 'production') {
     WeatherContainer.propTypes = {
-        weatherCoordinates : PropTypes.string,
+        match : PropTypes.object,
         isLoading : PropTypes.bool.isRequired,
         currentWeather : PropTypes.object,
         unitTemp : PropTypes.string,
