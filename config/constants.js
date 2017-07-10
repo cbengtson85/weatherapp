@@ -15,6 +15,7 @@ exports.STYLE_VALUE = 'FULL';
 exports.LATITUDE = 'lat';
 exports.LONGITUDE = 'lng';
 exports.VIEWED_LOCATIONS = 'viewedLocations';
+exports.VIEWED_LOCATIONS_OBJECTS = 'viewedLocationsObjects';
 exports.LOCATION_RESPONSE_FORMAT = {
     results : []
 };

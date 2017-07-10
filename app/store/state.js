@@ -1,7 +1,7 @@
 'use strict'
 
 const constants = require('config/constants');
-import {getUnitFromStorage, getViewedLocations} from 'app/functions';
+import {getUnitFromStorage, getViewedLocations, getViewedLocationsObjects} from 'app/functions';
 
 const locationsInitialState = {
     jqXhr : null,
@@ -10,14 +10,14 @@ const locationsInitialState = {
     locationsList : {},
     currentSuggestionIndex : 0,
     selectedLocation : null,
-    savedSelectedLocations : {},
     displayNameFromStorage : '',
-    currentLocationError : false
+    currentLocationError : false,
+    viewedLocations : getViewedLocations(),
+    viewedLocationsObjects : getViewedLocationsObjects()
 };
 
 const weatherInitialState = {...constants.WEATHER_RESPONSE_FORMAT,
     loading : false,
-    viewedLocations : getViewedLocations(),
     currentUnit : getUnitFromStorage(),
     currentWeatherCoordinates : '',
     showHourly : false

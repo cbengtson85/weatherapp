@@ -67,7 +67,7 @@ const mapStateToProps = state => {
         currentSuggestionIndex : currentIndex,
         selectedLocation : selectedLocation,
         currentUnit : weather.currentUnit,
-        viewedLocations : weather.viewedLocations,
+        viewedLocations : locations.viewedLocations,
         currentLocationError : currentLocationError
     }
 };

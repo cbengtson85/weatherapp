@@ -2,6 +2,7 @@
 
 import * as ACTIONS from 'app/actions';
 import {locationsInitialState} from 'app/store';
+const constants = require('config/constants');
 
 const moveSuggestionIndex = (state, direction) => {
     let searchTerm = state.currentSearchTerm;
@@ -31,8 +32,39 @@ const getSelectedLocation = state => {
     else
         selectedLocation = null;
 
+console.log(selectedLocation);
     return selectedLocation;
 };
+
+const updateViewedLocations = (state, coordinates, selectedLocation) => {
+    let locations = state.viewedLocations.concat();
+    let locationsObj = {...state.viewedLocationsObjects};
+    if(locations.indexOf(coordinates) < 0) {
+        locations.push(coordinates);
+        locationsObj[coordinates] = {name : selectedLocation.formattedAddressForDisplay,
+            url : selectedLocation.formattedAddressForUrl};
+        if(locations.length > constants.MAX_STORED_LOCATIONS) {
+            let removedItem = locations.splice(0, 1);
+            delete locationsObj[removedItem];
+        }
+    } else {
+        let index = locations.indexOf(coordinates);
+        locations.splice(index, 1);
+        locations.push(coordinates);
+    }
+    //setLocalStorageItem(constants.VIEWED_LOCATIONS, locations.toString());
+    return {viewedLocations : locations, viewedLocationsObjects : locationsObj};
+}
+
+const removeViewedLocation = (state, coordinates) => {
+    let locations = state.viewedLocations.concat();
+    if(locations.indexOf(coordinates) > -1) {
+        let index = locations.indexOf(coordinates);
+        locations.splice(index, 1);
+    }
+    //setLocalStorageItem(constants.VIEWED_LOCATIONS, locations.toString());
+    return locations;
+}
 
 const locations = (state = locationsInitialState, action) => {
     switch (action.type) {
@@ -47,22 +79,11 @@ const locations = (state = locationsInitialState, action) => {
             return {...newStateReceive, selectedLocation : getSelectedLocation(newStateReceive)};
         }
         case ACTIONS.RECEIVE_WEATHER: {
-            /*if(action.payload.pathname != undefined && action.payload.pathname.indexOf('/weather/') > -1) {
-                let selectedLocation = getSelectedLocation(state);
-                let savedSelectedLocations = state.savedSelectedLocations;
-                if(selectedLocation != null)
-                    savedSelectedLocations = {...state.savedSelectedLocations, [selectedLocation.id] : selectedLocation};
-
-                return {...state, currentSearchTerm : '', currentSuggestionIndex : 0, selectedLocation : selectedLocation, savedSelectedLocations : savedSelectedLocations};
-            } else {
-                return {...state, currentSearchTerm : '', currentSuggestionIndex : 0, selectedLocation : null};
-            }*/
             let selectedLocation = getSelectedLocation(state);
-            let savedSelectedLocations = state.savedSelectedLocations;
-            if(selectedLocation != null)
-                savedSelectedLocations = {...state.savedSelectedLocations, [selectedLocation.id] : selectedLocation};
-
-            return {...state, currentSearchTerm : '', currentSuggestionIndex : 0, selectedLocation : selectedLocation, savedSelectedLocations : savedSelectedLocations};
+            let newViewLocationsObj = updateViewedLocations(state, action.coordinates, selectedLocation);
+            let newState = {...newViewLocationsObj, currentSearchTerm : '', currentSuggestionIndex : 0,
+                selectedLocation : selectedLocation}
+            return {...state, ...newState};
         }
         case ACTIONS.CLEAR_SEARCH_RESULTS: {
             let searchVal = action.searchVal;
@@ -90,6 +111,8 @@ const locations = (state = locationsInitialState, action) => {
             return {...state, currentLocationError : true, loading : false};
         case ACTIONS.HIDE_LOCATION_ERROR:
             return {...state, currentLocationError : false};
+        case ACTIONS.REMOVE_VIEWED_LOCATION:
+            return {...state, viewedLocations : removeViewedLocation(state, action.coordinates)}
         default:
             return state;
     }

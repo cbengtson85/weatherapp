@@ -9,21 +9,21 @@ import {setLocalStorageItem, getLocalStorageItem, getNameFromStorage} from 'app/
 class CurrentWeather extends React.Component {
 
     componentDidMount() {
-        const {savedSelectedLocations, weatherCoordinates, dispatch} = this.props;
+        /*const {savedSelectedLocations, weatherCoordinates, dispatch} = this.props;
         if(Object.keys(savedSelectedLocations).length < 1 && getLocalStorageItem(weatherCoordinates) == undefined)
-            dispatch(ACTIONS.getPlaceName(weatherCoordinates));
+            dispatch(ACTIONS.getPlaceName(weatherCoordinates));*/
     }
 
     componentWillReceiveProps(nextProps) {
-        if(nextProps.weatherCoordinates != this.props.weatherCoordinates) {
+        /*if(nextProps.weatherCoordinates != this.props.weatherCoordinates) {
             const {savedSelectedLocations, weatherCoordinates, dispatch, displayNameFromStorage} = nextProps;
             if(this.getFormattedDisplayName(weatherCoordinates, savedSelectedLocations, displayNameFromStorage) == '')
                 dispatch(ACTIONS.getPlaceName(weatherCoordinates));
-        }
+        }*/
     }
 
     getFormattedDisplayName(coordinates, locations, displayNameFromStorage) {
-        let ssl = locations[coordinates];
+        /*let ssl = locations[coordinates];
         let formattedAddressForDisplay = '';
         if(ssl != undefined) {
             formattedAddressForDisplay = ssl.formattedAddressForDisplay;
@@ -36,7 +36,8 @@ class CurrentWeather extends React.Component {
                 formattedAddressForDisplay = displayName;
             }
         }
-        return formattedAddressForDisplay;
+        return formattedAddressForDisplay;*/
+        return 'test';
     }
 
     render() {

@@ -64,13 +64,21 @@ const getUnitFromStorage = () => {
 }
 
 const getViewedLocations = () => {
-    let locations = getLocalStorageItem(constants.VIEWED_LOCATIONS);
+    let locations = getObjectFromStorage(constants.VIEWED_LOCATIONS);
     if(locations == undefined || locations == '')
         return [];
-    return locations.split(',');
+    return locations;
+}
+
+const getViewedLocationsObjects = () => {
+    let locations = getObjectFromStorage(constants.VIEWED_LOCATIONS_OBJECTS);
+    if(locations == undefined || locations == '')
+        return {};
+    return locations;
 }
 
 const history = createBrowserHistory();
 
-export {actionCreator, getUnitFromStorage, setLocalStorageItem, getLocalStorageItem,
+
+export {actionCreator, getUnitFromStorage, setLocalStorageItem, getLocalStorageItem, getViewedLocationsObjects,
     getNameFromStorage, getViewedLocations, getObjectFromStorage, history};
